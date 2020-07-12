@@ -4,33 +4,25 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Auth extends CI_Controller
 {
 
-    function __construct(){
+    function __construct()
+    {
         parent::__construct();
         $this->load->model('M_user');
     }
 
     public function index()
     {
+        if ($this->session->userdata('id_role')) {
+            redirect('auth/cek_session');
+        }
         $data['judul'] = "Sipendi - Login";
         $this->load->view('auth/login', $data);
     }
 
-    public function register()
-    {
-        $data['judul'] = "Sipendi - Register";
-        $this->load->view('auth/register', $data);
-    }
-
-    public function lupa_password()
-    {
-        $data['judul'] = "Sipendi - Lupa Password";
-        $this->load->view('auth/lupa_password', $data);
-    }
-
     public function cek_login()
     {
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
+        $username = htmlspecialchars($this->input->post('username'));
+        $password = htmlspecialchars($this->input->post('password'));
         $user = $this->M_user->cari_user($username);
         if ($user->num_rows() > 0) {
             $user_data = $user->row();
@@ -57,34 +49,43 @@ class Auth extends CI_Controller
                     redirect('auth/cek_session');
                 }
             } else {
-                $this->session->set_flashdata('gagal', 'Password yang anda masukan salah.');
+                $this->session->set_flashdata('notif', "Gagal");
+                $this->session->set_flashdata('perintah', "Login");
+                $this->session->set_flashdata('pesan', "Password Yang Anda Masukan Salah.");
                 redirect('auth');
             }
         } else {
-            $this->session->set_flashdata('gagal', 'Username tidak ditemukan.');
+            $this->session->set_flashdata('notif', "Gagal");
+            $this->session->set_flashdata('perintah', "Login");
+            $this->session->set_flashdata('pesan', "User Tidak Ditemukan.");
             redirect('auth');
         }
     }
 
     function cek_session()
     {
-        if($this->session->userdata('id_role')==1){
+        if ($this->session->userdata('id_role') == 1) {
             redirect('admin');
-        } elseif ($this->session->userdata('id_role')==2) {
+        } elseif ($this->session->userdata('id_role') == 2) {
             redirect('pengajar');
-        } elseif ($this->session->userdata('id_role')==3) {
+        } elseif ($this->session->userdata('id_role') == 3) {
             redirect('ortu');
         } else {
+            $this->session->set_flashdata('notif', "Gagal");
+            $this->session->set_flashdata('perintah', "Login");
+            $this->session->set_flashdata('pesan', "Anda Harus Login Terlebih Dahulu.");
             redirect('/');
         }
     }
-    
+
     function logout()
     {
         $session = [
-            'id_user', 'id_role','nama'
+            'id_user', 'id_role', 'nama'
         ];
-        $this->session->set_flashdata('berhasil', 'Anda Berhasil Logout.');
+        $this->session->set_flashdata('notif', "Berhasil");
+        $this->session->set_flashdata('perintah', "Logout");
+        $this->session->set_flashdata('pesan', "Anda Berhasil Logout");
         $this->session->unset_userdata($session);
         redirect('auth');
     }

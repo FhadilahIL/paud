@@ -28,14 +28,19 @@
     <link href="<?= base_url('/') ?>assets/vendor/wow/animate.css" rel="stylesheet" media="all">
     <link href="<?= base_url('/') ?>assets/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
     <link href="<?= base_url('/') ?>assets/vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="<?= base_url('/') ?>assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="<?= base_url('/') ?>assets/js/select2/dist/css/select2.min.css" rel="stylesheet" media="all">
+    <link href="<?= base_url('/') ?>assets/css/select2-bootstrap4.css" rel="stylesheet" media="all">
     <link href="<?= base_url('/') ?>assets/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
     <link href="<?= base_url('/') ?>assets/css/theme.css" rel="stylesheet" media="all">
     <link href="<?= base_url('/') ?>assets/css/style.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('/') ?>assets/js/datatable/datatables.css" />
 
 </head>
 
 <body class="animsition">
     <div class="page-wrapper">
+        <div class="flash-data-notif" data-flashdata="<?= $this->session->flashdata('notif'); ?>"></div>
+        <div class="flash-data-perintah" data-flashdata="<?= $this->session->flashdata('perintah'); ?>"></div>
+        <div class="flash-data-pesan" data-flashdata="<?= $this->session->flashdata('pesan'); ?>"></div>

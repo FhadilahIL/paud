@@ -36,6 +36,9 @@
 </head>
 
 <body class="animsition">
+    <div class="flash-data-notif" data-flashdata="<?= $this->session->flashdata('notif'); ?>"></div>
+    <div class="flash-data-perintah" data-flashdata="<?= $this->session->flashdata('perintah'); ?>"></div>
+    <div class="flash-data-pesan" data-flashdata="<?= $this->session->flashdata('pesan'); ?>"></div>
     <div class="page-wrapper">
         <div class="page-content--bge5">
             <div class="container">
@@ -43,27 +46,10 @@
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="<?= base_url('/') ?>assets/images/icon/logo.png" alt="CoolAdmin">
+                                <img src="<?= base_url('/') ?>assets/img/settings/logo/logo.png" alt="Logo Paud Melati" class="w-50">
                             </a>
                         </div>
                         <div class="login-form">
-                            <?php if ($this->session->flashdata('berhasil')) { ?>
-                                <div class="sufee-alert alert with-close alert-primary alert-dismissible fade show">
-                                    <span class="badge badge-pill badge-primary">Berhasil</span>
-                                    <?= $this->session->flashdata('berhasil'); ?>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            <?php } elseif ($this->session->flashdata('gagal')) { ?>
-                                <div class="sufee-alert alert with-close alert-primary alert-dismissible fade show">
-                                    <span class="badge badge-pill badge-primary">Gagal</span>
-                                    <?= $this->session->flashdata('gagal'); ?>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            <?php } ?>
                             <form action="<?php echo base_url('auth/cek_login') ?>" method="post">
                                 <div class="form-group">
                                     <label>Username</label>
@@ -72,12 +58,6 @@
                                 <div class="form-group">
                                     <label>Password</label>
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
-                                </div>
-                                <div class="login-checkbox">
-                                    <label></label>
-                                    <label>
-                                        <a href="<?= base_url('auth/lupa_password') ?>">Forgotten Password?</a>
-                                    </label>
                                 </div>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
                             </form>
@@ -107,11 +87,12 @@
     <script src="<?= base_url('/') ?>assets/vendor/circle-progress/circle-progress.min.js"></script>
     <script src="<?= base_url('/') ?>assets/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="<?= base_url('/') ?>assets/vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="<?= base_url('/') ?>assets/vendor/select2/select2.min.js">
-    </script>
+    <script src="<?= base_url('/') ?>assets/vendor/select2/select2.min.js"></script>
+    <script src="<?= base_url('/') ?>assets/js/sweetalert2/sweetalert2.all.min.js"></script>
 
     <!-- Main JS-->
     <script src="<?= base_url('/') ?>assets/js/main.js"></script>
+    <script src="<?= base_url('/') ?>assets/js/mySweetAlert.js"></script>
 
 </body>
 

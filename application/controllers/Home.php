@@ -5,7 +5,7 @@ class Home extends CI_Controller
 {
     public function index()
     {
-        echo password_hash('orangtua',PASSWORD_DEFAULT);
-        // $this->load->view('welcome_message');
+        $data['judul'] = "Paud Melati - Jombang";
+        $this->load->view('index', $data);
     }
 }
