@@ -4,15 +4,15 @@
 <div class="m-3">
     <div class="card">
         <div class="card-header">
-            <strong>Datfar Semester</strong>
+            <strong>Datfar Peserta</strong>
         </div>
         <div class="card-body">
             <div class="form-group">
-                <label for="semester">Pilih Semester</label>
-                <select class="form-control select" name="semester" id="semester_kesehatan">
-                    <option value="">-- Pilih Semester --</option>
-                    <?php foreach ($tampil_semester as $semester) { ?>
-                        <option value="<?= $semester->id_semester ?>">Semester <?= $semester->semester ?> (<?= $semester->tahun_ajaran ?>)</option>
+                <label for="semester">Pilih Nama Peserta Didik</label>
+                <select class="form-control select" name="semester" id="tampil_peserta_kesehatan">
+                    <option value="">-- Pilih Peserta Didik --</option>
+                    <?php foreach ($tampil_peserta as $peserta) { ?>
+                        <option value="<?= $peserta->id_peserta ?>"><?= $peserta->nama_lengkap ?></option>
                     <?php } ?>
                 </select>
             </div>

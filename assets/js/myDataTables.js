@@ -1,24 +1,17 @@
-// $.fn.dataTable.search.push(
-//     function (settings, data, dataIndex) {
-//         var nama = document.getElementById('nama').value
-//         var tanggal_penilaian = document.getElementById('tanggal_penilaian').value
-//         var data_nama = data[1];
-//         var data_tanggal = data[4];
-//         if ((isNaN(nama)) && (isNaN(tanggal_penilaian)) || ((nama == data_nama) && isNaN(tanggal_penilaian)) || (isNan(nama) && (tanggal_penilaian == data_tanggal)) || ((nama == data_nama) && (tanggal_penilaian == data_tanggal))) {
-//             return true;
-//         } else {
-//             return false;
-//         }
-//     }
-// );
-
 $(document).ready(function () {
-    var tableA = $('#table_penilaian_harian').DataTable();
     $('#tanggal_penilaian').change(function () {
-        tableA.search($(this).val()).draw();
-    })
-    var tableB = $('#table_catatan_harian').DataTable();
-    $('#tanggal_penilaian').change(function () {
-        tableB.search($(this).val()).draw();
+        var fullDate = new Date($('#tanggal_penilaian').val())
+        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        var hari = days[fullDate.getDay()]
+        var tanggal = fullDate.getDate()
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        var bulan = months[fullDate.getMonth()]
+        var tahun = fullDate.getFullYear()
+
+        var tableA = $('#table_penilaian_harian').DataTable();
+        tableA.search(hari + ', ' + tanggal + ' ' + bulan + ' ' + tahun).draw();
+
+        var tableB = $('#table_catatan_harian').DataTable();
+        tableB.search(hari + ', ' + tanggal + ' ' + bulan + ' ' + tahun).draw();
     })
 })

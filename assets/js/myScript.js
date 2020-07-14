@@ -177,6 +177,74 @@ $(document).ready(function () {
         })
     })
 
+    $('#tampil_peserta_emosi').change(function () {
+        var id_peserta = document.getElementById('tampil_peserta_emosi').value
+        $.ajax({
+            type: 'get',
+            url: '/paud/ortu/nilai_emosi_peserta/' + id_peserta,
+            dataType: 'json',
+            success: function (data) {
+                var html = '';
+                // console.log(data.length)
+                if (data.length > 0) {
+                    var no = 1;
+                    data.forEach(data => {
+                        html += '<tr>';
+                        html += '<td class="text-center">' + no++ + '.</td>';
+                        html += '<td class="text-center">' + data.no_induk + '</td>';
+                        html += '<td>' + data.nama_lengkap + '</td>';
+                        html += '<td>' + data.menangis + '</td>';
+                        html += '<td>' + data.memukul + '</td>';
+                        html += '<td>' + data.marah + '</td>';
+                        html += '<td>' + data.diam + '</td>';
+                        html += '<td>' + data.melamun + '</td>';
+                        html += '<td>' + data.gembira + '</td>';
+                        html += '</tr>';
+                    });
+                    $('#tbody-catatan-emosi').html(html)
+                } else {
+                    html += '<tr><td colspan="9" class="text-center">Tidak Ada Data Catatan Emosi</td></tr>';
+                    $('#tbody-catatan-emosi').html(html)
+                }
+            }
+        })
+    })
+
+    $('#tampil_peserta_kesehatan').change(function () {
+        var id_peserta = document.getElementById('tampil_peserta_kesehatan').value
+        $.ajax({
+            type: 'get',
+            url: '/paud/ortu/nilai_kesehatan_peserta/' + id_peserta,
+            dataType: 'json',
+            success: function (data) {
+                var html = '';
+                // console.log(data.length)
+                if (data.length > 0) {
+                    var no = 1;
+                    data.forEach(data => {
+                        html += '<tr>';
+                        html += '<td class="text-center">' + no++ + '.</td>';
+                        html += '<td class="text-center">' + data.no_induk + '</td>';
+                        html += '<td>' + data.nama_lengkap + '</td>';
+                        html += '<td>' + data.mata + '</td>';
+                        html += '<td>' + data.mulut + '</td>';
+                        html += '<td>' + data.gigi + '</td>';
+                        html += '<td>' + data.telinga + '</td>';
+                        html += '<td>' + data.hidung + '</td>';
+                        html += '<td>' + data.anggota_badan + '</td>';
+                        html += '<td>' + data.berat_badan + ' Kg</td>';
+                        html += '<td>' + data.tinggi_badan + ' cm</td>';
+                        html += '</tr>';
+                    });
+                    $('#tbody-catatan-kesehatan').html(html)
+                } else {
+                    html += '<tr><td colspan="11" class="text-center">Tidak Ada Data Catatan Kesehatan</td></tr>';
+                    $('#tbody-catatan-kesehatan').html(html)
+                }
+            }
+        })
+    })
+
     let tfKd = document.getElementById('tf-kd')
     if (tfKd.value) {
         document.getElementById('btn-kd').removeAttribute('disabled');

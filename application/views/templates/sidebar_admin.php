@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="header-mobile-inner">
                 <a class="logo logo-mobile" href="<?= base_url() ?>">
-                    <img src="<?= base_url('/') ?>assets/img/settings/logo/logo_header.png" alt="Sipendi" />
+                    <img src="<?= base_url('/') ?>assets/img/settings/logo/logo.png" alt="Sipendi" />
                 </a>
                 <button class="hamburger pt-n2 hamburger--slider" type="button">
                     <span class="hamburger-box">

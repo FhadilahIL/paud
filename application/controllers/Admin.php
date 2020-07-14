@@ -383,7 +383,7 @@ class Admin extends CI_Controller
                 // jika password beda
                 $this->session->set_flashdata('notif', "Gagal");
                 $this->session->set_flashdata('perintah', "Mengubah My Profile");
-                $this->session->set_flashdata('pesan', "Gagal Mengubah Data Admin, Password Tidak Sama");
+                $this->session->set_flashdata('pesan', "Gagal Mengubah Profile, Password Tidak Sama");
                 redirect('admin/my_profile');
             }
         } else {
@@ -419,6 +419,8 @@ class Admin extends CI_Controller
         // die;
         if ($this->M_admin->update_data($data_user, $id_user)) {
             // jika update guru update detail guru
+            $this->load->helper('updatesession');
+            updateSession(['nama' => $data_user['nama']]);
             $this->M_admin->update_admin_guru_detail($data_detail, $id_user);
             $this->session->set_flashdata('notif', "Berhasil");
             $this->session->set_flashdata('perintah', "Mengubah My Profile");
@@ -428,7 +430,7 @@ class Admin extends CI_Controller
             // jika gagal update
             $this->session->set_flashdata('notif', "Gagal");
             $this->session->set_flashdata('perintah', "Mengubah My Profile");
-            $this->session->set_flashdata('pesan', "Gagal My Profile Mengubah Data Guru.");
+            $this->session->set_flashdata('pesan', "Data My Profile Gagal Diubah.");
             redirect('admin/my_profile');
         }
     }
@@ -458,7 +460,7 @@ class Admin extends CI_Controller
                     $data_user = [
                         'nama'      => $nama,
                         'username'  => $username,
-                        'password'  => $password,
+                        'password'  => password_hash($password, PASSWORD_DEFAULT),
                         'foto'      => $this->upload_gambar_profile($this->input->post('nama'))
                     ];
                     $data_detail = [
@@ -471,7 +473,7 @@ class Admin extends CI_Controller
                     $data_user = [
                         'nama'      => $nama,
                         'username'  => $username,
-                        'password'  => $password
+                        'password'  => password_hash($password, PASSWORD_DEFAULT)
                     ];
                     $data_detail = [
                         'alamat'    => $alamat,
@@ -1006,7 +1008,6 @@ class Admin extends CI_Controller
         $data['active'] = ['', '', '', '', '', 'active', '', '', '', '', '', '', ''];
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
         $data['nilai'] = $this->M_penilaian->tampil_detail_nilai()->result();
-        $data['tampil_peserta'] = $this->M_murid->tampil_murid()->result();
         $data['catatan_harian'] = $this->M_penilaian->tampil_catatan_harian()->result();
 
         // print_r($data['nilai']);

@@ -49,4 +49,10 @@ class M_murid extends CI_Model
         $this->db->where('id_peserta', $id_peserta);
         return $this->db->update('tb_peserta_didik');
     }
+
+    function tampil_anak($id_user)
+    {
+        $this->db->where('id_user', $id_user);
+        return $this->db->get('tb_peserta_didik');
+    }
 }

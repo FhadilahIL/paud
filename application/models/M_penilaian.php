@@ -87,6 +87,22 @@ class M_penilaian extends CI_Model
         return $this->db->get('tb_penilaian_emosi');
     }
 
+    function tampil_emosi_ortu($id_peserta)
+    {
+        $this->db->select('no_induk, nama_lengkap, menangis, memukul, marah, diam, melamun, gembira');
+        $this->db->join('tb_peserta_didik', 'tb_peserta_didik.id_peserta = tb_penilaian_emosi.id_peserta', 'inner');
+        $this->db->where('tb_penilaian_emosi.id_peserta', $id_peserta);
+        return $this->db->get('tb_penilaian_emosi');
+    }
+
+    function tampil_kesehatan_ortu($id_peserta)
+    {
+        $this->db->select('no_induk, nama_lengkap, mata, mulut, gigi, telinga, hidung, anggota_badan, berat_badan, tinggi_badan');
+        $this->db->join('tb_peserta_didik', 'tb_peserta_didik.id_peserta = tb_penilaian_kesehatan.id_peserta', 'inner');
+        $this->db->where('tb_penilaian_kesehatan.id_peserta', $id_peserta);
+        return $this->db->get('tb_penilaian_kesehatan');
+    }
+
     function tampil_kesehatan($id_semester)
     {
         $this->db->select('id_penilaian_kesehatan, no_induk, nama_lengkap, no_induk, nama_lengkap, mata, mulut, gigi, telinga, hidung, anggota_badan, berat_badan, tinggi_badan');
