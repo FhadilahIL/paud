@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2020 at 02:31 PM
+-- Generation Time: Jul 21, 2020 at 05:34 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -61,7 +61,7 @@ CREATE TABLE `tb_detail_admin_guru` (
 
 INSERT INTO `tb_detail_admin_guru` (`id_user`, `alamat`, `no_hp`) VALUES
 (19, 'MM', '089877225511'),
-(28, '', '');
+(28, '', '089677886644');
 
 -- --------------------------------------------------------
 
@@ -81,7 +81,7 @@ CREATE TABLE `tb_detail_orang_tua` (
 --
 
 INSERT INTO `tb_detail_orang_tua` (`id_user`, `alamat`, `pekerjaan`, `no_hp`) VALUES
-(27, '', '', '');
+(27, 'Buaran', 'Pegawai Sipil', '089299292992');
 
 -- --------------------------------------------------------
 
@@ -126,7 +126,10 @@ CREATE TABLE `tb_penilaian_emosi` (
 --
 
 INSERT INTO `tb_penilaian_emosi` (`id_penilaian_emosi`, `id_peserta`, `menangis`, `memukul`, `marah`, `diam`, `melamun`, `gembira`, `id_semester`) VALUES
-(1, 7, 'Tidak Pernah', 'Tidak Pernah', 'Kadang', 'Kadang', 'Tidak Pernah', 'Sering', 1);
+(1, 7, 'Kadang', 'Tidak Pernah', 'Sering', 'Kadang', 'Tidak Pernah', 'Tidak Pernah', 1),
+(2, 8, '', 'Tidak Pernah', 'Tidak Pernah', 'Sering', 'Kadang', 'Sering', 1),
+(3, 7, 'Kadang', 'Tidak Pernah', 'Tidak Pernah', 'Tidak Pernah', 'Tidak Pernah', 'Sering', 2),
+(4, 8, 'Sering', 'Kadang', 'Kadang', 'Tidak Pernah', 'Kadang', 'Sering', 2);
 
 -- --------------------------------------------------------
 
@@ -176,7 +179,10 @@ CREATE TABLE `tb_penilaian_kesehatan` (
 --
 
 INSERT INTO `tb_penilaian_kesehatan` (`id_penilaian_kesehatan`, `id_peserta`, `mata`, `mulut`, `gigi`, `telinga`, `hidung`, `anggota_badan`, `berat_badan`, `tinggi_badan`, `id_semester`) VALUES
-(1, 7, 'Kurang', 'Baik', 'Cukup', 'Baik', 'Baik', 'Baik', 43, 170, 1);
+(1, 7, 'Cukup', 'Baik', 'Baik', 'Cukup', 'Cukup', 'Cukup', 33, 120, 1),
+(2, 8, 'Baik', 'Baik', 'Baik', 'Cukup', 'Cukup', 'Kurang', 123, 12, 1),
+(3, 7, 'Cukup', 'Baik', 'Baik', 'Cukup', 'Cukup', 'Kurang', 31, 121, 2),
+(4, 8, 'Cukup', 'Baik', 'Baik', 'Baik', 'Baik', 'Cukup', 30, 121, 2);
 
 -- --------------------------------------------------------
 
@@ -205,8 +211,8 @@ CREATE TABLE `tb_peserta_didik` (
 --
 
 INSERT INTO `tb_peserta_didik` (`id_peserta`, `no_induk`, `nama_lengkap`, `nama_panggilan`, `jenis_kelamin`, `agama`, `tempat_lahir`, `tanggal_lahir`, `anak_ke`, `id_user`, `tanggal_masuk`, `status`, `id_tahun_ajaran`) VALUES
-(7, 'B1/001/20.21', 'Muhammad Ilham Fhadilah', 'Fhadilah', 'L', 'Islam', 'Tangerang Selatan', '2010-08-01', 1, 27, '0000-00-00 00:00:00', 'Aktif', 3),
-(8, 'B1/002/20.21', 'Muhammad Ilham', 'Ilham', 'L', 'Islam', 'Tangerang Selatan', '2010-08-01', 1, 27, '2020-07-11 09:17:06', 'Aktif', 3);
+(7, 'B1/001/20.21', 'Muhammad Ilham Fhadilah', 'Fhadilah Ilham', 'L', 'Kristen', 'Tangerang Selatan', '2010-08-01', 1, 27, '0000-00-00 00:00:00', 'Aktif', 3),
+(8, 'B1/002/20.21', 'Fhadilah Ilham', 'Ilham', 'L', 'Islam', 'Tangerang Selatan', '2010-09-01', 2, 27, '2020-07-11 09:17:06', 'Aktif', 3);
 
 -- --------------------------------------------------------
 
@@ -336,9 +342,9 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `nama`, `username`, `password`, `id_role`, `foto`) VALUES
-(19, 'Putri Nadella Junialdi', 'putri', '$2y$10$rU1ssxJUguQfdrCs75VKTOOv8SlgHPAs9VXSJqCuqFjzeQgn2kOZu', 1, '1faaced5ecfcc65ed508042f7930ff1a.PNG'),
-(27, 'Hanifa Nurnisa', 'nisa', '$2y$10$.VI9Kq/YBil7iR5t5VOrp.qHfm.5vtyzqP3XcaIGvOkoGpxQmb7M2', 3, 'fa7f28c54060a0eb622f706c2cc63f5a.png'),
-(28, 'Aris Indrawan', 'aris', '$2y$10$iEpslmK7UFm.P2ntJuR5VeBP4CkB0LJ3FqR3cNZ9g40insz7se4ua', 2, '4a80e70d0e22674684c4aca0ec99e5b5.PNG');
+(19, 'Putri Nadella', 'putri', '$2y$10$rU1ssxJUguQfdrCs75VKTOOv8SlgHPAs9VXSJqCuqFjzeQgn2kOZu', 1, '1faaced5ecfcc65ed508042f7930ff1a.PNG'),
+(27, 'Hanifa Nurnisa', 'nisa', '$2y$10$Rh9TgHFo1/EHqkPSXEfn.OzzV8Zdd9TIhaoXEcvZZjhRUes/4KuRi', 3, '12d5f50651fe43efe5e55e17ec39e3d3.PNG'),
+(28, 'Aris Indrawan', 'aris', '$2y$10$osBRUZ/i0KfwD9NVa/NrPOZ82Cz7OTbTq7KvX1PenYyxN.pSdBzcq', 2, '864d00ef30ed6cb1ea648ad27fee1c3a.png');
 
 --
 -- Indexes for dumped tables
@@ -460,7 +466,7 @@ ALTER TABLE `tb_kompetensi_dasar`
 -- AUTO_INCREMENT for table `tb_penilaian_emosi`
 --
 ALTER TABLE `tb_penilaian_emosi`
-  MODIFY `id_penilaian_emosi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_penilaian_emosi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_penilaian_kd`
@@ -472,7 +478,7 @@ ALTER TABLE `tb_penilaian_kd`
 -- AUTO_INCREMENT for table `tb_penilaian_kesehatan`
 --
 ALTER TABLE `tb_penilaian_kesehatan`
-  MODIFY `id_penilaian_kesehatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_penilaian_kesehatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_peserta_didik`
@@ -530,27 +536,27 @@ ALTER TABLE `tb_catatan_peserta`
 -- Constraints for table `tb_detail_admin_guru`
 --
 ALTER TABLE `tb_detail_admin_guru`
-  ADD CONSTRAINT `tb_detail_admin_guru_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`);
+  ADD CONSTRAINT `tb_detail_admin_guru_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_detail_orang_tua`
 --
 ALTER TABLE `tb_detail_orang_tua`
-  ADD CONSTRAINT `tb_detail_orang_tua_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`);
+  ADD CONSTRAINT `tb_detail_orang_tua_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_penilaian_emosi`
 --
 ALTER TABLE `tb_penilaian_emosi`
-  ADD CONSTRAINT `tb_penilaian_emosi_ibfk_1` FOREIGN KEY (`id_semester`) REFERENCES `tb_semester` (`id_semester`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tb_penilaian_emosi_ibfk_2` FOREIGN KEY (`id_peserta`) REFERENCES `tb_peserta_didik` (`id_peserta`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tb_penilaian_emosi_ibfk_2` FOREIGN KEY (`id_peserta`) REFERENCES `tb_peserta_didik` (`id_peserta`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_penilaian_emosi_ibfk_3` FOREIGN KEY (`id_semester`) REFERENCES `tb_semester` (`id_semester`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_penilaian_kd`
 --
 ALTER TABLE `tb_penilaian_kd`
-  ADD CONSTRAINT `tb_penilaian_kd_ibfk_3` FOREIGN KEY (`id_peserta`) REFERENCES `tb_peserta_didik` (`id_peserta`),
-  ADD CONSTRAINT `tb_penilaian_kd_ibfk_4` FOREIGN KEY (`id_sub_kd`) REFERENCES `tb_sub_kompetensi_dasar` (`id_sub_kd`);
+  ADD CONSTRAINT `tb_penilaian_kd_ibfk_5` FOREIGN KEY (`id_peserta`) REFERENCES `tb_peserta_didik` (`id_peserta`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_penilaian_kd_ibfk_6` FOREIGN KEY (`id_sub_kd`) REFERENCES `tb_sub_kompetensi_dasar` (`id_sub_kd`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_penilaian_kesehatan`
@@ -563,8 +569,8 @@ ALTER TABLE `tb_penilaian_kesehatan`
 -- Constraints for table `tb_peserta_didik`
 --
 ALTER TABLE `tb_peserta_didik`
-  ADD CONSTRAINT `tb_peserta_didik_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`),
-  ADD CONSTRAINT `tb_peserta_didik_ibfk_3` FOREIGN KEY (`id_tahun_ajaran`) REFERENCES `tb_tahun_ajaran` (`id_tahun_ajaran`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `tb_peserta_didik_ibfk_4` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_peserta_didik_ibfk_5` FOREIGN KEY (`id_tahun_ajaran`) REFERENCES `tb_tahun_ajaran` (`id_tahun_ajaran`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_semester`
@@ -582,7 +588,7 @@ ALTER TABLE `tb_sub_kompetensi_dasar`
 -- Constraints for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  ADD CONSTRAINT `tb_user_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `tb_role` (`id_role`);
+  ADD CONSTRAINT `tb_user_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `tb_role` (`id_role`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
