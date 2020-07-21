@@ -13,6 +13,7 @@ class Pengajar extends CI_Controller
         $this->load->model('M_admin');
         $this->load->model('M_guru');
         $this->load->model('M_murid');
+        $this->load->model('M_sekolah');
         $this->load->model('M_penilaian');
     }
 
@@ -208,4 +209,353 @@ class Pengajar extends CI_Controller
         $this->load->view('templates/footer');
     }
     // End Kompetensi Dasar
+
+    // Perkembangan Emosi
+    function nilai_emosi()
+    {
+        $data['judul'] = "Guru - Catatan Perkembangan Emosi";
+        $username = $this->session->userdata('username');
+        $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
+        $data['active'] = ['', '', '', '', '', 'active', 'active', '', ''];
+        $data['tampil_semester'] = $this->M_sekolah->tampil_semester()->result();
+        $data['tampil_peserta'] = $this->M_murid->tampil_murid()->result();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_guru', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('pengajar/perkembangan_emosi');
+        $this->load->view('templates/footer');
+    }
+
+    function nilai_emosi_semester($id_semester)
+    {
+        $id_semester = $this->uri->segment(3);
+        $data = $this->M_penilaian->tampil_emosi_guru($id_semester)->result();
+        echo json_encode($data);
+    }
+
+    function tampil_keterangan_emosi($id_peserta, $id_semester)
+    {
+        $id_peserta = $this->uri->segment(3);
+        $id_semester = $this->uri->segment(4);
+        $data = $this->M_murid->tampil_keterangan_emosi($id_peserta, $id_semester)->row();
+        echo json_encode($data);
+    }
+    // End Perkembangan Emosi
+
+    // Perkembangan Kesehatan
+    function nilai_kesehatan()
+    {
+        $data['judul'] = "Guru - Catatan Perkembangan Kesehatan";
+        $username = $this->session->userdata('username');
+        $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
+        $data['active'] = ['', '', '', '', '', 'active', '', 'active', ''];
+        $data['tampil_semester'] = $this->M_sekolah->tampil_semester()->result();
+        $data['tampil_peserta'] = $this->M_murid->tampil_murid()->result();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_guru', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('pengajar/perkembangan_kesehatan');
+        $this->load->view('templates/footer');
+    }
+
+    function nilai_kesehatan_semester($id_semester)
+    {
+        $id_semester = $this->uri->segment(3);
+        $data = $this->M_penilaian->tampil_kesehatan_guru($id_semester)->result();
+        echo json_encode($data);
+    }
+
+    function tampil_keterangan_kesehatan($id_peserta, $id_semester)
+    {
+        $id_peserta = $this->uri->segment(3);
+        $id_semester = $this->uri->segment(4);
+        $data = $this->M_murid->tampil_keterangan_kesehatan($id_peserta, $id_semester)->row();
+        echo json_encode($data);
+    }
+
+    function simpan_kesehatan()
+    {
+        $id_peserta = $this->input->post('id_peserta_didik');
+        $id_semester = $this->input->post('id_semester');
+
+        $data = [
+            'mata'          => $this->input->post('mata'),
+            'mulut'         => $this->input->post('mulut'),
+            'gigi'          => $this->input->post('gigi'),
+            'telinga'       => $this->input->post('telinga'),
+            'hidung'        => $this->input->post('hidung'),
+            'anggota_badan' => $this->input->post('anggota_badan'),
+            'berat_badan'   => $this->input->post('berat_badan'),
+            'tinggi_badan'  => $this->input->post('tinggi_badan'),
+            'id_peserta'    => $id_peserta,
+            'id_semester'   => $id_semester
+        ];
+
+        if ($this->M_penilaian->simpan_kesehatan($data)) {
+            $this->session->set_flashdata('notif', "Berhasil");
+            $this->session->set_flashdata('perintah', "Menilai Kesehatan Peserta");
+            $this->session->set_flashdata('pesan', "Data Nilai Kesehatan Berhasil Ditambahkan");
+            redirect('pengajar/nilai_kesehatan');
+        } else {
+            $this->session->set_flashdata('notif', "Gagal");
+            $this->session->set_flashdata('perintah', "Menilai Kesehatan Peserta");
+            $this->session->set_flashdata('pesan', "Data Nilai Kesehatan Gagal Ditambahkan");
+            redirect('pengajar/nilai_kesehatan');
+        }
+    }
+
+    function simpan_emosi()
+    {
+        $id_peserta = $this->input->post('id_peserta');
+        $id_semester = $this->input->post('id_semester');
+
+        $data = [
+            'menangis'      => $this->input->post('menangis'),
+            'memukul'       => $this->input->post('memukul'),
+            'marah'         => $this->input->post('marah'),
+            'diam'          => $this->input->post('diam'),
+            'melamun'       => $this->input->post('melamun'),
+            'gembira'       => $this->input->post('gembira'),
+            'id_peserta'    => $id_peserta,
+            'id_semester'   => $id_semester
+        ];
+
+        if ($this->M_penilaian->simpan_emosi($data)) {
+            $this->session->set_flashdata('notif', "Berhasil");
+            $this->session->set_flashdata('perintah', "Menilai Emosi Peserta");
+            $this->session->set_flashdata('pesan', "Data Nilai Emosi Berhasil Ditambahkan");
+            redirect('pengajar/nilai_emosi');
+        } else {
+            $this->session->set_flashdata('notif', "Gagal");
+            $this->session->set_flashdata('perintah', "Menilai Emosi Peserta");
+            $this->session->set_flashdata('pesan', "Data Nilai Emosi Gagal Ditambahkan");
+            redirect('pengajar/nilai_emosi');
+        }
+    }
+
+    function ubah_nilai_kesehatan($id_peserta, $id_semester)
+    {
+        $id_peserta = $this->uri->segment(3);
+        $id_semester = $this->uri->segment(4);
+        $data['judul'] = "Guru - Ubah Catatan Perkembangan Kesehatan";
+        $username = $this->session->userdata('username');
+        $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
+        $data['active'] = ['', '', '', '', '', 'active', '', 'active', ''];
+        $data['nilai_kesehatan'] = $this->M_penilaian->tampil_nilai_kesehatan($id_peserta, $id_semester)->row();
+
+        if ($data['nilai_kesehatan']->mata == "Baik") {
+            $data['mata'] = ['selected', '', ''];
+        } else if ($data['nilai_kesehatan']->mata == "Cukup") {
+            $data['mata'] = ['', 'selected', ''];
+        } else if ($data['nilai_kesehatan']->mata == "Kurang") {
+            $data['mata'] = ['', '', 'selected'];
+        } else {
+            $data['mata'] = ['', '', ''];
+        }
+
+        if ($data['nilai_kesehatan']->mulut == "Baik") {
+            $data['mulut'] = ['selected', '', ''];
+        } else if ($data['nilai_kesehatan']->mulut == "Cukup") {
+            $data['mulut'] = ['', 'selected', ''];
+        } else if ($data['nilai_kesehatan']->mulut == "Kurang") {
+            $data['mulut'] = ['', '', 'selected'];
+        } else {
+            $data['mulut'] = ['', '', ''];
+        }
+
+        if ($data['nilai_kesehatan']->gigi == "Baik") {
+            $data['gigi'] = ['selected', '', ''];
+        } else if ($data['nilai_kesehatan']->gigi == "Cukup") {
+            $data['gigi'] = ['', 'selected', ''];
+        } else if ($data['nilai_kesehatan']->gigi == "Kurang") {
+            $data['gigi'] = ['', '', 'selected'];
+        } else {
+            $data['gigi'] = ['', '', ''];
+        }
+
+        if ($data['nilai_kesehatan']->telinga == "Baik") {
+            $data['telinga'] = ['selected', '', ''];
+        } else if ($data['nilai_kesehatan']->telinga == "Cukup") {
+            $data['telinga'] = ['', 'selected', ''];
+        } else if ($data['nilai_kesehatan']->telinga == "Kurang") {
+            $data['telinga'] = ['', '', 'selected'];
+        } else {
+            $data['telinga'] = ['', '', ''];
+        }
+
+        if ($data['nilai_kesehatan']->hidung == "Baik") {
+            $data['hidung'] = ['selected', '', ''];
+        } else if ($data['nilai_kesehatan']->hidung == "Cukup") {
+            $data['hidung'] = ['', 'selected', ''];
+        } else if ($data['nilai_kesehatan']->hidung == "Kurang") {
+            $data['hidung'] = ['', '', 'selected'];
+        } else {
+            $data['hidung'] = ['', '', ''];
+        }
+
+        if ($data['nilai_kesehatan']->anggota_badan == "Baik") {
+            $data['anggota_badan'] = ['selected', '', ''];
+        } else if ($data['nilai_kesehatan']->anggota_badan == "Cukup") {
+            $data['anggota_badan'] = ['', 'selected', ''];
+        } else if ($data['nilai_kesehatan']->anggota_badan == "Kurang") {
+            $data['anggota_badan'] = ['', '', 'selected'];
+        } else {
+            $data['selected'] = ['', '', ''];
+        }
+        $data['id_peserta_didik'] = $id_peserta;
+        $data['id_semester'] = $id_semester;
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_guru', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('pengajar/ubah_nilai_kesehatan');
+        $this->load->view('templates/footer');
+    }
+
+    function ubah_nilai_emosi($id_peserta, $id_semester)
+    {
+        $id_peserta = $this->uri->segment(3);
+        $id_semester = $this->uri->segment(4);
+        $data['judul'] = "Guru - Ubah Catatan Perkembangan Emosi";
+        $username = $this->session->userdata('username');
+        $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
+        $data['active'] = ['', '', '', '', '', 'active', 'active', '', ''];
+        $data['nilai_emosi'] = $this->M_penilaian->tampil_nilai_emosi($id_peserta, $id_semester)->row();
+
+        if ($data['nilai_emosi']->menangis == "Tidak Pernah") {
+            $data['menangis'] = ['selected', '', ''];
+        } else if ($data['nilai_emosi']->menangis == "Kadang") {
+            $data['menangis'] = ['', 'selected', ''];
+        } else if ($data['nilai_emosi']->menangis == "Sering") {
+            $data['menangis'] = ['', '', 'selected'];
+        } else {
+            $data['menangis'] = ['', '', ''];
+        }
+
+        if ($data['nilai_emosi']->memukul == "Tidak Pernah") {
+            $data['memukul'] = ['selected', '', ''];
+        } else if ($data['nilai_emosi']->memukul == "Kadang") {
+            $data['memukul'] = ['', 'selected', ''];
+        } else if ($data['nilai_emosi']->memukul == "Sering") {
+            $data['memukul'] = ['', '', 'selected'];
+        } else {
+            $data['memukul'] = ['', '', ''];
+        }
+
+        if ($data['nilai_emosi']->memukul == "Tidak Pernah") {
+            $data['memukul'] = ['selected', '', ''];
+        } else if ($data['nilai_emosi']->memukul == "Kadang") {
+            $data['memukul'] = ['', 'selected', ''];
+        } else if ($data['nilai_emosi']->memukul == "Sering") {
+            $data['memukul'] = ['', '', 'selected'];
+        } else {
+            $data['memukul'] = ['', '', ''];
+        }
+
+        if ($data['nilai_emosi']->marah == "Tidak Pernah") {
+            $data['marah'] = ['selected', '', ''];
+        } else if ($data['nilai_emosi']->marah == "Kadang") {
+            $data['marah'] = ['', 'selected', ''];
+        } else if ($data['nilai_emosi']->marah == "Sering") {
+            $data['marah'] = ['', '', 'selected'];
+        } else {
+            $data['marah'] = ['', '', ''];
+        }
+
+        if ($data['nilai_emosi']->diam == "Tidak Pernah") {
+            $data['diam'] = ['selected', '', ''];
+        } else if ($data['nilai_emosi']->diam == "Kadang") {
+            $data['diam'] = ['', 'selected', ''];
+        } else if ($data['nilai_emosi']->diam == "Sering") {
+            $data['diam'] = ['', '', 'selected'];
+        } else {
+            $data['diam'] = ['', '', ''];
+        }
+
+        if ($data['nilai_emosi']->melamun == "Tidak Pernah") {
+            $data['melamun'] = ['selected', '', ''];
+        } else if ($data['nilai_emosi']->melamun == "Kadang") {
+            $data['melamun'] = ['', 'selected', ''];
+        } else if ($data['nilai_emosi']->melamun == "Sering") {
+            $data['melamun'] = ['', '', 'selected'];
+        } else {
+            $data['melamun'] = ['', '', ''];
+        }
+
+        if ($data['nilai_emosi']->gembira == "Tidak Pernah") {
+            $data['gembira'] = ['selected', '', ''];
+        } else if ($data['nilai_emosi']->gembira == "Kadang") {
+            $data['gembira'] = ['', 'selected', ''];
+        } else if ($data['nilai_emosi']->gembira == "Sering") {
+            $data['gembira'] = ['', '', 'selected'];
+        } else {
+            $data['gembira'] = ['', '', ''];
+        }
+
+        $data['id_peserta_didik'] = $id_peserta;
+        $data['id_semester'] = $id_semester;
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_guru', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('pengajar/ubah_nilai_emosi');
+        $this->load->view('templates/footer');
+    }
+
+    function update_nilai_kesehatan()
+    {
+        $id_peserta_didik = $this->input->post('id_peserta_didik');
+        $id_semester = $this->input->post('id_semester');
+        $data = [
+            'mata'          => $this->input->post('mata'),
+            'mulut'         => $this->input->post('mulut'),
+            'gigi'          => $this->input->post('gigi'),
+            'telinga'       => $this->input->post('telinga'),
+            'hidung'        => $this->input->post('hidung'),
+            'anggota_badan' => $this->input->post('anggota_badan'),
+            'berat_badan'   => $this->input->post('berat_badan'),
+            'tinggi_badan'  => $this->input->post('tinggi_badan')
+        ];
+
+        if ($this->M_penilaian->update_nilai_kesehatan($data, $id_peserta_didik, $id_semester)) {
+            $this->session->set_flashdata('notif', "Gagal");
+            $this->session->set_flashdata('perintah', "Menilai Kesehatan Peserta");
+            $this->session->set_flashdata('pesan', "Data Nilai Kesehatan Gagal Diubah");
+            redirect('pengajar/nilai_kesehatan');
+        } else {
+            $this->session->set_flashdata('notif', "Berhasil");
+            $this->session->set_flashdata('perintah', "Menilai Kesehatan Peserta");
+            $this->session->set_flashdata('pesan', "Data Nilai Kesehatan Berhasil Diubah");
+            redirect('pengajar/nilai_kesehatan');
+        }
+    }
+
+    function update_nilai_emosi()
+    {
+        $id_peserta_didik = $this->input->post('id_peserta_didik');
+        $id_semester = $this->input->post('id_semester');
+        $data = [
+            'menangis'  => $this->input->post('menangis'),
+            'memukul'   => $this->input->post('memukul'),
+            'marah'     => $this->input->post('marah'),
+            'diam'      => $this->input->post('diam'),
+            'melamun'   => $this->input->post('melamun'),
+            'gembira'   => $this->input->post('gembira')
+        ];
+
+        if ($this->M_penilaian->update_nilai_emosi($data, $id_peserta_didik, $id_semester)) {
+            $this->session->set_flashdata('notif', "Gagal");
+            $this->session->set_flashdata('perintah', "Menilai Emosi Peserta");
+            $this->session->set_flashdata('pesan', "Data Nilai Emosi Gagal Diubah");
+            redirect('pengajar/nilai_emosi');
+        } else {
+            $this->session->set_flashdata('notif', "Berhasil");
+            $this->session->set_flashdata('perintah', "Menilai Emosi Peserta");
+            $this->session->set_flashdata('pesan', "Data Nilai Emosi Berhasil Diubah");
+            redirect('pengajar/nilai_emosi');
+        }
+    }
+    // End Perkembangan Kesehatan
 }

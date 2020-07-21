@@ -119,4 +119,56 @@ class M_penilaian extends CI_Model
         $this->db->join('tb_peserta_didik', 'tb_peserta_didik.id_peserta = tb_catatan_peserta.id_peserta', 'inner');
         return $this->db->get('tb_catatan_peserta');
     }
+
+    function tampil_emosi_guru($id_semester)
+    {
+        $this->db->order_by('tb_peserta_didik.id_peserta', 'desc');
+        return $this->db->query('SELECT * FROM `tb_penilaian_emosi` INNER JOIN tb_peserta_didik ON tb_peserta_didik.id_peserta = tb_penilaian_emosi.id_peserta INNER JOIN tb_semester ON tb_semester.id_semester = tb_penilaian_emosi.id_semester INNER JOIN tb_tahun_ajaran ON tb_tahun_ajaran.id_tahun_ajaran = tb_semester.id_tahun_ajaran WHERE tb_penilaian_emosi.id_semester = ' . $id_semester);
+    }
+
+    function tampil_kesehatan_guru($id_semester)
+    {
+        $this->db->order_by('tb_peserta_didik.id_peserta', 'desc');
+        return $this->db->query('SELECT * FROM `tb_penilaian_kesehatan` INNER JOIN tb_peserta_didik ON tb_peserta_didik.id_peserta = tb_penilaian_kesehatan.id_peserta INNER JOIN tb_semester ON tb_semester.id_semester = tb_penilaian_kesehatan.id_semester INNER JOIN tb_tahun_ajaran ON tb_tahun_ajaran.id_tahun_ajaran = tb_semester.id_tahun_ajaran WHERE tb_penilaian_kesehatan.id_semester = ' . $id_semester);
+    }
+
+    function simpan_kesehatan($data)
+    {
+        return $this->db->insert('tb_penilaian_kesehatan', $data);
+    }
+
+    function simpan_emosi($data)
+    {
+        return $this->db->insert('tb_penilaian_emosi', $data);
+    }
+
+    function tampil_nilai_kesehatan($id_peserta, $id_semester)
+    {
+        $this->db->join('tb_peserta_didik', 'tb_peserta_didik.id_peserta = tb_penilaian_kesehatan.id_peserta', 'inner');
+        $this->db->where('tb_penilaian_kesehatan.id_peserta', $id_peserta);
+        $this->db->where('tb_penilaian_kesehatan.id_semester', $id_semester);
+        return $this->db->get('tb_penilaian_kesehatan');
+    }
+
+    function tampil_nilai_emosi($id_peserta, $id_semester)
+    {
+        $this->db->join('tb_peserta_didik', 'tb_peserta_didik.id_peserta = tb_penilaian_emosi.id_peserta', 'inner');
+        $this->db->where('tb_penilaian_emosi.id_peserta', $id_peserta);
+        $this->db->where('tb_penilaian_emosi.id_semester', $id_semester);
+        return $this->db->get('tb_penilaian_emosi');
+    }
+
+    function update_nilai_kesehatan($data, $id_peserta_didik, $id_semester)
+    {
+        $this->db->where('id_semester', $id_semester);
+        $this->db->where('id_peserta', $id_peserta_didik);
+        $this->db->update('tb_penilaian_kesehatan', $data);
+    }
+
+    function update_nilai_emosi($data, $id_peserta_didik, $id_semester)
+    {
+        $this->db->where('id_semester', $id_semester);
+        $this->db->where('id_peserta', $id_peserta_didik);
+        $this->db->update('tb_penilaian_emosi', $data);
+    }
 }

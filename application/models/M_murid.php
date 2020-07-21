@@ -55,4 +55,18 @@ class M_murid extends CI_Model
         $this->db->where('id_user', $id_user);
         return $this->db->get('tb_peserta_didik');
     }
+
+    function tampil_keterangan_kesehatan($id_peserta, $id_semester)
+    {
+        $this->db->where('id_semester', $id_semester);
+        $this->db->where('id_peserta', $id_peserta);
+        return $this->db->get('tb_penilaian_kesehatan');
+    }
+
+    function tampil_keterangan_emosi($id_peserta, $id_semester)
+    {
+        $this->db->where('id_semester', $id_semester);
+        $this->db->where('id_peserta', $id_peserta);
+        return $this->db->get('tb_penilaian_emosi');
+    }
 }

@@ -210,6 +210,80 @@ $(document).ready(function () {
         })
     })
 
+    $('#semester_kesehatan_guru').change(function () {
+        var id_semester = document.getElementById('semester_kesehatan_guru').value
+        $.ajax({
+            type: 'get',
+            url: '/paud/pengajar/nilai_kesehatan_semester/' + id_semester,
+            dataType: 'json',
+            success: function (data) {
+                var html = '';
+                // console.log(data.length)
+                if (data.length > 0) {
+                    var no = 1;
+                    data.forEach(data => {
+                        html += '<tr>';
+                        html += '<td class="text-center">' + no++ + '.</td>';
+                        html += '<td class="text-center">' + data.no_induk + '</td>';
+                        html += '<td>' + data.nama_lengkap + '</td>';
+                        html += '<td>' + data.mata + '</td>';
+                        html += '<td>' + data.mulut + '</td>';
+                        html += '<td>' + data.gigi + '</td>';
+                        html += '<td>' + data.telinga + '</td>';
+                        html += '<td>' + data.hidung + '</td>';
+                        html += '<td>' + data.anggota_badan + '</td>';
+                        html += '<td>' + data.berat_badan + ' Kg</td>';
+                        html += '<td>' + data.tinggi_badan + ' cm</td>';
+                        html += '<td clas="text-center"><a class="btn btn-warning text-light tombol-aksi" href="ubah_nilai_kesehatan/' + data.id_peserta + '/' + data.id_semester + '">Edit</a></td>';
+                        html += '</tr>';
+                    });
+                    $('#tbody-catatan-kesehatan').html(html)
+                } else {
+                    html += '<tr><td colspan="9" class="text-center">Tidak Ada Data Catatan Emosi</td></tr>';
+                    $('#tbody-catatan-kesehatan').html(html)
+                }
+            }
+        })
+        var notif = '<p class="text-center mt-3">Silahkan Pilih Peserta Didik</p>';
+        $('#tambah-perkembangan-kesehatan').html(notif)
+    })
+
+    $('#semester_emosi_guru').change(function () {
+        var id_semester = document.getElementById('semester_emosi_guru').value
+        $.ajax({
+            type: 'get',
+            url: '/paud/pengajar/nilai_emosi_semester/' + id_semester,
+            dataType: 'json',
+            success: function (data) {
+                var html = '';
+                // console.log(data.length)
+                if (data.length > 0) {
+                    var no = 1;
+                    data.forEach(data => {
+                        html += '<tr>';
+                        html += '<td class="text-center">' + no++ + '.</td>';
+                        html += '<td class="text-center">' + data.no_induk + '</td>';
+                        html += '<td>' + data.nama_lengkap + '</td>';
+                        html += '<td>' + data.menangis + '</td>';
+                        html += '<td>' + data.memukul + '</td>';
+                        html += '<td>' + data.marah + '</td>';
+                        html += '<td>' + data.diam + '</td>';
+                        html += '<td>' + data.melamun + '</td>';
+                        html += '<td>' + data.gembira + '</td>';
+                        html += '<td clas="text-center"><a class="btn btn-warning text-light tombol-aksi" href="ubah_nilai_emosi/' + data.id_peserta + '/' + data.id_semester + '">Edit</a></td>';
+                        html += '</tr>';
+                    });
+                    $('#tbody-catatan-emosi').html(html)
+                } else {
+                    html += '<tr><td colspan="9" class="text-center">Tidak Ada Data Catatan Emosi</td></tr>';
+                    $('#tbody-catatan-emosi').html(html)
+                }
+            }
+        })
+        var notif = '<p class="text-center mt-3">Silahkan Pilih Peserta Didik</p>';
+        $('#tambah-perkembangan-emosi').html(notif)
+    })
+
     $('#tampil_peserta_kesehatan').change(function () {
         var id_peserta = document.getElementById('tampil_peserta_kesehatan').value
         $.ajax({
@@ -244,6 +318,145 @@ $(document).ready(function () {
             }
         })
     })
+
+    $('#peserta_didik_kesehatan').change(function () {
+        var id_peserta = document.getElementById('peserta_didik_kesehatan').value
+        var id_semester = document.getElementById('semester_kesehatan_guru').value
+        $.ajax({
+            type: 'get',
+            url: '/paud/pengajar/tampil_keterangan_kesehatan/' + id_peserta + '/' + id_semester,
+            dataType: 'json',
+            success: function (data) {
+                // console.log(data)
+                var html = ''
+                if (data) {
+                    html += '<p class="text-center mt-3">Perkembangan Kesehatan Sudah Dinilai</p>'
+                    $('#tambah-perkembangan-kesehatan').html(html)
+                } else {
+                    html += '<form action="simpan_kesehatan" method="post">'
+                    html += '<input type="hidden" class="form-control col-1" id="id_semester" name="id_semester" value="' + id_semester + '" readonly />'
+                    html += '<input type="hidden" class="form-control col-1" id="id_peserta" name="id_peserta" value="' + id_peserta + '" readonly />'
+                    html += '<label class="mt-3">Mata</label>'
+                    html += '<select name="mata" id="mata" class="form-control select">'
+                    html += '<option value="">-- Pilih Kesehatan Mata --</option>'
+                    html += '<option value="Baik">Baik</option>'
+                    html += '<option value="Cukup">Cukup</option>'
+                    html += '<option value="Kurang">Kurang</option>'
+                    html += '</select>'
+                    html += '<label class="mt-3">Mulut</label>'
+                    html += '<select name="mulut" id="mulut" class="form-control select">'
+                    html += '<option value="">-- Pilih Kesehatan Mulut --</option>'
+                    html += '<option value="Baik">Baik</option>'
+                    html += '<option value="Cukup">Cukup</option>'
+                    html += '<option value="Kurang">Kurang</option>'
+                    html += '</select>'
+                    html += '<label class="mt-3">Gigi</label>'
+                    html += '<select name="gigi" id="gigi" class="form-control select">'
+                    html += '<option value="">-- Pilih Kesehatan Gigi --</option>'
+                    html += '<option value="Baik">Baik</option>'
+                    html += '<option value="Cukup">Cukup</option>'
+                    html += '<option value="Kurang">Kurang</option>'
+                    html += '</select>'
+                    html += '<label class="mt-3">Telinga</label>'
+                    html += '<select name="telinga" id="telinga" class="form-control select">'
+                    html += '<option value="">-- Pilih Kesehatan Telinga --</option>'
+                    html += '<option value="Baik">Baik</option>'
+                    html += '<option value="Cukup">Cukup</option>'
+                    html += '<option value="Kurang">Kurang</option>'
+                    html += '</select>'
+                    html += '<label class="mt-3">Hidung</label>'
+                    html += '<select name="hidung" id="hidung" class="form-control select">'
+                    html += '<option value="">-- Pilih Kesehatan Hidung --</option>'
+                    html += '<option value="Baik">Baik</option>'
+                    html += '<option value="Cukup">Cukup</option>'
+                    html += '<option value="Kurang">Kurang</option>'
+                    html += '</select>'
+                    html += '<label class="mt-3">Anggota Badan</label>'
+                    html += '<select name="anggota_badan" id="anggota_badan" class="form-control select">'
+                    html += '<option value="">-- Pilih Kesehatan Anggota Badan --</option>'
+                    html += '<option value="Baik">Baik</option>'
+                    html += '<option value="Cukup">Cukup</option>'
+                    html += '<option value="Kurang">Kurang</option>'
+                    html += '</select>'
+                    html += '<label class="mt-3">Berat Badan <sub><strong>(Kg)</strong></sub></label>'
+                    html += '<input type="number" maxlength="3" class="form-control col-1" id="berat_badan" name="berat_badan" />'
+                    html += '<label class="mt-3">Tinggi Badan <sub><strong>(Cm)</strong></sub></label>'
+                    html += '<input type="number" maxlength="3" class="form-control col-1" id="tinggi_badan" name="tinggi_badan" />'
+                    html += '<button type="submit" class="btn btn-success btn-block mt-3" id="simpan_kesehatan">Simpan Penilaian Kesehatan</button>'
+                    html += '</form>'
+                    $('#tambah-perkembangan-kesehatan').html(html)
+                }
+            }
+        })
+    })
+
+    $('#peserta_didik_emosi').change(function () {
+        var id_peserta = document.getElementById('peserta_didik_emosi').value
+        var id_semester = document.getElementById('semester_emosi_guru').value
+        $.ajax({
+            type: 'get',
+            url: '/paud/pengajar/tampil_keterangan_emosi/' + id_peserta + '/' + id_semester,
+            dataType: 'json',
+            success: function (data) {
+                // console.log(data)
+                var html = ''
+                if (data) {
+                    html += '<p class="text-center mt-3">Perkembangan Emosi Sudah Dinilai</p>'
+                    $('#tambah-perkembangan-emosi').html(html)
+                } else {
+                    html += '<form action="simpan_emosi" method="post">'
+                    html += '<input type="hidden" class="form-control col-1" id="id_semester" name="id_semester" value="' + id_semester + '" readonly />'
+                    html += '<input type="hidden" class="form-control col-1" id="id_peserta" name="id_peserta" value="' + id_peserta + '" readonly />'
+                    html += '<label class="mt-3">Menangis</label>'
+                    html += '<select name="menangis" id="menangis" class="form-control select">'
+                    html += '<option value="">-- Pilih Emosi Peserta --</option>'
+                    html += '<option value="Tidak Pernah">Tidak Pernah</option>'
+                    html += '<option value="Kadang">Kadang</option>'
+                    html += '<option value="Sering">Sering</option>'
+                    html += '</select>'
+                    html += '<label class="mt-3">Memukul</label>'
+                    html += '<select name="memukul" id="memukul" class="form-control select">'
+                    html += '<option value="">-- Pilih Emosi Peserta --</option>'
+                    html += '<option value="Tidak Pernah">Tidak Pernah</option>'
+                    html += '<option value="Kadang">Kadang</option>'
+                    html += '<option value="Sering">Sering</option>'
+                    html += '</select>'
+                    html += '<label class="mt-3">Marah</label>'
+                    html += '<select name="marah" id="marah" class="form-control select">'
+                    html += '<option value="">-- Pilih Emosi Peserta --</option>'
+                    html += '<option value="Tidak Pernah">Tidak Pernah</option>'
+                    html += '<option value="Kadang">Kadang</option>'
+                    html += '<option value="Sering">Sering</option>'
+                    html += '</select>'
+                    html += '<label class="mt-3">Diam</label>'
+                    html += '<select name="diam" id="diam" class="form-control select">'
+                    html += '<option value="">-- Pilih Emosi Peserta --</option>'
+                    html += '<option value="Tidak Pernah">Tidak Pernah</option>'
+                    html += '<option value="Kadang">Kadang</option>'
+                    html += '<option value="Sering">Sering</option>'
+                    html += '</select>'
+                    html += '<label class="mt-3">Melamun</label>'
+                    html += '<select name="melamun" id="melamun" class="form-control select">'
+                    html += '<option value="">-- Pilih Emosi Peserta --</option>'
+                    html += '<option value="Tidak Pernah">Tidak Pernah</option>'
+                    html += '<option value="Kadang">Kadang</option>'
+                    html += '<option value="Sering">Sering</option>'
+                    html += '</select>'
+                    html += '<label class="mt-3">Gembira</label>'
+                    html += '<select name="gembira" id="gembira" class="form-control select">'
+                    html += '<option value="">-- Pilih Emosi Peserta --</option>'
+                    html += '<option value="Tidak Pernah">Tidak Pernah</option>'
+                    html += '<option value="Kadang">Kadang</option>'
+                    html += '<option value="Sering">Sering</option>'
+                    html += '</select>'
+                    html += '<button type="submit" class="btn btn-success btn-block mt-3" id="simpan_emosi">Simpan Penilaian Emosi</button>'
+                    html += '</form>'
+                    $('#tambah-perkembangan-emosi').html(html)
+                }
+            }
+        })
+    })
+
 
     let tfKd = document.getElementById('tf-kd')
     if (tfKd.value) {
