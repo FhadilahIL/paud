@@ -171,4 +171,31 @@ class M_penilaian extends CI_Model
         $this->db->where('id_peserta', $id_peserta_didik);
         $this->db->update('tb_penilaian_emosi', $data);
     }
+
+    function tampil_penilaian_harian($tanggal)
+    {
+        $this->db->join('tb_peserta_didik', 'tb_peserta_didik.id_peserta = tb_penilaian_kd.id_peserta', 'inner');
+        $this->db->where('tanggal_penilaian', $tanggal);
+        return $this->db->get('tb_penilaian_kd');
+    }
+
+    function tampil_catatan_harian_tanggal($tanggal)
+    {
+        $this->db->join('tb_peserta_didik', 'tb_peserta_didik.id_peserta = tb_catatan_peserta.id_peserta', 'inner');
+        $this->db->where('tanggal_catatan', $tanggal);
+        return $this->db->get('tb_catatan_peserta');
+    }
+
+    function tambah_penilaian_harian($data)
+    {
+        return $this->db->insert('tb_penilaian_kd', $data);
+    }
+
+    function cari_nilai_harian($id_peserta, $id_sub_kd, $tanggal_penilaian)
+    {
+        $this->db->where('id_peserta', $id_peserta);
+        $this->db->where('id_sub_kd', $id_sub_kd);
+        $this->db->where('tanggal_penilaian', $tanggal_penilaian);
+        return $this->db->get('tb_penilaian_kd');
+    }
 }

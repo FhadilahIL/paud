@@ -34,7 +34,7 @@
                     </ul>
                 </li>
                 <li class="has-sub <?= $active[4] ?>">
-                    <a href="<?= base_url('pengajar/penilaian_harian') ?>">
+                    <a href="<?= base_url('pengajar/nilai_harian') ?>">
                         <i class="fas fa-tachometer-alt"></i>Penilaian Harian</a>
                 </li>
                 <li class="has-sub <?= $active[5] ?>">
@@ -85,7 +85,7 @@
                     </ul>
                 </li>
                 <li class="has-sub <?= $active[4] ?>">
-                    <a href="<?= base_url('pengajar/penilaian_harian') ?>">
+                    <a href="<?= base_url('pengajar/nilai_harian') ?>">
                         <i class="fas fa-tachometer-alt"></i>Penilaian Harian</a>
                 </li>
                 <li class="has-sub <?= $active[5] ?>">

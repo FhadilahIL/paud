@@ -558,4 +558,71 @@ class Pengajar extends CI_Controller
         }
     }
     // End Perkembangan Kesehatan
+
+    // Penilaian Harian
+    function nilai_harian()
+    {
+        $data['judul'] = "Guru - Penilaian Harian";
+        $username = $this->session->userdata('username');
+        $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
+        $data['active'] = ['', '', '', '', 'active', '', '', '', ''];
+        $data['nilai_semua'] = $this->M_penilaian->tampil_detail_nilai()->result();
+        $data['tampil_peserta'] = $this->M_murid->tampil_murid()->result();
+        $data['kompetensi_dasar'] = $this->M_penilaian->tampil_kompetensi_dasar()->result();
+        $data['tampil_kompetensi_dasar'] = $this->M_penilaian->tampil_kompetensi_dasar_semua()->result();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_guru', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('pengajar/penilaian_harian');
+        $this->load->view('templates/footer');
+    }
+
+    function tampil_nilai($tanggal_nilai)
+    {
+        $tanggal_nilai = $this->uri->segment(3);
+        $data = $this->M_penilaian->tampil_penilaian_harian($tanggal_nilai)->result();
+        echo json_encode($data);
+    }
+
+    function tampil_catatan($tanggal_nilai)
+    {
+        $tanggal_nilai = $this->uri->segment(3);
+        $data = $this->M_penilaian->tampil_catatan_harian_tanggal($tanggal_nilai)->result();
+        echo json_encode($data);
+    }
+
+    function tambah_penilaian_harian()
+    {
+        $tanggal_penilaian = $this->input->post('tanggal_penilaian', true);
+        $id_peserta = $this->input->post('peserta_didik', true);
+        $id_sub_kd = $this->input->post('sub_kompetensi_dasar', true);
+        $data = [
+            'id_peserta'        => $id_peserta,
+            'id_sub_kd'         => $id_sub_kd,
+            'nilai_checklist'   => $this->input->post('nilai_checklist', true),
+            'nilai_karya'       => $this->input->post('nilai_karya', true),
+            'tanggal_penilaian' => $tanggal_penilaian
+        ];
+        $cari_nilai = $this->M_penilaian->cari_nilai_harian($id_peserta, $id_sub_kd, $tanggal_penilaian)->row();
+        if ($cari_nilai) {
+            $this->session->set_flashdata('notif', "Gagal");
+            $this->session->set_flashdata('perintah', "Tambah Nilai Harian");
+            $this->session->set_flashdata('pesan', "Data Nilai Harian Sudah Ada");
+            redirect('pengajar/nilai_harian');
+        } else {
+            if ($this->M_penilaian->tambah_penilaian_harian($data)) {
+                $this->session->set_flashdata('notif', "Berhasil");
+                $this->session->set_flashdata('perintah', "Tambah Nilai Harian");
+                $this->session->set_flashdata('pesan', "Data Nilai Harian Berhasil Ditambahkan");
+                redirect('pengajar/nilai_harian');
+            } else {
+                $this->session->set_flashdata('notif', "Gagal");
+                $this->session->set_flashdata('perintah', "Tambah Nilai Harian");
+                $this->session->set_flashdata('pesan', "Data Nilai Harian Gagal Ditambahkan");
+                redirect('pengajar/nilai_harian');
+            }
+        }
+    }
+    // End Penilaian Harian
 }

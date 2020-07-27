@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2020 at 05:34 PM
+-- Generation Time: Jul 27, 2020 at 09:51 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -152,7 +152,8 @@ CREATE TABLE `tb_penilaian_kd` (
 
 INSERT INTO `tb_penilaian_kd` (`id_nilai`, `id_peserta`, `id_sub_kd`, `nilai_checklist`, `nilai_karya`, `tanggal_penilaian`) VALUES
 (1, 7, 1, 'Belum Berkembang', 'Berkembang Sesuai Harapan', '2020-07-05'),
-(2, 8, 1, 'Belum Berkembang', 'Berkembang Sesuai Harapan', '2020-07-07');
+(2, 8, 1, 'Belum Berkembang', 'Berkembang Sesuai Harapan', '2020-07-07'),
+(3, 7, 3, 'Mulai Berkembang', 'Berkembang Sangat Baik', '2020-07-26');
 
 -- --------------------------------------------------------
 
@@ -472,7 +473,7 @@ ALTER TABLE `tb_penilaian_emosi`
 -- AUTO_INCREMENT for table `tb_penilaian_kd`
 --
 ALTER TABLE `tb_penilaian_kd`
-  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_penilaian_kesehatan`

@@ -457,6 +457,117 @@ $(document).ready(function () {
         })
     })
 
+    var tanggal_nilai = document.getElementById('tanggal_nilai').value
+    if (tanggal_nilai != '') {
+        $.ajax({
+            type: 'get',
+            url: '/paud/pengajar/tampil_nilai/' + tanggal_nilai,
+            dataType: 'json',
+            success: function (data) {
+                var html = ''
+                if (data.length == 0) {
+                    html += '<tr>'
+                    html += '<td colspan="7" class="text-center">Belum Ada Penilaian Harian</td>'
+                    html += '</tr>'
+                } else {
+                    var no = 1;
+                    data.forEach(data => {
+                        html += '<tr>'
+                        html += '<td class="text-center">' + no++ + '.</td>';
+                        html += '<td>' + data.no_induk + '</td>';
+                        html += '<td>' + data.nama_lengkap + '</td>';
+                        html += '<td>' + data.nilai_checklist + '</td>';
+                        html += '<td>' + data.nilai_karya + '</td>';
+                        html += '<td class="text-center">' + data.tanggal_penilaian + '</td>';
+                        html += '<td class="text-center"><a class="btn btn-warning text-light tombol-aksi" href="ubah_nilai_harian/' + data.id_peserta + '/' + data.tanggal_penilaian + '">Edit</a> <a class="btn btn-danger tombol-aksi" href="hapus_nilai_harian/' + data.id_peserta + '/' + data.tanggal_penilaian + '">Hapus</a></td>';
+                        html += '</tr>'
+                    });
+                }
+                $('#isi_nilai_harian').html(html)
+            }
+        })
+        $.ajax({
+            type: 'get',
+            url: '/paud/pengajar/tampil_catatan/' + tanggal_nilai,
+            dataType: 'json',
+            success: function (data) {
+                var html = ''
+                if (data.length == 0) {
+                    html += '<tr>'
+                    html += '<td colspan="7" class="text-center">Belum Ada Catatan Harian</td>'
+                    html += '</tr>'
+                } else {
+                    var no = 1;
+                    data.forEach(data => {
+                        html += '<tr>'
+                        html += '<td class="text-center">' + no++ + '.</td>';
+                        html += '<td>' + data.no_induk + '</td>';
+                        html += '<td>' + data.nama_lengkap + '</td>';
+                        html += '<td>' + data.catatan + '</td>';
+                        html += '<td class="text-center">' + data.tanggal_catatan + '</td>';
+                        html += '<td class="text-center"><a class="btn btn-warning text-light tombol-aksi" href="ubah_catatan_harian/' + data.id_peserta + '/' + data.tanggal_catatan + '">Edit</a> <a class="btn btn-danger tombol-aksi" href="hapus_catatan_harian/' + data.id_peserta + '/' + data.tanggal_catatan + '">Hapus</a></td>';
+                        html += '</tr>'
+                    });
+                }
+                $('#isi_catatan_harian').html(html)
+            }
+        })
+    }
+
+    $('#tanggal_nilai').change(function () {
+        var tanggal_nilai = document.getElementById('tanggal_nilai').value
+        $.ajax({
+            type: 'get',
+            url: '/paud/pengajar/tampil_nilai/' + tanggal_nilai,
+            dataType: 'json',
+            success: function (data) {
+                var html = ''
+                if (data.length == 0) {
+                    html += '<td colspan="7" class="text-center">Belum Ada Penilaian Harian</td>'
+                } else {
+                    var no = 1;
+                    data.forEach(data => {
+                        html += '<tr>'
+                        html += '<td class="text-center">' + no++ + '.</td>';
+                        html += '<td class="text-center">' + data.no_induk + '</td>';
+                        html += '<td>' + data.nama_lengkap + '</td>';
+                        html += '<td>' + data.nilai_checklist + '</td>';
+                        html += '<td>' + data.nilai_karya + '</td>';
+                        html += '<td class="text-center">' + data.tanggal_penilaian + '</td>';
+                        html += '<td class="text-center"><a class="btn btn-warning text-light tombol-aksi" href="ubah_nilai_harian/' + data.id_peserta + '/' + data.tanggal_penilaian + '">Edit</a> <a class="btn btn-danger tombol-aksi" href="hapus_nilai_harian/' + data.id_peserta + '/' + data.tanggal_penilaian + '">Hapus</a></td>';
+                        html += '<'
+                    });
+                }
+                $('#isi_nilai_harian').html(html)
+            }
+        })
+        $.ajax({
+            type: 'get',
+            url: '/paud/pengajar/tampil_catatan/' + tanggal_nilai,
+            dataType: 'json',
+            success: function (data) {
+                var html = ''
+                if (data.length == 0) {
+                    html += '<tr>'
+                    html += '<td colspan="7" class="text-center">Belum Ada Catatan Harian</td>'
+                    html += '</tr>'
+                } else {
+                    var no = 1;
+                    data.forEach(data => {
+                        html += '<tr>'
+                        html += '<td class="text-center">' + no++ + '.</td>';
+                        html += '<td>' + data.no_induk + '</td>';
+                        html += '<td>' + data.nama_lengkap + '</td>';
+                        html += '<td>' + data.catatan + '</td>';
+                        html += '<td class="text-center">' + data.tanggal_catatan + '</td>';
+                        html += '<td class="text-center"><a class="btn btn-warning text-light tombol-aksi" href="ubah_catatan_harian/' + data.id_peserta + '/' + data.tanggal_catatan + '">Edit</a> <a class="btn btn-danger tombol-aksi" href="hapus_catatan_harian/' + data.id_peserta + '/' + data.tanggal_catatan + '">Hapus</a></td>';
+                        html += '</tr>'
+                    });
+                }
+                $('#isi_catatan_harian').html(html)
+            }
+        })
+    })
 
     let tfKd = document.getElementById('tf-kd')
     if (tfKd.value) {
