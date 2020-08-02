@@ -229,4 +229,15 @@ class M_penilaian extends CI_Model
         $this->db->where('tanggal_catatan', $tanggal);
         return $this->db->update('tb_catatan_peserta', $data);
     }
+
+    function cari_catatan_harian($id_peserta, $tanggal_penilaian)
+    {
+        $this->db->where('id_peserta', $id_peserta);
+        $this->db->where('tanggal_catatan', $tanggal_penilaian);
+        return $this->db->get('tb_catatan_peserta');
+    }
+    function tambah_catatan_harian($data)
+    {
+        return $this->db->insert('tb_catatan_peserta', $data);
+    }
 }

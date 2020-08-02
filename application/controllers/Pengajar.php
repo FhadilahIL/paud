@@ -726,6 +726,27 @@ class Pengajar extends CI_Controller
 
     function tambah_catatan_harian()
     {
+        $tanggal_penilaian = $this->input->post('tanggal_penilaian', true);
+        $id_peserta = $this->input->post('peserta_didik2', true);
+
+        if ($this->M_penilaian->cari_catatan_harian($id_peserta, $tanggal_penilaian)->result()) {
+            $this->session->set_flashdata('notif', "Gagal");
+            $this->session->set_flashdata('perintah', "Tambah Catatan Harian");
+            $this->session->set_flashdata('pesan', "Data Catatan Harian Gagal Ditambahkan. Catatan Sudah Ada");
+            redirect('pengajar/nilai_harian');
+        } else {
+            $data = [
+                'id_catatan'        => '',
+                'id_peserta'        => $id_peserta,
+                'catatan'           => $this->input->post('catatan_harian', true),
+                'tanggal_catatan'   => $tanggal_penilaian
+            ];
+            $this->M_penilaian->tambah_catatan_harian($data);
+            $this->session->set_flashdata('notif', "Berhasil");
+            $this->session->set_flashdata('perintah', "Update Nilai Harian");
+            $this->session->set_flashdata('pesan', "Data Catatan Harian Berhasil Diubah");
+            redirect('pengajar/nilai_harian');
+        }
     }
     // End Penilaian Harian
 }
