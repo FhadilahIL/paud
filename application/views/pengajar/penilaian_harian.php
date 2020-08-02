@@ -25,7 +25,7 @@
                         <form action="<?= base_url('pengajar/tambah_penilaian_harian') ?>" method="post">
                             <div class="form-group">
                                 <label>Pilih Peserta Didik</label>
-                                <select name="peserta_didik" id="peserta_didik" class="form-control select" required>
+                                <select name="peserta_didik1" id="peserta_didik1" class="form-control select" required>
                                     <option value="">-- Pilih Peserta Didik --</option>
                                     <?php foreach ($tampil_peserta as $peserta) { ?>
                                         <option value="<?= $peserta->id_peserta ?>"><?= $peserta->no_induk . ' - ' . $peserta->nama_lengkap ?></option>
@@ -90,6 +90,7 @@
                     <th class="nomor">No</th>
                     <th style="min-width: 150px;">No. Induk</th>
                     <th class="nama">Nama Peserta</th>
+                    <th style="min-width: 500px;">Kompetensi Dasar</th>
                     <th style="min-width: 300px;">Nilai Checklist</th>
                     <th style="min-width: 300px;">Nilai Karya</th>
                     <th class="text-center" style="min-width: 200px;">Tanggal</th>
@@ -110,7 +111,7 @@
                     <form action="<?= base_url('pengajar/tambah_catatan_harian') ?>" method="post">
                         <div class="form-group">
                             <label>Pilih Peserta Didik</label>
-                            <select name="peserta_didik" id="peserta_didik" class="form-control select" required>
+                            <select name="peserta_didik2" id="peserta_didik2" class="form-control select" required>
                                 <option value="">-- Pilih Peserta Didik</option>
                                 <?php foreach ($tampil_peserta as $peserta) { ?>
                                     <option value="<?= $peserta->id_peserta ?>"><?= $peserta->no_induk . ' - ' . $peserta->nama_lengkap ?></option>

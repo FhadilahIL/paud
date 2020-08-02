@@ -479,7 +479,7 @@ $(document).ready(function () {
                         html += '<td>' + data.nilai_checklist + '</td>';
                         html += '<td>' + data.nilai_karya + '</td>';
                         html += '<td class="text-center">' + data.tanggal_penilaian + '</td>';
-                        html += '<td class="text-center"><a class="btn btn-warning text-light tombol-aksi" href="ubah_nilai_harian/' + data.id_peserta + '/' + data.tanggal_penilaian + '">Edit</a> <a class="btn btn-danger tombol-aksi" href="hapus_nilai_harian/' + data.id_peserta + '/' + data.tanggal_penilaian + '">Hapus</a></td>';
+                        html += '<td class="text-center"><a class="btn btn-warning text-light tombol-aksi" href="ubah_nilai_harian/' + data.id_peserta + '/' + data.tanggal_penilaian + '">Edit</a></td>';
                         html += '</tr>'
                     });
                 }
@@ -505,7 +505,7 @@ $(document).ready(function () {
                         html += '<td>' + data.nama_lengkap + '</td>';
                         html += '<td>' + data.catatan + '</td>';
                         html += '<td class="text-center">' + data.tanggal_catatan + '</td>';
-                        html += '<td class="text-center"><a class="btn btn-warning text-light tombol-aksi" href="ubah_catatan_harian/' + data.id_peserta + '/' + data.tanggal_catatan + '">Edit</a> <a class="btn btn-danger tombol-aksi" href="hapus_catatan_harian/' + data.id_peserta + '/' + data.tanggal_catatan + '">Hapus</a></td>';
+                        html += '<td class="text-center"><a class="btn btn-warning text-light tombol-aksi" href="ubah_catatan_harian/' + data.id_peserta + '/' + data.tanggal_catatan + '">Edit</a></td>';
                         html += '</tr>'
                     });
                 }
@@ -527,14 +527,17 @@ $(document).ready(function () {
                 } else {
                     var no = 1;
                     data.forEach(data => {
+                        var date = new Date(data.tanggal_penilaian)
+                        var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
                         html += '<tr>'
                         html += '<td class="text-center">' + no++ + '.</td>';
                         html += '<td class="text-center">' + data.no_induk + '</td>';
                         html += '<td>' + data.nama_lengkap + '</td>';
+                        html += '<td>' + data.judul_sub_kd + '</td>';
                         html += '<td>' + data.nilai_checklist + '</td>';
                         html += '<td>' + data.nilai_karya + '</td>';
-                        html += '<td class="text-center">' + data.tanggal_penilaian + '</td>';
-                        html += '<td class="text-center"><a class="btn btn-warning text-light tombol-aksi" href="ubah_nilai_harian/' + data.id_peserta + '/' + data.tanggal_penilaian + '">Edit</a> <a class="btn btn-danger tombol-aksi" href="hapus_nilai_harian/' + data.id_peserta + '/' + data.tanggal_penilaian + '">Hapus</a></td>';
+                        html += '<td class="text-center">' + date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear() + '</td>';
+                        html += '<td class="text-center"><a class="btn btn-warning text-light tombol-aksi" href="ubah_nilai_harian/' + data.id_peserta + '/' + data.tanggal_penilaian + '">Edit</a></td>';
                         html += '<'
                     });
                 }
@@ -554,13 +557,15 @@ $(document).ready(function () {
                 } else {
                     var no = 1;
                     data.forEach(data => {
+                        var date = new Date(data.tanggal_catatan)
+                        var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
                         html += '<tr>'
                         html += '<td class="text-center">' + no++ + '.</td>';
                         html += '<td>' + data.no_induk + '</td>';
                         html += '<td>' + data.nama_lengkap + '</td>';
                         html += '<td>' + data.catatan + '</td>';
-                        html += '<td class="text-center">' + data.tanggal_catatan + '</td>';
-                        html += '<td class="text-center"><a class="btn btn-warning text-light tombol-aksi" href="ubah_catatan_harian/' + data.id_peserta + '/' + data.tanggal_catatan + '">Edit</a> <a class="btn btn-danger tombol-aksi" href="hapus_catatan_harian/' + data.id_peserta + '/' + data.tanggal_catatan + '">Hapus</a></td>';
+                        html += '<td class="text-center">' + date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear() + '</td>';
+                        html += '<td class="text-center"><a class="btn btn-warning text-light tombol-aksi" href="ubah_catatan_harian/' + data.id_peserta + '/' + data.tanggal_catatan + '">Edit</a></td>';
                         html += '</tr>'
                     });
                 }

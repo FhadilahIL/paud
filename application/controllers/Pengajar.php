@@ -22,7 +22,7 @@ class Pengajar extends CI_Controller
         $data['judul'] = "Guru - Dashboard";
         $username = $this->session->userdata('username');
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
-        $data['active'] = ['active', '', '', '', '', '', '', '', ''];
+        $data['active'] = ['active', '', '', '', '', '', ''];
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_guru', $data);
@@ -37,7 +37,7 @@ class Pengajar extends CI_Controller
         $data['judul'] = "Guru - My Profile";
         $username = $this->session->userdata('username');
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
-        $data['active'] = ['', '', '', '', '', '', '', '', ''];
+        $data['active'] = ['', '', '', '', '', '', ''];
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_guru', $data);
@@ -181,7 +181,7 @@ class Pengajar extends CI_Controller
         $data['judul'] = "Guru - Peserta Didik";
         $username = $this->session->userdata('username');
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
-        $data['active'] = ['', 'active', 'active', '', '', '', '', '', ''];
+        $data['active'] = ['', 'active', '', '', '', '', ''];
         $data['murid'] = $this->M_murid->tampil_murid()->result();
 
         $this->load->view('templates/header', $data);
@@ -198,7 +198,7 @@ class Pengajar extends CI_Controller
         $data['judul'] = "Guru - Kompetensi Dasar";
         $username = $this->session->userdata('username');
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
-        $data['active'] = ['', 'active', '', 'active', '', '', '', '', ''];
+        $data['active'] = ['', '', 'active', '', '', '', ''];
         $data['kompetensi_dasar'] = $this->M_penilaian->tampil_kompetensi_dasar()->result();
         $data['tampil_kompetensi_dasar'] = $this->M_penilaian->tampil_kompetensi_dasar_semua()->result();
 
@@ -216,7 +216,7 @@ class Pengajar extends CI_Controller
         $data['judul'] = "Guru - Catatan Perkembangan Emosi";
         $username = $this->session->userdata('username');
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
-        $data['active'] = ['', '', '', '', '', 'active', 'active', '', ''];
+        $data['active'] = ['', '', '', '', 'active', '', ''];
         $data['tampil_semester'] = $this->M_sekolah->tampil_semester()->result();
         $data['tampil_peserta'] = $this->M_murid->tampil_murid()->result();
 
@@ -249,7 +249,7 @@ class Pengajar extends CI_Controller
         $data['judul'] = "Guru - Catatan Perkembangan Kesehatan";
         $username = $this->session->userdata('username');
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
-        $data['active'] = ['', '', '', '', '', 'active', '', 'active', ''];
+        $data['active'] = ['', '', '', '', '', 'active', ''];
         $data['tampil_semester'] = $this->M_sekolah->tampil_semester()->result();
         $data['tampil_peserta'] = $this->M_murid->tampil_murid()->result();
 
@@ -277,7 +277,7 @@ class Pengajar extends CI_Controller
 
     function simpan_kesehatan()
     {
-        $id_peserta = $this->input->post('id_peserta_didik');
+        $id_peserta = $this->input->post('id_peserta');
         $id_semester = $this->input->post('id_semester');
 
         $data = [
@@ -342,7 +342,7 @@ class Pengajar extends CI_Controller
         $data['judul'] = "Guru - Ubah Catatan Perkembangan Kesehatan";
         $username = $this->session->userdata('username');
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
-        $data['active'] = ['', '', '', '', '', 'active', '', 'active', ''];
+        $data['active'] = ['', '', '', '', '', 'active', ''];
         $data['nilai_kesehatan'] = $this->M_penilaian->tampil_nilai_kesehatan($id_peserta, $id_semester)->row();
 
         if ($data['nilai_kesehatan']->mata == "Baik") {
@@ -421,7 +421,7 @@ class Pengajar extends CI_Controller
         $data['judul'] = "Guru - Ubah Catatan Perkembangan Emosi";
         $username = $this->session->userdata('username');
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
-        $data['active'] = ['', '', '', '', '', 'active', 'active', '', ''];
+        $data['active'] = ['', '', '', '', 'active', '', ''];
         $data['nilai_emosi'] = $this->M_penilaian->tampil_nilai_emosi($id_peserta, $id_semester)->row();
 
         if ($data['nilai_emosi']->menangis == "Tidak Pernah") {
@@ -565,7 +565,7 @@ class Pengajar extends CI_Controller
         $data['judul'] = "Guru - Penilaian Harian";
         $username = $this->session->userdata('username');
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
-        $data['active'] = ['', '', '', '', 'active', '', '', '', ''];
+        $data['active'] = ['', '', '', 'active', '', '', ''];
         $data['nilai_semua'] = $this->M_penilaian->tampil_detail_nilai()->result();
         $data['tampil_peserta'] = $this->M_murid->tampil_murid()->result();
         $data['kompetensi_dasar'] = $this->M_penilaian->tampil_kompetensi_dasar()->result();
@@ -595,7 +595,7 @@ class Pengajar extends CI_Controller
     function tambah_penilaian_harian()
     {
         $tanggal_penilaian = $this->input->post('tanggal_penilaian', true);
-        $id_peserta = $this->input->post('peserta_didik', true);
+        $id_peserta = $this->input->post('peserta_didik1', true);
         $id_sub_kd = $this->input->post('sub_kompetensi_dasar', true);
         $data = [
             'id_peserta'        => $id_peserta,
@@ -623,6 +623,109 @@ class Pengajar extends CI_Controller
                 redirect('pengajar/nilai_harian');
             }
         }
+    }
+
+    function ubah_nilai_harian($id_peserta, $tanggal_nilai)
+    {
+        $id_peserta = $this->uri->segment(3);
+        $tanggal_nilai = $this->uri->segment(4);
+        $data['judul'] = "Guru - Ubah Penilaian Harian";
+        $username = $this->session->userdata('username');
+        $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
+        $data['active'] = ['', '', '', 'active', '', '', ''];
+        $data['nilai_harian'] = $this->M_penilaian->tampil_penilaian_peserta($id_peserta, $tanggal_nilai)->row();
+
+        if ($data['nilai_harian']->nilai_checklist == "Belum Berkembang") {
+            $data['nilai_checklist'] = ['selected', '', '', ''];
+        } else if ($data['nilai_harian']->nilai_checklist == "Mulai Berkembang") {
+            $data['nilai_checklist'] = ['', 'selected', '', ''];
+        } else if ($data['nilai_harian']->nilai_checklist == "Berkembang Sesuai Harapan") {
+            $data['nilai_checklist'] = ['', '', 'selected', ''];
+        } else if ($data['nilai_harian']->nilai_checklist == "Berkembang Sangat Baik") {
+            $data['nilai_checklist'] = ['', '', '', 'selected'];
+        } else {
+            $data['nilai_checklist'] = ['', '', '', ''];
+        }
+
+        if ($data['nilai_harian']->nilai_karya == "Belum Berkembang") {
+            $data['nilai_karya'] = ['selected', '', '', ''];
+        } else if ($data['nilai_harian']->nilai_karya == "Mulai Berkembang") {
+            $data['nilai_karya'] = ['', 'selected', '', ''];
+        } else if ($data['nilai_harian']->nilai_karya == "Berkembang Sesuai Harapan") {
+            $data['nilai_karya'] = ['', '', 'selected', ''];
+        } else if ($data['nilai_harian']->nilai_karya == "Berkembang Sangat Baik") {
+            $data['nilai_karya'] = ['', '', '', 'selected'];
+        } else {
+            $data['nilai_karya'] = ['', '', '', ''];
+        }
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_guru', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('pengajar/ubah_nilai_harian');
+        $this->load->view('templates/footer');
+    }
+
+    function ubah_catatan_harian($id_peserta, $tanggal_nilai)
+    {
+        $id_peserta = $this->uri->segment(3);
+        $tanggal_nilai = $this->uri->segment(4);
+        $data['judul'] = "Guru - Ubah Catatan Harian";
+        $username = $this->session->userdata('username');
+        $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
+        $data['active'] = ['', '', '', 'active', '', '', ''];
+        $data['nilai_harian'] = $this->M_penilaian->tampil_catatan_peserta($id_peserta, $tanggal_nilai)->row();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_guru', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('pengajar/ubah_catatan_harian');
+        $this->load->view('templates/footer');
+    }
+
+    function update_nilai_harian()
+    {
+        $id_peserta = $this->input->post('id_peserta_didik', true);
+        $id_sub_kd = $this->input->post('id_sub_kd', true);
+        $data = [
+            'nilai_checklist'   => $this->input->post('nilai_checklist', true),
+            'nilai_karya'       => $this->input->post('nilai_karya', true)
+        ];
+        if ($this->M_penilaian->update_nilai_harian($id_peserta, $id_sub_kd, $data)) {
+            $this->session->set_flashdata('notif', "Berhasil");
+            $this->session->set_flashdata('perintah', "Update Nilai Harian");
+            $this->session->set_flashdata('pesan', "Data Nilai Harian Berhasil Diubah");
+            redirect('pengajar/nilai_harian');
+        } else {
+            $this->session->set_flashdata('notif', "Gagal");
+            $this->session->set_flashdata('perintah', "Update Nilai Harian");
+            $this->session->set_flashdata('pesan', "Data Nilai Harian Gagal Diubah");
+            redirect('pengajar/nilai_harian');
+        }
+    }
+
+    function update_catatan_harian()
+    {
+        $id_peserta = $this->input->post('id_peserta_didik', true);
+        $tanggal = $this->input->post('tanggal_catatan', true);
+        $data = [
+            'catatan'   => $this->input->post('catatan_harian', true)
+        ];
+        if ($this->M_penilaian->update_catatan_harian($id_peserta, $tanggal, $data)) {
+            $this->session->set_flashdata('notif', "Berhasil");
+            $this->session->set_flashdata('perintah', "Update Nilai Harian");
+            $this->session->set_flashdata('pesan', "Data Catatan Harian Berhasil Diubah");
+            redirect('pengajar/nilai_harian');
+        } else {
+            $this->session->set_flashdata('notif', "Gagal");
+            $this->session->set_flashdata('perintah', "Update Nilai Harian");
+            $this->session->set_flashdata('pesan', "Data Catatan Harian Gagal Diubah");
+            redirect('pengajar/nilai_harian');
+        }
+    }
+
+    function tambah_catatan_harian()
+    {
     }
     // End Penilaian Harian
 }

@@ -23,7 +23,7 @@ class Ortu extends CI_Controller
         $username = $this->session->userdata('username');
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
         // print_r($data['user']);
-        $data['active'] = ['active', '', '', '', '', '', '', ''];
+        $data['active'] = ['active', '', '', '', '', ''];
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_ortu');
         $this->load->view('templates/topbar');
@@ -40,7 +40,7 @@ class Ortu extends CI_Controller
         $data['user'] = $this->M_user->cari_user_ortu($username)->row();
         // print_r($data['user']);
         // die;
-        $data['active'] = ['', '', '', '', '', '', '', ''];
+        $data['active'] = ['', '', '', '', '', ''];
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_ortu');
         $this->load->view('templates/topbar');
@@ -192,7 +192,7 @@ class Ortu extends CI_Controller
         $data['murid'] = $this->M_murid->tampil_anak($id_user)->result();
         // print_r($data['murid']);
         // die;
-        $data['active'] = ['', 'active', '', '', '', '', '', ''];
+        $data['active'] = ['', 'active', '', '', '', ''];
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_ortu');
         $this->load->view('templates/topbar');
@@ -206,7 +206,7 @@ class Ortu extends CI_Controller
         $data['judul'] = "Orang Tua - Peserta Didik";
         $username = $this->session->userdata('username');
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
-        $data['active'] = ['', 'active', '', '', '', '', '', ''];
+        $data['active'] = ['', 'active', '', '', '', ''];
 
         $data['murid'] = $this->M_murid->cari_peserta($id_peserta_didik)->row();
 
@@ -283,7 +283,7 @@ class Ortu extends CI_Controller
         $data['catatan_harian'] = $this->M_penilaian->tampil_catatan_harian()->result();
         // print_r($data['murid']);
         // die;
-        $data['active'] = ['', '', 'active', '', '', '', '', ''];
+        $data['active'] = ['', '', 'active', '', '', ''];
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_ortu');
         $this->load->view('templates/topbar');
@@ -302,7 +302,7 @@ class Ortu extends CI_Controller
         $data['tampil_peserta'] = $this->M_murid->tampil_anak($id_user)->result();
         // print_r($data['murid']);
         // die;
-        $data['active'] = ['', '', '', 'active', 'active', '', '', ''];
+        $data['active'] = ['', '', '', 'active', '', ''];
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_ortu');
         $this->load->view('templates/topbar');
@@ -319,7 +319,7 @@ class Ortu extends CI_Controller
         $data['tampil_peserta'] = $this->M_murid->tampil_anak($id_user)->result();
         // print_r($data['murid']);
         // die;
-        $data['active'] = ['', '', '', 'active', '', 'active', '', ''];
+        $data['active'] = ['', '', '', '', 'active', ''];
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_ortu');
         $this->load->view('templates/topbar');

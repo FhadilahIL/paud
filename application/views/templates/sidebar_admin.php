@@ -22,51 +22,24 @@
                         <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                 </li>
                 <li class="has-sub <?= $active[1] ?>">
-                    <a class="js-arrow" href="#">
-                        <i class="fas fa-desktop"></i>Master Data</a>
-                    <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                        <li class="<?= $active[2] ?>">
-                            <a href="<?= base_url('admin/data_user') ?>">Data User</a>
-                        </li>
-                        <li class="<?= $active[3] ?>">
-                            <a href="<?= base_url('admin/peserta_didik') ?>">Peserta Didik</a>
-                        </li>
-                        <li class="<?= $active[4] ?>">
-                            <a href="<?= base_url('admin/kompetensi_dasar') ?>">Kompetensi Dasar</a>
-                        </li>
-                    </ul>
+                    <a class="js-arrow" href="<?= base_url('admin/profile_sekolah') ?>">
+                        <i class="fas fa-tachometer-alt"></i>Profile Sekolah</a>
+                </li>
+                <li class="has-sub <?= $active[2] ?>">
+                    <a class="js-arrow" href="<?= base_url('admin/semester') ?>">
+                        <i class="fas fa-tachometer-alt"></i>Semester</a>
+                </li>
+                <li class="has-sub <?= $active[3] ?>">
+                    <a class="js-arrow" href="<?= base_url('admin/data_user') ?>">
+                        <i class="fas fa-tachometer-alt"></i>Data User</a>
+                </li>
+                <li class="has-sub <?= $active[4] ?>">
+                    <a class="js-arrow" href="<?= base_url('admin/peserta_didik') ?>">
+                        <i class="fas fa-tachometer-alt"></i>Peserta Didik</a>
                 </li>
                 <li class="has-sub <?= $active[5] ?>">
-                    <a href="<?= base_url('admin/penilaian_harian') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Penilaian Harian</a>
-                </li>
-                <li class="has-sub <?= $active[6] ?>">
-                    <a class="js-arrow" href="#">
-                        <i class="fas fa-desktop"></i>Catatan Perkembangan</a>
-                    <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                        <li class="<?= $active[7] ?>">
-                            <a href="<?= base_url('admin/nilai_emosi') ?>">Emosi</a>
-                        </li>
-                        <li class="<?= $active[8] ?>">
-                            <a href="<?= base_url('admin/nilai_kesehatan') ?>">Kesehatan dan Jasmani</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-sub <?= $active[9] ?>">
-                    <a href="<?= base_url('admin/cetak_laporan') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Cetak Laporan</a>
-                </li>
-                <li class="has-sub <?= $active[10] ?>">
-                    <a class="js-arrow" href="#">
-                        <i class="fas fa-desktop"></i>Pengaturan</a>
-                    <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                        <li class="<?= $active[11] ?>">
-                            <a href="<?= base_url('admin/profile_sekolah') ?>">Profile Sekolah</a>
-                        </li>
-                        <li class="<?= $active[12] ?>">
-                            <a href="<?= base_url('admin/semester') ?>">Semester</a>
-                        </li>
-                    </ul>
+                    <a class="js-arrow" href="<?= base_url('admin/kompetensi_dasar') ?>">
+                        <i class="fas fa-tachometer-alt"></i>Kompetensi Dasar</a>
                 </li>
             </ul>
         </div>
@@ -84,55 +57,28 @@
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
                 <li class="has-sub <?= $active[0] ?>">
-                    <a href="<?= base_url('admin') ?>">
+                    <a class="js-arrow" href="<?= base_url('admin') ?>">
                         <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                 </li>
                 <li class="has-sub <?= $active[1] ?>">
-                    <a class="js-arrow" href="#">
-                        <i class="fas fa-chart-bar"></i>Master Data</a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                        <li class="<?= $active[2] ?>">
-                            <a href="<?= base_url('admin/data_user') ?>">Data User</a>
-                        </li>
-                        <li class="<?= $active[3] ?>">
-                            <a href="<?= base_url('admin/peserta_didik') ?>">Peserta Didik</a>
-                        </li>
-                        <li class="<?= $active[4] ?>">
-                            <a href="<?= base_url('admin/kompetensi_dasar') ?>">Kompetensi Dasar</a>
-                        </li>
-                    </ul>
+                    <a class="js-arrow" href="<?= base_url('admin/profile_sekolah') ?>">
+                        <i class="fas fa-tachometer-alt"></i>Profile Sekolah</a>
+                </li>
+                <li class="has-sub <?= $active[2] ?>">
+                    <a class="js-arrow" href="<?= base_url('admin/semester') ?>">
+                        <i class="fas fa-tachometer-alt"></i>Semester</a>
+                </li>
+                <li class="has-sub <?= $active[3] ?>">
+                    <a class="js-arrow" href="<?= base_url('admin/data_user') ?>">
+                        <i class="fas fa-tachometer-alt"></i>Data User</a>
+                </li>
+                <li class="has-sub <?= $active[4] ?>">
+                    <a class="js-arrow" href="<?= base_url('admin/peserta_didik') ?>">
+                        <i class="fas fa-tachometer-alt"></i>Peserta Didik</a>
                 </li>
                 <li class="has-sub <?= $active[5] ?>">
-                    <a href="<?= base_url('admin/penilaian_harian') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Penilaian Harian</a>
-                </li>
-                <li class="has-sub <?= $active[6] ?>">
-                    <a class="js-arrow" href="#">
-                        <i class="fas fa-chart-bar"></i>Catatan Perkembangan</a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                        <li class="<?= $active[7] ?>">
-                            <a href="<?= base_url('admin/nilai_emosi') ?>">Emosi</a>
-                        </li>
-                        <li class="<?= $active[8] ?>">
-                            <a href="<?= base_url('admin/nilai_kesehatan') ?>">Kesehatan dan Jasmani</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-sub <?= $active[9] ?>">
-                    <a href="<?= base_url('admin/cetak_laporan') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Cetak Laporan</a>
-                </li>
-                <li class="has-sub <?= $active[10] ?>">
-                    <a class="js-arrow" href="#">
-                        <i class="fas fa-chart-bar"></i>Pengaturan</a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                        <li class="<?= $active[11] ?>">
-                            <a href="<?= base_url('admin/profile_sekolah') ?>">Profile Sekolah</a>
-                        </li>
-                        <li class="<?= $active[12] ?>">
-                            <a href="<?= base_url('admin/semester') ?>">Semester</a>
-                        </li>
-                    </ul>
+                    <a class="js-arrow" href="<?= base_url('admin/kompetensi_dasar') ?>">
+                        <i class="fas fa-tachometer-alt"></i>Kompetensi Dasar</a>
                 </li>
             </ul>
         </nav>

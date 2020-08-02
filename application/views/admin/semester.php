@@ -78,7 +78,7 @@
                             <td class="text-center"><?= $semester->semester ?></td>
                             <td class="text-center"><?= date('d M Y', strtotime($semester->mulai)) ?></td>
                             <td class="text-center"><?= date('d M Y', strtotime($semester->selesai)) ?></td>
-                            <td class="text-center"><button class="btn btn-warning text-light" style="width: 100px;">Edit</button></td>
+                            <td class="text-center"><a href="<?= base_url('admin/ubah_semester/') . $semester->id_semester ?>" class="btn btn-warning text-light" style="width: 100px;">Edit</a></td>
                         </tr>
                     <?php } ?>
                 </tbody>

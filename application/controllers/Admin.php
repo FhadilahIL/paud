@@ -944,6 +944,39 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    function ubah_semester($id_semester)
+    {
+        $data['judul'] = "Admin - Semester";
+        $username = $this->session->userdata('username');
+        $data['active'] = ['', '', '', '', '', '', '', '', '', '', 'active', '', 'active'];
+        $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
+        $data['semester'] = $this->M_sekolah->tampil_semester_admin($id_semester)->row();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_admin');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/ubah_semester', $data);
+        $this->load->view('templates/footer');
+    }
+
+    function update_semester()
+    {
+        $id_semester = $this->input->post('id_semester', true);
+        $data = [
+            'mulai' => $this->input->post('mulai', true),
+            'selesai' => $this->input->post('akhir', true)
+        ];
+        if ($this->M_sekolah->update_semester($id_semester, $data)) {
+            $this->session->set_flashdata('notif', "Berhasil");
+            $this->session->set_flashdata('perintah', "Ubah Semester");
+            $this->session->set_flashdata('pesan', "Data Semester Behasil Diubah");
+        } else {
+            $this->session->set_flashdata('notif', "Gagal");
+            $this->session->set_flashdata('perintah', "Ubah Semester");
+            $this->session->set_flashdata('pesan', "Data Semester Gagal Diubah");
+        }
+        redirect('admin/semester');
+    }
+
     function tambah_tahun_ajaran()
     {
         $tahun_ajaran_mulai = $this->input->post('awal', true);
@@ -999,96 +1032,4 @@ class Admin extends CI_Controller
         echo json_encode($data);
     }
     // End Pengaturan Sekolah
-
-    // Penilaian Harian
-    function penilaian_harian()
-    {
-        $data['judul'] = "Admin - Penilaian Harian";
-        $username = $this->session->userdata('username');
-        $data['active'] = ['', '', '', '', '', 'active', '', '', '', '', '', '', ''];
-        $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
-        $data['nilai'] = $this->M_penilaian->tampil_detail_nilai()->result();
-        $data['catatan_harian'] = $this->M_penilaian->tampil_catatan_harian()->result();
-
-        // print_r($data['nilai']);
-        // die;
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar_admin');
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/penilaian_harian', $data);
-        $this->load->view('templates/footer');
-    }
-    // End Penilaian Harian
-
-    // Catatan Perkembangan
-    function nilai_emosi()
-    {
-        $data['judul'] = "Admin - Catatan Perkembangan - Nilai Emosi";
-        $username = $this->session->userdata('username');
-        $data['active'] = ['', '', '', '', '', '', 'active', 'active', '', '', '', '', ''];
-        $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
-        $data['tampil_semester'] = $this->M_sekolah->tampil_semester()->result();
-
-        // print_r($data['tampil_semester']);
-        // die;
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar_admin');
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/catatan_emosi', $data);
-        $this->load->view('templates/footer');
-    }
-
-    function nilai_emosi_peserta($id_semester)
-    {
-        $id_semester = $this->uri->segment(3);
-        $data = $this->M_penilaian->tampil_emosi($id_semester)->result();
-        // print_r($data);
-        // die;
-        echo json_encode($data);
-    }
-
-    function nilai_kesehatan_peserta($id_semester)
-    {
-        $id_semester = $this->uri->segment(3);
-        $data = $this->M_penilaian->tampil_kesehatan($id_semester)->result();
-        // print_r($data);
-        // die;
-        echo json_encode($data);
-    }
-
-    function nilai_kesehatan()
-    {
-        $data['judul'] = "Admin - Catatan Perkembangan - Nilai Kesehatan dan Jasmani";
-        $username = $this->session->userdata('username');
-        $data['active'] = ['', '', '', '', '', '', 'active', '', 'active', '', '', '', ''];
-        $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
-        $data['tampil_semester'] = $this->M_sekolah->tampil_semester()->result();
-
-        // print_r($data['tampil_kompetensi_dasar']);
-        // die;
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar_admin');
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/catatan_kesehatan', $data);
-        $this->load->view('templates/footer');
-    }
-    // End Catatan Perkembangan
-
-    // Cetak Laporan
-    function cetak_laporan()
-    {
-        $data['judul'] = "Admin - Cetak Laporan";
-        $username = $this->session->userdata('username');
-        $data['active'] = ['', '', '', '', '', '', '', '', '', 'active', '', '', ''];
-        $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
-
-        // print_r($data['tampil_kompetensi_dasar']);
-        // die;
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar_admin');
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/cetak_laporan', $data);
-        $this->load->view('templates/footer');
-    }
-    // End Cetak Laporan
 }

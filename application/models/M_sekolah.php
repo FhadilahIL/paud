@@ -58,4 +58,17 @@ class M_sekolah extends CI_Model
     {
         return $this->db->insert('tb_semester', $data);
     }
+
+    function tampil_semester_admin($id_semester)
+    {
+        $this->db->join('tb_tahun_ajaran', 'tb_tahun_ajaran.id_tahun_ajaran = tb_semester.id_tahun_ajaran', 'inner');
+        $this->db->where('id_semester', $id_semester);
+        return $this->db->get('tb_semester');
+    }
+
+    function update_semester($id_semester, $data)
+    {
+        $this->db->where('id_semester', $id_semester);
+        return $this->db->update('tb_semester', $data);
+    }
 }

@@ -174,9 +174,26 @@ class M_penilaian extends CI_Model
 
     function tampil_penilaian_harian($tanggal)
     {
+        $this->db->join('tb_sub_kompetensi_dasar', 'tb_sub_kompetensi_dasar.id_sub_kd = tb_penilaian_kd.id_sub_kd', 'inner');
         $this->db->join('tb_peserta_didik', 'tb_peserta_didik.id_peserta = tb_penilaian_kd.id_peserta', 'inner');
         $this->db->where('tanggal_penilaian', $tanggal);
         return $this->db->get('tb_penilaian_kd');
+    }
+
+    function tampil_penilaian_peserta($id_peserta, $tanggal)
+    {
+        $this->db->join('tb_peserta_didik', 'tb_peserta_didik.id_peserta = tb_penilaian_kd.id_peserta', 'inner');
+        $this->db->where('tb_penilaian_kd.id_peserta', $id_peserta);
+        $this->db->where('tanggal_penilaian', $tanggal);
+        return $this->db->get('tb_penilaian_kd');
+    }
+
+    function tampil_catatan_peserta($id_peserta, $tanggal)
+    {
+        $this->db->join('tb_peserta_didik', 'tb_peserta_didik.id_peserta = tb_catatan_peserta.id_peserta', 'inner');
+        $this->db->where('tb_catatan_peserta.id_peserta', $id_peserta);
+        $this->db->where('tanggal_catatan', $tanggal);
+        return $this->db->get('tb_catatan_peserta');
     }
 
     function tampil_catatan_harian_tanggal($tanggal)
@@ -197,5 +214,19 @@ class M_penilaian extends CI_Model
         $this->db->where('id_sub_kd', $id_sub_kd);
         $this->db->where('tanggal_penilaian', $tanggal_penilaian);
         return $this->db->get('tb_penilaian_kd');
+    }
+
+    function update_nilai_harian($id_peserta, $id_sub_kd, $data)
+    {
+        $this->db->where('id_peserta', $id_peserta);
+        $this->db->where('id_sub_kd', $id_sub_kd);
+        return $this->db->update('tb_penilaian_kd', $data);
+    }
+
+    function update_catatan_harian($id_peserta, $tanggal, $data)
+    {
+        $this->db->where('id_peserta', $id_peserta);
+        $this->db->where('tanggal_catatan', $tanggal);
+        return $this->db->update('tb_catatan_peserta', $data);
     }
 }
