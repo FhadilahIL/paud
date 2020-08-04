@@ -23,7 +23,7 @@ class Admin extends CI_Controller
         $username = $this->session->userdata('username');
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
         // print_r($data['user']);
-        $data['active'] = ['active', '', '', '', '', '', '', '', '', '', '', '', ''];
+        $data['active'] = ['active', '', '', '', '', ''];
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_admin', $data);
         $this->load->view('templates/topbar', $data);
@@ -40,7 +40,7 @@ class Admin extends CI_Controller
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
         // print_r($data['user']);
         // die;
-        $data['active'] = ['', '', '', '', '', '', '', '', '', '', '', '', ''];
+        $data['active'] = ['', '', '', '', '', ''];
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_admin', $data);
         $this->load->view('templates/topbar', $data);
@@ -54,7 +54,7 @@ class Admin extends CI_Controller
     {
         $data['judul'] = "Admin - Data User";
         $username = $this->session->userdata('username');
-        $data['active'] = ['', 'active', 'active', '', '', '', '', '', '', '', '', '', ''];
+        $data['active'] = ['', '', '', 'active', '', ''];
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
         $data['admin'] = $this->M_admin->cari_admin_semua()->result();
         $data['guru'] = $this->M_admin->cari_guru_semua()->result();
@@ -220,7 +220,7 @@ class Admin extends CI_Controller
         $id_user = $this->uri->segment(3);
         $data['judul'] = "Admin - Lihat Data";
         $username = $this->session->userdata('username');
-        $data['active'] = ['', 'active', 'active', '', '', '', '', '', '', '', '', '', ''];
+        $data['active'] = ['', '', '', 'active', '', ''];
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
         $data['data_admin'] = $this->M_admin->cari_admin($id_user)->row();
         // print_r($data['data_admin']);
@@ -237,7 +237,7 @@ class Admin extends CI_Controller
         $id_user = $this->uri->segment(3);
         $data['judul'] = "Admin - Edit Data Guru";
         $username = $this->session->userdata('username');
-        $data['active'] = ['', 'active', 'active', '', '', '', '', '', '', '', '', '', ''];
+        $data['active'] = ['', '', '', 'active', '', ''];
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
         $data['data_guru'] = $this->M_admin->cari_guru($id_user)->row();
         // print_r($data['data_guru']);
@@ -545,7 +545,7 @@ class Admin extends CI_Controller
         $id_user = $this->uri->segment(3);
         $data['judul'] = "Admin - Edit Data Orang Tua";
         $username = $this->session->userdata('username');
-        $data['active'] = ['', 'active', 'active', '', '', '', '', '', '', '', '', '', ''];
+        $data['active'] = ['', '', '', 'active', '', ''];
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
         $data['data_ortu'] = $this->M_admin->cari_ortu($id_user)->row();
         // print_r($data['data_ortu']);
@@ -608,7 +608,7 @@ class Admin extends CI_Controller
     {
         $data['judul'] = "Admin - Peserta Didik";
         $username = $this->session->userdata('username');
-        $data['active'] = ['', 'active', '', 'active', '', '', '', '', '', '', '', '', ''];
+        $data['active'] = ['', '', '', '', 'active', ''];
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
         $data['murid'] = $this->M_murid->tampil_murid()->result();
         $data['orang_tua'] = $this->M_admin->cari_ortu_semua()->result();
@@ -635,7 +635,7 @@ class Admin extends CI_Controller
         $id_peserta = $this->uri->segment(3);
         $data['judul'] = "Admin - Edit Data Peserta Didik";
         $username = $this->session->userdata('username');
-        $data['active'] = ['', 'active', '', 'active', '', '', '', '', '', '', '', '', ''];
+        $data['active'] = ['', '', '', '', 'active', ''];
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
         $data['murid'] = $this->M_murid->cari_peserta($id_peserta)->row();
         $data['orang_tua'] = $this->M_admin->cari_ortu_semua()->result();
@@ -740,7 +740,7 @@ class Admin extends CI_Controller
     {
         $data['judul'] = "Admin - Kompetensi Dasar";
         $username = $this->session->userdata('username');
-        $data['active'] = ['', 'active', '', '', 'active', '', '', '', '', '', '', '', ''];
+        $data['active'] = ['', '', '', '', '', 'active'];
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
         $data['kompetensi_dasar'] = $this->M_penilaian->tampil_kompetensi_dasar()->result();
         $data['tampil_kompetensi_dasar'] = $this->M_penilaian->tampil_kompetensi_dasar_semua()->result();
@@ -872,7 +872,7 @@ class Admin extends CI_Controller
     {
         $data['judul'] = "Admin - Profile Sekolah";
         $username = $this->session->userdata('username');
-        $data['active'] = ['', '', '', '', '', '', '', '', '', '', 'active', 'active', ''];
+        $data['active'] = ['', 'active', '', '', '', ''];
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
         $data['profile_sekolah'] = $this->M_sekolah->tampil_profile('1')->row();
 
@@ -921,7 +921,7 @@ class Admin extends CI_Controller
     {
         $data['judul'] = "Admin - Semester";
         $username = $this->session->userdata('username');
-        $data['active'] = ['', '', '', '', '', '', '', '', '', '', 'active', '', 'active'];
+        $data['active'] = ['', '', 'active', '', '', ''];
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
         $data['tahun_ajaran'] = $this->M_sekolah->tampil_tahun_ajaran()->result();
         $data['tanggal'] = $this->M_sekolah->tampil_semester_akhir()->row();
@@ -948,7 +948,7 @@ class Admin extends CI_Controller
     {
         $data['judul'] = "Admin - Semester";
         $username = $this->session->userdata('username');
-        $data['active'] = ['', '', '', '', '', '', '', '', '', '', 'active', '', 'active'];
+        $data['active'] = ['', '', 'active', '', '', ''];
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
         $data['semester'] = $this->M_sekolah->tampil_semester_admin($id_semester)->row();
         $this->load->view('templates/header', $data);
