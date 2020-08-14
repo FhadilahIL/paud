@@ -1034,7 +1034,8 @@ class Admin extends CI_Controller
     // End Pengaturan Sekolah
     
     // Cetak Laporan
-    function cetak_laporan(){
+    function cetak_laporan()
+    {
         
     }
     // End Cetak Laporan
