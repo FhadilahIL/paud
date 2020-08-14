@@ -1032,4 +1032,10 @@ class Admin extends CI_Controller
         echo json_encode($data);
     }
     // End Pengaturan Sekolah
+    
+    // Cetak Laporan
+    function cetak_laporan(){
+        
+    }
+    // End Cetak Laporan
 }
