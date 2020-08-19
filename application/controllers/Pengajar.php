@@ -749,4 +749,19 @@ class Pengajar extends CI_Controller
         }
     }
     // End Penilaian Harian
+
+    // Cetak Laporan
+    function cetak_laporan()
+    {
+        $data['judul'] = "Guru - Cetak Laporan";
+        $username = $this->session->userdata('username');
+        $data['active'] = ['', '', '', '', '', '', 'active'];
+        $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_guru');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('pengajar/tampil_cetak', $data);
+        $this->load->view('templates/footer');
+    }
+    // End Cetak Laporan
 }

@@ -32,6 +32,7 @@
 
     <!-- Main CSS-->
     <link href="<?= base_url('/') ?>assets/css/theme.css" rel="stylesheet" media="all">
+    <link href="<?= base_url('/') ?>assets/css/style.css" rel="stylesheet" media="all">
 
 </head>
 
@@ -46,8 +47,9 @@
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="<?= base_url('/') ?>assets/img/settings/logo/logo.png" alt="Logo Paud Melati" class="w-50">
+                                <img src="<?= base_url('/') ?>assets/img/settings/logo/logo.png" alt="Logo Paud Melati" class="logo-login">
                             </a>
+                            <h3>Sistem Informasi Penilaian dan Perkembangan Belajar Anak Usia Dini</h3>
                         </div>
                         <div class="login-form">
                             <form action="<?php echo base_url('auth/cek_login') ?>" method="post">

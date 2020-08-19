@@ -957,7 +957,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/ubah_semester', $data);
         $this->load->view('templates/footer');
     }
-
+    
     function update_semester()
     {
         $id_semester = $this->input->post('id_semester', true);
@@ -1032,11 +1032,4 @@ class Admin extends CI_Controller
         echo json_encode($data);
     }
     // End Pengaturan Sekolah
-    
-    // Cetak Laporan
-    function cetak_laporan()
-    {
-        
-    }
-    // End Cetak Laporan
 }

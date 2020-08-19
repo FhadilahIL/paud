@@ -1,55 +1,71 @@
 @media (min-width: 992px) {
+	.logo-login {
+		width: 40%;
+	}
 
-	.foto-profile img{
+	.foto-profile img {
 		width: 45px;
 		height: 45px;
 	}
-	
+
 	.nomor {
 		width: 12px;
 		text-align: center;
 	}
+
 	.nama {
 		min-width: 300px;
 	}
+
 	.username {
 		min-width: 200px;
 	}
+
 	.aksi {
 		min-width: 100px;
 	}
+
 	.tombol-aksi {
 		min-width: 100px;
 	}
-	.logo-profile-sekolah{
+
+	.logo-profile-sekolah {
 		width: 35%;
 	}
 }
 
 @media (max-width: 992px) {
-	.logo-mobile img{
+	.logo-mobile img {
 		margin-top: -10px;
 		width: 85px;
 	}
 
-	.foto-profile img{
+	.logo-login {
+		width: 50%;
+	}
+
+	.foto-profile img {
 		width: 45px;
 		height: 45px;
 	}
-	
+
 	.nomor {
 		width: 12px;
 		text-align: center;
 	}
+
 	.nama {
 		min-width: 300px;
 	}
+
 	.username {
 		min-width: 130px;
 	}
+
 	.aksi {
 		min-width: 200px;
 	}
+
 	.tombol-aksi {
 		min-width: 100px;
 	}
