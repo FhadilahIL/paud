@@ -30,16 +30,16 @@
                         <i class="fas fa-tachometer-alt"></i>Penilaian Harian</a>
                 </li>
                 <li class="has-sub <?= $active[3] ?>">
-                    <a href="<?= base_url('ortu/nilai_emosi') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Penilaian Emosi</a>
-                </li>
-                <li class="has-sub <?= $active[4] ?>">
-                    <a href="<?= base_url('ortu/nilai_kesehatan') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Penilaian Kesehatan</a>
-                </li>
-                <li class="has-sub <?= $active[5] ?>">
-                    <a href="<?= base_url('ortu/cetak_laporan') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Cetak Laporan</a>
+                    <a class="js-arrow" href="#">
+                        <i class="fas fa-desktop"></i>Catatan Perkembangan</a>
+                    <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                        <li class="<?= $active[4] ?>">
+                            <a href="<?= base_url('ortu/nilai_emosi') ?>">Emosi</a>
+                        </li>
+                        <li class="<?= $active[5] ?>">
+                            <a href="<?= base_url('ortu/nilai_kesehatan') ?>">Kesehatan</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -69,16 +69,16 @@
                         <i class="fas fa-tachometer-alt"></i>Penilaian Harian</a>
                 </li>
                 <li class="has-sub <?= $active[3] ?>">
-                    <a href="<?= base_url('ortu/nilai_emosi') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Penilaian Emosi</a>
-                </li>
-                <li class="has-sub <?= $active[4] ?>">
-                    <a href="<?= base_url('ortu/nilai_kesehatan') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Penilaian Kesehatan</a>
-                </li>
-                <li class="has-sub <?= $active[5] ?>">
-                    <a href="<?= base_url('ortu/cetak_laporan') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Cetak Laporan</a>
+                    <a class="js-arrow" href="#">
+                        <i class="fas fa-user"></i>Catatan Perkembangan</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li class="<?= $active[4] ?>">
+                            <a href="<?= base_url('ortu/nilai_emosi') ?>">Emosi</a>
+                        </li>
+                        <li class="<?= $active[5] ?>">
+                            <a href="<?= base_url('ortu/nilai_kesehatan') ?>">Kesehatan</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>

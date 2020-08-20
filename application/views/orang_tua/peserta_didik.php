@@ -22,7 +22,7 @@
                         <td><?= ucwords($murid->no_induk); ?></td>
                         <td><?= $murid->nama_lengkap; ?></td>
                         <td><?= $murid->status; ?></td>
-                        <td class="text-center"><a href="<?= base_url('ortu/ubah_peserta/' . $murid->id_peserta) ?>" class="btn btn-warning text-light tombol-aksi">Edit</a></td>
+                        <td class="text-center"><a href="<?= base_url('ortu/lihat_peserta/' . $murid->id_peserta) ?>" class="btn btn-warning text-light tombol-aksi">Lihat Data</a></td>
                     </tr>
                 <?php } ?>
             </tbody>

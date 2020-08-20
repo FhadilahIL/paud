@@ -200,7 +200,7 @@ class Ortu extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    function ubah_peserta($id_peserta_didik)
+    function lihat_peserta($id_peserta_didik)
     {
         $id_peserta_didik = $this->uri->segment(3);
         $data['judul'] = "Orang Tua - Peserta Didik";
@@ -211,65 +211,20 @@ class Ortu extends CI_Controller
         $data['murid'] = $this->M_murid->cari_peserta($id_peserta_didik)->row();
 
         if ($data['murid']->jenis_kelamin == 'L') {
-            $data['kelamin'] = ['selected', ''];
+            $data['kelamin'] = "Laki - Laki";
         } elseif ($data['murid']->jenis_kelamin == 'P') {
-            $data['kelamin'] = ['', 'selected'];
+            $data['kelamin'] = "Perempuan";
         } else {
-            $data['kelamin'] = ['', ''];
+            $data['kelamin'] = "-";
         }
-
-        if ($data['murid']->status == 'Aktif') {
-            $data['status'] = ['selected', ''];
-        } elseif ($data['murid']->status == 'Tidak Aktif') {
-            $data['status'] = ['', 'selected'];
-        } else {
-            $data['status'] = ['', ''];
-        }
-
-        if ($data['murid']->agama == 'Islam') {
-            $data['agama'] = ['selected', '', '', ''];
-        } elseif ($data['murid']->agama == 'Kristen') {
-            $data['agama'] = ['', 'selected', '', ''];
-        } elseif ($data['murid']->agama == 'Hindu') {
-            $data['agama'] = ['', '', 'selected', ''];
-        } elseif ($data['murid']->agama == 'Budha') {
-            $data['agama'] = ['', '', '', 'selected'];
-        } else {
-            $data['agama'] = ['', '', '', '', ''];
-        }
+        
         // print_r($data['murid']);
         // die;
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_ortu');
         $this->load->view('templates/topbar');
-        $this->load->view('orang_tua/ubah_peserta');
+        $this->load->view('orang_tua/lihat_peserta');
         $this->load->view('templates/footer');
-    }
-
-    function edit_peserta()
-    {
-        $id_peserta = $this->input->post('id_peserta', true);
-        $data = [
-            'nama_lengkap'      => $this->input->post('nama_lengkap', true),
-            'nama_panggilan'    => $this->input->post('nama_panggilan', true),
-            'jenis_kelamin'     => $this->input->post('jenis_kelamin', true),
-            'agama'             => $this->input->post('agama', true),
-            'tempat_lahir'      => $this->input->post('tempat_lahir', true),
-            'tanggal_lahir'     => $this->input->post('tanggal_lahir', true),
-            'anak_ke'           => $this->input->post('anak_ke', true)
-        ];
-        // print_r($id_peserta);
-        // die;
-        if ($this->M_murid->edit_peserta($data, $id_peserta)) {
-            $this->session->set_flashdata('notif', "Berhasil");
-            $this->session->set_flashdata('perintah', "Ubah Data Peserta");
-            $this->session->set_flashdata('pesan', "Data Peserta Didik Berhasil Diubah");
-        } else {
-            $this->session->set_flashdata('notif', "Gagal");
-            $this->session->set_flashdata('perintah', "Ubah Data Peserta");
-            $this->session->set_flashdata('pesan', "Data Peserta Didik Gagal Diubah");
-        }
-        redirect('ortu/peserta_didik');
     }
     // End Peserta Didik
 
@@ -302,7 +257,7 @@ class Ortu extends CI_Controller
         $data['tampil_peserta'] = $this->M_murid->tampil_anak($id_user)->result();
         // print_r($data['murid']);
         // die;
-        $data['active'] = ['', '', '', 'active', '', ''];
+        $data['active'] = ['', '', '', 'active','active', ''];
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_ortu');
         $this->load->view('templates/topbar');
@@ -319,7 +274,7 @@ class Ortu extends CI_Controller
         $data['tampil_peserta'] = $this->M_murid->tampil_anak($id_user)->result();
         // print_r($data['murid']);
         // die;
-        $data['active'] = ['', '', '', '', 'active', ''];
+        $data['active'] = ['', '', '', 'active', '', 'active'];
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_ortu');
         $this->load->view('templates/topbar');
