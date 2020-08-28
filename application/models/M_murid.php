@@ -69,4 +69,9 @@ class M_murid extends CI_Model
         $this->db->where('id_peserta', $id_peserta);
         return $this->db->get('tb_penilaian_emosi');
     }
+
+    function cari_detail_peserta($id_peserta)
+    {
+        return $this->db->query("SELECT * FROM tb_peserta_didik INNER JOIN tb_user on tb_peserta_didik.id_user = tb_user.id_user INNER JOIN tb_detail_orang_tua ON tb_user.id_user = tb_detail_orang_tua.id_user INNER JOIN tb_tahun_ajaran ON tb_peserta_didik.id_tahun_ajaran = tb_tahun_ajaran.id_tahun_ajaran WHERE id_peserta = '$id_peserta'");
+    }
 }

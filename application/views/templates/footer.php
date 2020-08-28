@@ -449,8 +449,8 @@
 <!-- Main JS-->
 <script src="<?= base_url('/') ?>assets/js/main.js"></script>
 <script src="<?= base_url('/') ?>assets/js/mySweetAlert.js"></script>
-<script src="<?= base_url('/') ?>assets/js/myScript.js"></script>
 <script src="<?= base_url('/') ?>assets/js/myDataTables.js"></script>
+<script src="<?= base_url('/') ?>assets/js/myScript.js"></script>
 
 </body>
 

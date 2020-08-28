@@ -9,9 +9,11 @@
         <div class="card-body">
             <div class="form-group">
                 <label>Pilih Peserta Didik</label>
-                <select name="" class="form-inline select" id="cetak_laporan_guru">
-                    <option value=""></option>
-                    <option value="1">1</option>
+                <select name="id_peserta" class="form-inline select" id="a" onchange="tabelCetak()">
+                    <option value="">-- Pilih Peserta Didik --</option>
+                    <?php foreach ($peserta_didik as $murid) { ?>
+                        <option value="<?= $murid->id_peserta ?>"><?= $murid->no_induk ?> - <?= $murid->nama_lengkap ?></option>
+                    <?php } ?>
                 </select>
             </div>
         </div>
@@ -23,90 +25,25 @@
         <div class="card-body">
             <table class="table table-responsive">
                 <tr>
-                    <th style="min-width: 150px;">No. Induk</th>
+                    <th style="min-width: 150px;" class="text-center">No. Induk</th>
                     <th class="nama">Nama Peserta</th>
-                    <th style="min-width: 300px;">Orang Tua</th>
-                    <th style="min-width: 300px;">Jenis Kelamin</th>
-                    <th style="min-width: 300px;">Tempat, Tanggal Lahir</th>
+                    <th style="min-width: 300px;">Nama Orang Tua</th>
+                    <th style="min-width: 200px;">Jenis Kelamin</th>
+                    <th style="min-width: 320px;">Tempat, Tanggal Lahir</th>
                     <th class="text-center" style="min-width: 200px;">Tanggal Masuk</th>
-                    <th class="text-center" style="min-width: 250px;">Semester</th>
+                    <th class="text-center" style="min-width: 250px;">Tahun Ajaran</th>
                     <th class="text-center" style="min-width: 250px;">Aksi</th>
                 </tr>
                 <tbody id="isi_data_peserta"></tbody>
             </table>
         </div>
     </div>
-    <div class="card">
+    <div class="card collapse" id="collapseExample">
         <div class="card-body m-2" id="body_laporan">
-        <div class="d-flex justify-content-end">
-            <a href="" class="btn btn-primary shadow"><small>Cetak</small></a>
-        </div>
-        <h1 class="mb-4">Biodata</h1>
-            <table class="table-responsive ml-1 mb-4">
-                <tr height="50px">
-                    <td style="min-width: 150px; max-width: 150.5px"><small>No. Induk</small></td>
-                    <td style="min-width: 7px">:</td>
-                    <td style="min-width: 261px; max-width: 261.5px"><small>Muhammad Ilham Fhadilah</small></td>
-                    <td style="min-width: 40px"></td>
-                    <td style="min-width: 150px; max-width: 150.5px"><small>Nama Orang Tua</small></td>
-                    <td style="min-width: 7px"><small>:</small></td>
-                    <td style="min-width: 250px; max-width: 250.5px"><small>Ilham</small></td>
-                </tr>
-                <tr height="50px">
-                    <td style="min-width: 150px; max-width: 150.5px"><small>Nama Lengkap</small></td>
-                    <td style="min-width: 7px">:</td>
-                    <td style="min-width: 261px; max-width: 261.5px"><small>Muhammad Ilham Fhadilah</small></td>
-                    <td style="min-width: 40px"></td>
-                    <td style="min-width: 150px; max-width: 150.5px"><small>Nama Pekerjaan</small></td>
-                    <td style="min-width: 7px"><small>:</small></td>
-                    <td style="min-width: 250px; max-width: 250.5px"><small>Ilham</small></td>
-                </tr>
-                <tr height="50px">
-                    <td style="min-width: 150px; max-width: 150.5px"><small>Nama Panggilan</small></td>
-                    <td style="min-width: 7px">:</td>
-                    <td style="min-width: 261px; max-width: 261.5px"><small>Muhammad Ilham Fhadilah</small></td>
-                    <td style="min-width: 40px"></td>
-                    <td style="min-width: 150px; max-width: 150.5px"><small>Email Orang Tua</small></td>
-                    <td style="min-width: 7px"><small>:</small></td>
-                    <td style="min-width: 250px; max-width: 250.5px"><small>Ilham</small></td>
-                </tr>
-                <tr height="50px">
-                    <td style="min-width: 150px; max-width: 150.5px"><small>Jenis Kelamin</small></td>
-                    <td style="min-width: 7px">:</td>
-                    <td style="min-width: 261px; max-width: 261.5px"><small>Muhammad Ilham Fhadilah</small></td>
-                    <td style="min-width: 40px"></td>
-                    <td style="min-width: 150px; max-width: 150.5px"><small>No. Telp</small></td>
-                    <td style="min-width: 7px"><small>:</small></td>
-                    <td style="min-width: 250px; max-width: 250.5px"><small>Ilham</small></td>
-                </tr>
-                <tr height="50px">
-                    <td style="min-width: 150px; max-width: 150.5px"><small>Agama</small></td>
-                    <td style="min-width: 7px">:</td>
-                    <td style="min-width: 261px; max-width: 261.5px"><small>Muhammad Ilham Fhadilah</small></td>
-                    <td style="min-width: 40px"></td>
-                    <td style="min-width: 150px; max-width: 150.5px"><small>Alamat</small></td>
-                    <td style="min-width: 7px"><small>:</small></td>
-                    <td style="min-width: 250px; max-width: 250.5px"><small>Ilham</small></td>
-                </tr>
-                <tr height="50px">
-                    <td style="min-width: 150px; max-width: 150.5px"><small>Tempat Lahir</small></td>
-                    <td style="min-width: 7px">:</td>
-                    <td style="min-width: 261px; max-width: 261.5px"><small>Muhammad Ilham Fhadilah</small></td>
-                    <td style="min-width: 40px"></td>
-                    <td style="min-width: 150px; max-width: 150.5px"><small></small></td>
-                    <td style="min-width: 7px"><small></small></td>
-                    <td style="min-width: 250px; max-width: 250.5px"><small></small></td>
-                </tr>
-                <tr height="50px">
-                    <td style="min-width: 150px; max-width: 150.5px"><small>Tanggal Lahir</small></td>
-                    <td style="min-width: 7px">:</td>
-                    <td style="min-width: 261px; max-width: 261.5px"><small>Muhammad Ilham Fhadilah</small></td>
-                    <td style="min-width: 40px"></td>
-                    <td style="min-width: 150px; max-width: 150.5px"><small></small></td>
-                    <td style="min-width: 7px"><small></small></td>
-                    <td style="min-width: 250px; max-width: 250.5px"><small></small></td>
-                </tr>
-            </table>
+            <div class="d-flex justify-content-end">
+                <a id="cetak_pdf" href="<?= base_url("pengajar/cetak_pdf") ?>" target="_blank" class="btn btn-primary shadow"><small>Cetak</small></a>
+            </div>
+            <div id="bio_laporan"></div>
             <table class="table table-borderless table-responsive mb-4">
                 <tr>
                     <td colspan="7"><b>Catatan Perkembangan Emosi</b></td>
@@ -120,15 +57,7 @@
                     <td style="min-width: 127px"><small>Melamun</small></td>
                     <td style="min-width: 127px"><small>Gembira</small></td>
                 </tr>
-                <tr>
-                    <td class="text-center"><small>1</small></td>
-                    <td><small>Tidak Pernah</small></td>
-                    <td><small>Tidak Pernah</small></td>
-                    <td><small>Tidak Pernah</small></td>
-                    <td><small>Tidak Pernah</small></td>
-                    <td><small>Tidak Pernah</small></td>
-                    <td><small>Tidak Pernah</small></td>
-                </tr>
+                <tbody id="cetak_emosi_peserta"></tbody>
             </table>
             <table class="table table-responsive table-borderless">
                 <tr>
@@ -145,17 +74,7 @@
                     <td><small>Berat Badan</small></td>
                     <td><small>Tinggi Badan</small></td>
                 </tr>
-                <tr>
-                    <td class="text-center"><small>1</small></td>
-                    <td><small>Cukup</small></td>
-                    <td><small>Kurang</small></td>
-                    <td><small>Kurang</small></td>
-                    <td><small>Kurang</small></td>
-                    <td><small>Kurang</small></td>
-                    <td><small>Kurang</small></td>
-                    <td><small>Kurang</small></td>
-                    <td><small>Kurang</small></td>
-                </tr>
+                <tbody id="cetak_perkembangan_peserta"></tbody>
             </table>
         </div>
     </div>

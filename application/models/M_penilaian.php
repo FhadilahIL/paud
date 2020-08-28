@@ -240,4 +240,18 @@ class M_penilaian extends CI_Model
     {
         return $this->db->insert('tb_catatan_peserta', $data);
     }
+
+    function detail_emosi_peserta($id_peserta)
+    {
+        $this->db->join('tb_semester', 'tb_penilaian_emosi.id_semester = tb_semester.id_semester', 'inner');
+        $this->db->where('id_peserta', $id_peserta);
+        return $this->db->get('tb_penilaian_emosi');
+    }
+
+    function detail_kesehatan_peserta($id_peserta)
+    {
+        $this->db->join('tb_semester', 'tb_penilaian_kesehatan.id_semester = tb_semester.id_semester', 'inner');
+        $this->db->where('id_peserta', $id_peserta);
+        return $this->db->get('tb_penilaian_kesehatan');
+    }
 }

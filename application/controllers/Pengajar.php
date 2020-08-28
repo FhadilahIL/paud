@@ -757,11 +757,58 @@ class Pengajar extends CI_Controller
         $username = $this->session->userdata('username');
         $data['active'] = ['', '', '', '', '', '', '', 'active'];
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
+        $data['peserta_didik'] = $this->M_murid->tampil_murid()->result();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_guru');
         $this->load->view('templates/topbar', $data);
         $this->load->view('pengajar/tampil_cetak', $data);
         $this->load->view('templates/footer');
+    }
+    function cetak_pdf($id_peserta)
+    {
+        $id_peserta = $this->uri->segment(3);
+
+        $data['biodata'] = $this->M_murid->cari_detail_peserta($id_peserta)->row();
+        $data['nilai_emosi'] = $this->M_penilaian->detail_emosi_peserta($id_peserta)->result();
+        $data['nilai_kesehatan'] = $this->M_penilaian->detail_kesehatan_peserta($id_peserta)->result();
+        if ($data['biodata']->jenis_kelamin == 'L') {
+            $data['jenis_kelamin'] = 'Laki - Laki';
+        } else if ($data['biodata']->jenis_kelamin == 'P') {
+            $data['jenis_kelamin'] = 'Perempuan';
+        } else {
+            $data['jenis_kelamin'] = 'Belum Ditentukan';
+        }
+
+        $bulan = date('m', strtotime($data['biodata']->tanggal_lahir));
+        $months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        $data['tanggal_lahir'] = date('d', strtotime($data['biodata']->tanggal_lahir)) . ' ' . $months[intval($bulan) - 1] . ' ' . date('Y', strtotime($data['biodata']->tanggal_lahir));
+
+        $this->load->library('pdf');
+        // $this->pdf->setOptions('isRemoteEnabled', true);
+        $this->pdf->setPaper('A4', 'potrait');
+        $this->pdf->filename = "Laporan - " . $data['biodata']->nama_lengkap . ' - ' . time() . ".pdf";
+        $this->pdf->cetak('pengajar/laporan_pdf', $data);
+    }
+
+    function tampil_data_peserta($id_peserta)
+    {
+        $id_peserta = $this->uri->segment(3);
+        $data = $this->M_murid->cari_detail_peserta($id_peserta)->row();
+        echo json_encode($data);
+    }
+
+    function tampil_data_emosi_peserta($id_peserta)
+    {
+        $id_peserta = $this->uri->segment(3);
+        $data = $this->M_penilaian->detail_emosi_peserta($id_peserta)->result();
+        echo json_encode($data);
+    }
+
+    function tampil_data_kesehatan_peserta($id_peserta)
+    {
+        $id_peserta = $this->uri->segment(3);
+        $data = $this->M_penilaian->detail_kesehatan_peserta($id_peserta)->result();
+        echo json_encode($data);
     }
     // End Cetak Laporan
 }
