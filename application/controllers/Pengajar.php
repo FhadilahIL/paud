@@ -23,6 +23,9 @@ class Pengajar extends CI_Controller
         $username = $this->session->userdata('username');
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
         $data['active'] = ['active', '', '', '', '', '', '', ''];
+        $data['peserta_didik'] = $this->M_murid->tampil_murid_aktif()->num_rows();
+        $data['kompetensi_dasar'] = $this->M_penilaian->tampil_kompetensi_dasar()->num_rows();
+        $data['sekolah'] = $this->M_sekolah->tampil_profile()->row();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_guru', $data);

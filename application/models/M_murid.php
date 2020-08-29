@@ -74,4 +74,10 @@ class M_murid extends CI_Model
     {
         return $this->db->query("SELECT * FROM tb_peserta_didik INNER JOIN tb_user on tb_peserta_didik.id_user = tb_user.id_user INNER JOIN tb_detail_orang_tua ON tb_user.id_user = tb_detail_orang_tua.id_user INNER JOIN tb_tahun_ajaran ON tb_peserta_didik.id_tahun_ajaran = tb_tahun_ajaran.id_tahun_ajaran WHERE id_peserta = '$id_peserta'");
     }
+
+    function tampil_murid_aktif()
+    {
+        $this->db->where('status', 'Aktif');
+        return $this->db->get('tb_peserta_didik');
+    }
 }

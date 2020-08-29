@@ -24,6 +24,11 @@ class Admin extends CI_Controller
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
         // print_r($data['user']);
         $data['active'] = ['active', '', '', '', '', ''];
+        $data['admin'] = $this->M_admin->cari_admin_semua()->num_rows();
+        $data['guru'] = $this->M_admin->cari_guru_semua()->num_rows();
+        $data['peserta_didik'] = $this->M_murid->tampil_murid_aktif()->num_rows();
+        $data['sekolah'] = $this->M_sekolah->tampil_profile()->row();
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_admin', $data);
         $this->load->view('templates/topbar', $data);
@@ -957,7 +962,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/ubah_semester', $data);
         $this->load->view('templates/footer');
     }
-    
+
     function update_semester()
     {
         $id_semester = $this->input->post('id_semester', true);

@@ -3,6 +3,10 @@
 		width: 40%;
 	}
 
+	.card-dash {
+		margin-top: -65px !important;
+	}
+
 	.foto-profile img {
 		width: 45px;
 		height: 45px;
@@ -38,6 +42,10 @@
 	.logo-mobile img {
 		margin-top: -10px;
 		width: 85px;
+	}
+
+	.card-dash {
+		margin-top: -65px !important;
 	}
 
 	.logo-login {

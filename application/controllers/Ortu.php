@@ -24,6 +24,9 @@ class Ortu extends CI_Controller
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
         // print_r($data['user']);
         $data['active'] = ['active', '', '', '', '', ''];
+        $data['peserta_didik'] = $this->M_murid->tampil_anak($this->session->userdata('id_user'))->num_rows();
+        $data['sekolah'] = $this->M_sekolah->tampil_profile()->row();
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_ortu');
         $this->load->view('templates/topbar');
@@ -217,7 +220,7 @@ class Ortu extends CI_Controller
         } else {
             $data['kelamin'] = "-";
         }
-        
+
         // print_r($data['murid']);
         // die;
         $this->load->view('templates/header', $data);
@@ -257,7 +260,7 @@ class Ortu extends CI_Controller
         $data['tampil_peserta'] = $this->M_murid->tampil_anak($id_user)->result();
         // print_r($data['murid']);
         // die;
-        $data['active'] = ['', '', '', 'active','active', ''];
+        $data['active'] = ['', '', '', 'active', 'active', ''];
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_ortu');
         $this->load->view('templates/topbar');
