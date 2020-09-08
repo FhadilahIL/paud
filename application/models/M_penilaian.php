@@ -77,6 +77,14 @@ class M_penilaian extends CI_Model
         return $this->db->get('tb_penilaian_kd');
     }
 
+    function tampil_detail_nilai_ortu($id_user)
+    {
+        $this->db->order_by('nama_lengkap', 'DESC');
+        $this->db->where('id_user', $id_user);
+        $this->db->join('tb_peserta_didik', 'tb_peserta_didik.id_peserta = tb_penilaian_kd.id_peserta', 'inner');
+        return $this->db->get('tb_penilaian_kd');
+    }
+
     function tampil_emosi($id_semester)
     {
         $this->db->select('id_penilaian_emosi, no_induk, nama_lengkap, menangis, memukul, marah, diam, melamun, gembira');
@@ -116,6 +124,14 @@ class M_penilaian extends CI_Model
     function tampil_catatan_harian()
     {
         $this->db->order_by('id_catatan', 'desc');
+        $this->db->join('tb_peserta_didik', 'tb_peserta_didik.id_peserta = tb_catatan_peserta.id_peserta', 'inner');
+        return $this->db->get('tb_catatan_peserta');
+    }
+
+    function tampil_catatan_harian_ortu($id_user)
+    {
+        $this->db->where('id_user', $id_user);
+        $this->db->order_by('nama_lengkap', 'desc');
         $this->db->join('tb_peserta_didik', 'tb_peserta_didik.id_peserta = tb_catatan_peserta.id_peserta', 'inner');
         return $this->db->get('tb_catatan_peserta');
     }

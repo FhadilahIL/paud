@@ -30,17 +30,9 @@ $(document).ready(function () {
 
 	$('#table_semester_semua').DataTable({})
 
-	$('#table_penilaian_harian').DataTable({
-		'order': [
-			[4, "desc"]
-		]
-	});
+	$('#table_penilaian_harian').DataTable({});
 
-	$('#table_catatan_harian').DataTable({
-		'order': [
-			[3, "desc"]
-		]
-	});
+	$('#table_catatan_harian').DataTable({});
 
 	$(".select").select2({
 		theme: 'bootstrap4',

@@ -237,8 +237,11 @@ class Ortu extends CI_Controller
         $data['judul'] = "Orang Tua - Penilaian Harian";
         $username = $this->session->userdata('username');
         $data['user'] = $this->M_user->cari_user_admin_guru($username)->row();
-        $data['nilai'] = $this->M_penilaian->tampil_detail_nilai()->result();
-        $data['catatan_harian'] = $this->M_penilaian->tampil_catatan_harian()->result();
+        $id_user = $this->session->userdata('id_user');
+        // print_r($id_user);
+        // die;
+        $data['nilai'] = $this->M_penilaian->tampil_detail_nilai_ortu($id_user)->result();
+        $data['catatan_harian'] = $this->M_penilaian->tampil_catatan_harian_ortu($id_user)->result();
         // print_r($data['murid']);
         // die;
         $data['active'] = ['', '', 'active', '', '', ''];
