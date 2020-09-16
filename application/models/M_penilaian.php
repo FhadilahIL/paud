@@ -82,6 +82,7 @@ class M_penilaian extends CI_Model
         $this->db->order_by('nama_lengkap', 'DESC');
         $this->db->where('id_user', $id_user);
         $this->db->join('tb_peserta_didik', 'tb_peserta_didik.id_peserta = tb_penilaian_kd.id_peserta', 'inner');
+        $this->db->join('tb_sub_kompetensi_dasar', 'tb_sub_kompetensi_dasar.id_sub_kd = tb_penilaian_kd.id_sub_kd', 'inner');
         return $this->db->get('tb_penilaian_kd');
     }
 

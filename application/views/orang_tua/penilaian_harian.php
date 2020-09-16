@@ -22,6 +22,7 @@
                     <tr>
                         <th class="nomor">No</th>
                         <th class="nama">Nama Peserta</th>
+                        <th style="min-width: 250px;">Sub Kompetensi Dasar</th>
                         <th style="min-width: 250px;">Nilai Checklist</th>
                         <th style="min-width: 250px;">Nilai Karya</th>
                         <th class="text-center" style="min-width: 200px;">Tanggal</th>
@@ -34,6 +35,7 @@
                         <tr>
                             <td scope="row" class="nomor"><?= $no++ ?>.</td>
                             <td><?= ucwords($nilai->nama_lengkap); ?></td>
+                            <td><?= $nilai->judul_sub_kd; ?></td>
                             <td><?= $nilai->nilai_checklist; ?></td>
                             <td><?= $nilai->nilai_karya; ?></td>
                             <td><?= date('l, d M Y', strtotime($nilai->tanggal_penilaian)) ?></td>

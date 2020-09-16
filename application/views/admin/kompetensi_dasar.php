@@ -38,9 +38,8 @@
                     <div class="col-12 col-md-9">
                         <select class="form-control form-control-sm select" name="kompetensi_dasar">
                             <option value="">-- Pilih Kompetensi Dasar --</option>
-                            <?php $no = 1;
-                            foreach ($kompetensi_dasar as $kd) { ?>
-                                <option value="<?= $kd->id_kd ?>"><?= $no++ . '. ' . $kd->judul_kd ?></option>
+                            <?php foreach ($kompetensi_dasar as $kd) { ?>
+                                <option value="<?= $kd->id_kd ?>"><?= $kd->judul_kd ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -68,24 +67,23 @@
         </div>
         <div class="card-body">
             <ol class="ml-5 mb-3">
-                <?php $no = 1;
+                <?php
                 foreach ($kompetensi_dasar as $tampil_kd) { ?>
                     <b>
-                        <li class="d-flex justify-content-start pr-5"><?= $no . '. ' . $tampil_kd->judul_kd ?><button type="button" class="btn btn-warning ml-auto" data-toggle="modal" data-target="#staticModalKd<?= $tampil_kd->id_kd ?>">Edit</button>&nbsp;<button id="tombol" onclick="hapus_data('Kompetensi Dasar','<?= base_url('admin/hapus_kompetensi_dasar/') . $tampil_kd->id_kd ?>')" class="btn btn-danger tombol-aksi tombol-hapus">Hapus</button></li>
+                        <li class="d-flex justify-content-start pr-5"><?= $tampil_kd->judul_kd ?><button type="button" class="btn btn-warning ml-auto" data-toggle="modal" data-target="#staticModalKd<?= $tampil_kd->id_kd ?>">Edit</button>&nbsp;<button id="tombol" onclick="hapus_data('Kompetensi Dasar','<?= base_url('admin/hapus_kompetensi_dasar/') . $tampil_kd->id_kd ?>')" class="btn btn-danger tombol-aksi tombol-hapus">Hapus</button></li>
                     </b>
                     <ol class="ml-3 mt-1">
-                        <?php $no_sub = 1;
+                        <?php
                         foreach ($tampil_kompetensi_dasar as $tampil_sub_kd) {
                             if ($tampil_sub_kd->id_sub_kd) {
                                 if ($tampil_kd->id_kd == $tampil_sub_kd->id_kd) { ?>
-                                    <li class="d-flex justify-content-start pr-5 sub-kd"><?= $no . '.' . $no_sub++ . ' ' . $tampil_sub_kd->judul_sub_kd ?><button type="button" class="btn btn-warning ml-auto" data-toggle="modal" data-target="#staticModalSubKd<?= $tampil_sub_kd->id_sub_kd ?>">Edit</button>&nbsp;<button id="tombol" onclick="hapus_data('Sub Kompetensi Dasar','<?= base_url('admin/hapus_sub_kompetensi_dasar/') . $tampil_sub_kd->id_sub_kd ?>')" class="btn btn-danger tombol-aksi tombol-hapus">Hapus</button></li>
+                                    <li class="d-flex justify-content-start pr-5 sub-kd"><?= $tampil_sub_kd->judul_sub_kd ?><button type="button" class="btn btn-warning ml-auto" data-toggle="modal" data-target="#staticModalSubKd<?= $tampil_sub_kd->id_sub_kd ?>">Edit</button>&nbsp;<button id="tombol" onclick="hapus_data('Sub Kompetensi Dasar','<?= base_url('admin/hapus_sub_kompetensi_dasar/') . $tampil_sub_kd->id_sub_kd ?>')" class="btn btn-danger tombol-aksi tombol-hapus">Hapus</button></li>
                         <?php }
                             }
                         } ?>
                     </ol>
                     <br />
-                <?php ++$no;
-                } ?>
+                <?php } ?>
             </ol>
         </div>
     </div>

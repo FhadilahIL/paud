@@ -36,20 +36,17 @@
                                 <label>Pilih Kompetensi Dasar</label>
                                 <select name="sub_kompetensi_dasar" id="sub_kompetensi_dasar" class="form-control select" required>
                                     <option value="">-- Pilih Sub Kompetensi Dasar --</option>
-                                    <?php $no = 1;
-                                    foreach ($kompetensi_dasar as $tampil_kd) { ?>
-                                        <?php $no_sub = 1;
-                                        foreach ($tampil_kompetensi_dasar as $tampil_sub_kd) {
+                                    <?php foreach ($kompetensi_dasar as $tampil_kd) { ?>
+                                        <?php foreach ($tampil_kompetensi_dasar as $tampil_sub_kd) {
                                             if ($tampil_sub_kd->id_sub_kd) {
                                                 if ($tampil_kd->id_kd == $tampil_sub_kd->id_kd) { ?>
-                                                    <option value="<?= $tampil_sub_kd->id_sub_kd ?>"><?= $no . '.' . $no_sub++ . ' ' . $tampil_sub_kd->judul_sub_kd ?></option>
+                                                    <option value="<?= $tampil_sub_kd->id_sub_kd ?>"><?= $tampil_sub_kd->judul_sub_kd ?></option>
                                         <?php }
                                             }
                                         } ?>
                                         </ol>
                                         <br />
-                                    <?php ++$no;
-                                    } ?>
+                                    <?php } ?>
                                     </ol>
                                 </select>
                             </div>
@@ -90,7 +87,7 @@
                     <th class="nomor">No</th>
                     <th style="min-width: 150px;">No. Induk</th>
                     <th class="nama">Nama Peserta</th>
-                    <th style="min-width: 500px;">Kompetensi Dasar</th>
+                    <th style="min-width: 500px;">Sub Kompetensi Dasar</th>
                     <th style="min-width: 300px;">Nilai Checklist</th>
                     <th style="min-width: 300px;">Nilai Karya</th>
                     <th class="text-center" style="min-width: 200px;">Tanggal</th>
