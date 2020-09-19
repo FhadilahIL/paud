@@ -52,14 +52,14 @@ $(document).ready(function () {
 				var tahun_awal = tahun.substring(0, 4)
 				var tahun_akhir = parseInt(tahun_awal) + 1
 				var kode = data[0].no_induk
-				// console.log(tahun_akhir)
+				// console.log(kode.substring(3, 6))
 				if (kode) {
 					if (kode.substring(7) == tahun_awal.substring(2, 4) + "." + tahun_akhir.toString().substring(2, 4)) {
-						if (parseInt(kode.substring(3, 6)) > 0 && parseInt(kode.substring(3, 6)) < 10) {
+						if (parseInt(kode.substring(3, 6)) > 0 && parseInt(kode.substring(3, 6)) < 9) {
 							document.getElementById('no_induk2').value = '00' + (parseInt(kode.substring(3, 6)) + 1)
-						} else if (parseInt(kode.substring(3, 6)) > 9 && parseInt(kode.substring(3, 6)) < 99) {
+						} else if (parseInt(kode.substring(3, 6)) >= 9 && parseInt(kode.substring(3, 6)) < 99) {
 							document.getElementById('no_induk2').value = '0' + (parseInt(kode.substring(3, 6)) + 1)
-						} else if (parseInt(kode.substring(3, 6)) > 98) {
+						} else if (parseInt(kode.substring(3, 6)) >= 99) {
 							document.getElementById('no_induk2').value = (parseInt(kode.substring(3, 6)) + 1)
 						}
 					} else {
@@ -472,6 +472,7 @@ $(document).ready(function () {
 						html += '<td class="text-center">' + no++ + '.</td>';
 						html += '<td>' + data.no_induk + '</td>';
 						html += '<td>' + data.nama_lengkap + '</td>';
+						html += '<td>' + data.judul_sub_kd + '</td>';
 						html += '<td>' + data.nilai_checklist + '</td>';
 						html += '<td>' + data.nilai_karya + '</td>';
 						html += '<td class="text-center">' + data.tanggal_penilaian + '</td>';
@@ -610,67 +611,58 @@ function tabelCetak() {
 			html1 = '<h1 class="mb-4">Biodata</h1>'
 			html1 += '<table class="table-responsive ml-2 mb-4">'
 			html1 += '<tr height="50px">'
-			html1 += '<td style="min-width: 150px; max-width: 150.5px"><small>No. Induk</small></td>'
-			html1 += '<td style="min-width: 7px">:</td>'
-			html1 += '<td style="min-width: 261px; max-width: 261.5px"><small>' + data.no_induk + '</small></td>'
-			html1 += '<td style="min-width: 40px"></td>'
-			html1 += '<td style="min-width: 150px; max-width: 150.5px"><small>Nama Orang Tua</small></td>'
-			html1 += '<td style="min-width: 7px"><small>:</small></td>'
-			html1 += '<td style="min-width: 250px; max-width: 250.5px"><small>' + data.nama + '</small></td>'
+			html1 += '<td style="min-width: 150px; max-width: 150.5px" align="left" valign="top"><small>No. Induk</small></td>'
+			html1 += '<td style="min-width: 7px" align="left" valign="top">:</td>'
+			html1 += '<td style="min-width: 261px; max-width: 261.5px" align="left" valign="top"><small>' + data.no_induk + '</small></td>'
+			html1 += '<td style="min-width: 40px" align="left" valign="top"></td>'
+			html1 += '<td style="min-width: 150px; max-width: 150.5px" align="left" valign="top"><small>Nama Orang Tua</small></td>'
+			html1 += '<td style="min-width: 7px" align="left" valign="top"><small>:</small></td>'
+			html1 += '<td style="min-width: 250px; max-width: 250.5px" align="left" valign="top"><small>' + data.nama + '</small></td>'
 			html1 += '</tr>'
 			html1 += '<tr height="50px">'
-			html1 += '<td style="min-width: 150px; max-width: 150.5px"><small>Nama Lengkap</small></td>'
-			html1 += '<td style="min-width: 7px">:</td>'
-			html1 += '<td style="min-width: 261px; max-width: 261.5px"><small>' + data.nama_lengkap + '</small></td>'
-			html1 += '<td style="min-width: 40px"></td>'
-			html1 += '<td style="min-width: 150px; max-width: 150.5px"><small>Nama Pekerjaan</small></td>'
-			html1 += '<td style="min-width: 7px"><small>:</small></td>'
-			html1 += '<td style="min-width: 250px; max-width: 250.5px"><small>' + data.pekerjaan + '</small></td>'
+			html1 += '<td style="min-width: 150px; max-width: 150.5px" align="left" valign="top"><small>Nama Lengkap</small></td>'
+			html1 += '<td style="min-width: 7px" align="left" valign="top">:</td>'
+			html1 += '<td style="min-width: 261px; max-width: 261.5px" align="left" valign="top"><small>' + data.nama_lengkap + '</small></td>'
+			html1 += '<td style="min-width: 40px" align="left" valign="top"></td>'
+			html1 += '<td style="min-width: 150px; max-width: 150.5px" align="left" valign="top"><small>Nama Pekerjaan</small></td>'
+			html1 += '<td style="min-width: 7px" align="left" valign="top"><small>:</small></td>'
+			html1 += '<td style="min-width: 250px; max-width: 250.5px" align="left" valign="top"><small>' + data.pekerjaan + '</small></td>'
 			html1 += '</tr>'
 			html1 += '<tr height="50px">'
-			html1 += '<td style="min-width: 150px; max-width: 150.5px"><small>Nama Panggilan</small></td>'
-			html1 += '<td style="min-width: 7px">:</td>'
-			html1 += '<td style="min-width: 261px; max-width: 261.5px"><small>' + data.nama_panggilan + '</small></td>'
-			html1 += '<td style="min-width: 40px"></td>'
-			html1 += '<td style="min-width: 150px; max-width: 150.5px"><small>Email Orang Tua</small></td>'
-			html1 += '<td style="min-width: 7px"><small>:</small></td>'
-			html1 += '<td style="min-width: 250px; max-width: 250.5px"><small>Ilham</small></td>'
+			html1 += '<td style="min-width: 150px; max-width: 150.5px" align="left" valign="top"><small>Nama Panggilan</small></td>'
+			html1 += '<td style="min-width: 7px" align="left" valign="top">:</td>'
+			html1 += '<td style="min-width: 261px; max-width: 261.5px" align="left" valign="top"><small>' + data.nama_panggilan + '</small></td>'
+			html1 += '<td style="min-width: 40px" align="left" valign="top"></td>'
+			html1 += '<td style="min-width: 150px; max-width: 150.5px" align="left" valign="top"><small>No. Telp</small></td>'
+			html1 += '<td style="min-width: 7px" align="left" valign="top"><small>:</small></td>'
+			html1 += '<td style="min-width: 250px; max-width: 250.5px" align="left" valign="top"><small>' + data.no_hp + '</small></td>'
 			html1 += '</tr>'
 			html1 += '<tr height="50px">'
-			html1 += '<td style="min-width: 150px; max-width: 150.5px"><small>Jenis Kelamin</small></td>'
-			html1 += '<td style="min-width: 7px">:</td>'
-			html1 += '<td style="min-width: 261px; max-width: 261.5px"><small>' + jenisKelamin + '</small></td>'
-			html1 += '<td style="min-width: 40px"></td>'
-			html1 += '<td style="min-width: 150px; max-width: 150.5px"><small>No. Telp</small></td>'
-			html1 += '<td style="min-width: 7px"><small>:</small></td>'
-			html1 += '<td style="min-width: 250px; max-width: 250.5px"><small>' + data.no_hp + '</small></td>'
+			html1 += '<td style="min-width: 150px; max-width: 150.5px" align="left" valign="top"><small>Jenis Kelamin</small></td>'
+			html1 += '<td style="min-width: 7px" align="left" valign="top">:</td>'
+			html1 += '<td style="min-width: 261px; max-width: 261.5px" align="left" valign="top"><small>' + jenisKelamin + '</small></td>'
+			html1 += '<td style="min-width: 40px" align="left" valign="top"></td>'
+			html1 += '<td style="min-width: 150px; max-width: 150.5px" rowspan="4" align="left" valign="top"><small>Alamat</small></td>'
+			html1 += '<td style="min-width: 7px" rowspan="4" align="left" valign="top"><small>:</small></td>'
+			html1 += '<td style="min-width: 250px; max-width: 250.5px" rowspan="4" align="left" valign="top"><small>' + data.alamat + '</small></td>'
 			html1 += '</tr>'
 			html1 += '<tr height="50px">'
-			html1 += '<td style="min-width: 150px; max-width: 150.5px"><small>Agama</small></td>'
-			html1 += '<td style="min-width: 7px">:</td>'
-			html1 += '<td style="min-width: 261px; max-width: 261.5px"><small>' + data.agama + '</small></td>'
-			html1 += '<td style="min-width: 40px"></td>'
-			html1 += '<td style="min-width: 150px; max-width: 150.5px"><small>Alamat</small></td>'
-			html1 += '<td style="min-width: 7px"><small>:</small></td>'
-			html1 += '<td style="min-width: 250px; max-width: 250.5px"><small>' + data.alamat + '</small></td>'
+			html1 += '<td style="min-width: 150px; max-width: 150.5px" align="left" valign="top"><small>Agama</small></td>'
+			html1 += '<td style="min-width: 7px" align="left" valign="top">:</td>'
+			html1 += '<td style="min-width: 261px; max-width: 261.5px" align="left" valign="top"><small>' + data.agama + '</small></td>'
+			html1 += '<td style="min-width: 40px" align="left" valign="top"></td>'
 			html1 += '</tr>'
 			html1 += '<tr height="50px">'
-			html1 += '<td style="min-width: 150px; max-width: 150.5px"><small>Tempat Lahir</small></td>'
-			html1 += '<td style="min-width: 7px">:</td>'
-			html1 += '<td style="min-width: 261px; max-width: 261.5px"><small>' + data.tempat_lahir + '</small></td>'
-			html1 += '<td style="min-width: 40px"></td>'
-			html1 += '<td style="min-width: 150px; max-width: 150.5px"><small></small></td>'
-			html1 += '<td style="min-width: 7px"><small></small></td>'
-			html1 += '<td style="min-width: 250px; max-width: 250.5px"><small></small></td>'
+			html1 += '<td style="min-width: 150px; max-width: 150.5px" align="left" valign="top"><small>Tempat Lahir</small></td>'
+			html1 += '<td style="min-width: 7px" align="left" valign="top">:</td>'
+			html1 += '<td style="min-width: 261px; max-width: 261.5px" align="left" valign="top"><small>' + data.tempat_lahir + '</small></td>'
+			html1 += '<td style="min-width: 40px" align="left" valign="top"></td>'
 			html1 += '</tr>'
 			html1 += '<tr height="50px">'
-			html1 += '<td style="min-width: 150px; max-width: 150.5px"><small>Tanggal Lahir</small></td>'
-			html1 += '<td style="min-width: 7px">:</td>'
-			html1 += '<td style="min-width: 261px; max-width: 261.5px"><small>' + tanggal.getDate() + ' ' + months[tanggal.getMonth()] + ' ' + tanggal.getFullYear() + '</small></td>'
-			html1 += '<td style="min-width: 40px"></td>'
-			html1 += '<td style="min-width: 150px; max-width: 150.5px"><small></small></td>'
-			html1 += '<td style="min-width: 7px"><small></small></td>'
-			html1 += '<td style="min-width: 250px; max-width: 250.5px"><small></small></td>'
+			html1 += '<td style="min-width: 150px; max-width: 150.5px" align="left" valign="top"><small>Tanggal Lahir</small></td>'
+			html1 += '<td style="min-width: 7px" align="left" valign="top">:</td>'
+			html1 += '<td style="min-width: 261px; max-width: 261.5px" align="left" valign="top"><small>' + tanggal.getDate() + ' ' + months[tanggal.getMonth()] + ' ' + tanggal.getFullYear() + '</small></td>'
+			html1 += '<td style="min-width: 40px" align="left" valign="top"></td>'
 			html1 += '</tr>'
 			html1 += '</table>'
 			$('#bio_laporan').html(html1)
@@ -712,8 +704,8 @@ function tabelCetak() {
 				html += '<td><small>' + data.telinga + '</small></td>'
 				html += '<td><small>' + data.hidung + '</small></td>'
 				html += '<td><small>' + data.anggota_badan + '</small></td>'
-				html += '<td><small>' + data.berat_badan + '</small></td>'
-				html += '<td><small>' + data.tinggi_badan + '</small></td>'
+				html += '<td><small>' + data.berat_badan + ' Kg</small></td>'
+				html += '<td><small>' + data.tinggi_badan + ' cm</small></td>'
 				html += '</tr>'
 			})
 			$('#cetak_perkembangan_peserta').html(html)

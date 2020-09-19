@@ -30,56 +30,53 @@
     <div style="background-color: black; height: 3px;" class="ml-2 mb-2"></div>
     <h2 class="ml-2">Biodata Peserta</h2>
     <small>
-        <table cellpadding=10 class="mb-4">
+        <table cellpadding=10 class="mb-4" style="width: 720px;">
             <tr height="50px">
-                <td style="min-width: 150px; max-width: 150.5px" align="left" valign="top">No. Induk</td>
-                <td style="max-width: 3px;" align="left" valign="top">:</td>
-                <td style="min-width: 300px;" align="left" valign="top"><?= $biodata->no_induk ?></td>
-                <td style=" min-width: 150px; max-width: 150.5px" align="left" valign="top">Nama Orang Tua</td>
-                <td style="max-width: 3px;" align="left" valign="top">:</td>
-                <td style="min-width: 230px;" align="left" valign="top"><?= $biodata->nama ?></td>
+                <td style="width: 100px; max-width: 150.5px" align="left" valign="top">No. Induk</td>
+                <td style="width: 5px;" align="left" valign="top">:</td>
+                <td style="width: 195px;" align="left" valign="top"><?= $biodata->no_induk ?></td>
+                <td style="width: 100px; max-width: 150.5px" align="left" valign="top">Nama Orang Tua</td>
+                <td style="width: 5px;" align="left" valign="top">:</td>
+                <td style="width: 195px;" align="left" valign="top"><?= $biodata->nama ?></td>
             </tr>
             <tr height="50px">
-                <td style="min-width: 150px; max-width: 150.5px" align="left" valign="top">Nama Lengkap</td>
-                <td style="max-width: 3px;" align="left" valign="top">:</td>
-                <td style="min-width: 300px;" align="left" valign="top"><?= $biodata->nama_lengkap ?></td>
-                <td style="min-width: 150px; max-width: 150.5px" align="left" valign="top">Nama Pekerjaan</td>
-                <td style="max-width: 3px;" align="left" valign="top">:</td>
-                <td style="min-width: 230px;" align="left" valign="top"><?= $biodata->pekerjaan ?></td>
+                <td style="width: 100px; max-width: 150.5px" align="left" valign="top">Nama Lengkap</td>
+                <td style="width: 5px;" align="left" valign="top">:</td>
+                <td style="width: 195px;" align="left" valign="top"><?= $biodata->nama_lengkap ?></td>
+                <td style="width: 100px; max-width: 150.5px" align="left" valign="top">Nama Pekerjaan</td>
+                <td style="width: 5px;" align="left" valign="top">:</td>
+                <td style="width: 195px;" align="left" valign="top"><?= $biodata->pekerjaan ?></td>
             </tr>
             <tr height="50px">
-                <td style="min-width: 150px; max-width: 150.5px" align="left" valign="top">Nama Panggilan</td>
-                <td style="max-width: 3px;" align="left" valign="top">:</td>
-                <td style="min-width: 300px;" align="left" valign="top"><?= $biodata->nama_panggilan ?></td>
-                <td style="min-width: 150px; max-width: 150.5px" align="left" valign="top">Email Orang Tua</td>
-                <td style="max-width: 3px;" align="left" valign="top">:</td>
-                <td style="min-width: 230px;" align="left" valign="top">mahier.fh@gmail.com</td>
+                <td style="width: 100px; max-width: 150.5px" align="left" valign="top">Nama Panggilan</td>
+                <td style="width: 5px;" align="left" valign="top">:</td>
+                <td style="width: 195px;" align="left" valign="top"><?= $biodata->nama_panggilan ?></td>
+                <td style="width: 100px; max-width: 150.5px" align="left" valign="top">No. Telp</td>
+                <td style="width: 5px;" align="left" valign="top">:</td>
+                <td style="width: 195px;" align="left" valign="top"><?= $biodata->no_hp ?></td>
             </tr>
             <tr height="50px">
-                <td style="min-width: 150px; max-width: 150.5px" align="left" valign="top">Jenis Kelamin</td>
-                <td style="max-width: 3px;" align="left" valign="top">:</td>
-                <td style="min-width: 300px;" align="left" valign="top"><?= $jenis_kelamin ?></td>
-                <td style="min-width: 150px; max-width: 150.5px" align="left" valign="top">No. Telp</td>
-                <td style="max-width: 3px;" align="left" valign="top">:</td>
-                <td style="min-width: 230px;" align="left" valign="top"><?= $biodata->no_hp ?></td>
+                <td style="width: 100px; max-width: 150.5px" align="left" valign="top">Jenis Kelamin</td>
+                <td style="width: 5px;" align="left" valign="top">:</td>
+                <td style="width: 195px;" align="left" valign="top"><?= $jenis_kelamin ?></td>
+                <td style="width: 100px; max-width: 150.5px" rowspan="4" align="left" valign="top">Alamat</td>
+                <td style="width: 5px;" rowspan="3" align="left" valign="top">:</td>
+                <td style="width: 195px;" rowspan="4" align="left" valign="top"><?= $biodata->alamat ?></td>
             </tr>
             <tr height="50px">
-                <td style="min-width: 150px; max-width: 150.5px" align="left" valign="top">Agama</td>
-                <td style="max-width: 3px;" align="left" valign="top">:</td>
-                <td style="min-width: 300px;" align="left" valign="top"><?= $biodata->agama ?></td>
-                <td style="min-width: 150px; max-width: 150.5px" rowspan="3" align="left" valign="top">Alamat</td>
-                <td style="max-width: 3px;" rowspan="3" align="left" valign="top">:</td>
-                <td style="min-width: 230px;" rowspan="3" align="left" valign="top"><?= $biodata->alamat ?></td>
+                <td style="width: 100px; max-width: 150.5px" align="left" valign="top">Agama</td>
+                <td style="width: 5px;" align="left" valign="top">:</td>
+                <td style="width: 195px;" align="left" valign="top"><?= $biodata->agama ?></td>
             </tr>
             <tr height="50px">
-                <td style="min-width: 150px; max-width: 150.5px" align="left" valign="top">Tempat Lahir</td>
-                <td style="max-width: 3px;" align="left" valign="top">:</td>
-                <td style="min-width: 300px;" align="left" valign="top"><?= $biodata->tempat_lahir ?></td>
+                <td style="width: 100px; max-width: 150.5px" align="left" valign="top">Tempat Lahir</td>
+                <td style="width: 5px;" align="left" valign="top">:</td>
+                <td style="width: 195px;" align="left" valign="top"><?= $biodata->tempat_lahir ?></td>
             </tr>
             <tr height="50px">
-                <td style="min-width: 150px; max-width: 150.5px" align="left" valign="top">Tanggal Lahir</td>
-                <td style="max-width: 3px;" align="left" valign="top">:</td>
-                <td style="min-width: 300px;" align="left" valign="top"><?= $tanggal_lahir ?></td>
+                <td style="width: 100px; max-width: 150.5px" align="left" valign="top">Tanggal Lahir</td>
+                <td style="width: 5px;" align="left" valign="top">:</td>
+                <td style="width: 195px;" align="left" valign="top"><?= $tanggal_lahir ?></td>
             </tr>
         </table>
         <h4 class="ml-2">Catatan Perkembangan Emosi</h4>
@@ -127,8 +124,8 @@
                     <td><?= $kesehatan->telinga ?></td>
                     <td><?= $kesehatan->hidung ?></td>
                     <td><?= $kesehatan->anggota_badan ?></td>
-                    <td><?= $kesehatan->berat_badan ?></td>
-                    <td><?= $kesehatan->tinggi_badan ?></td>
+                    <td><?= $kesehatan->berat_badan ?> Kg</td>
+                    <td><?= $kesehatan->tinggi_badan ?> cm</td>
                 </tr>
             <?php } ?>
         </table>

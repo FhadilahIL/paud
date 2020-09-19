@@ -50,12 +50,9 @@
                             <hr />
                             <div class="ml-3">
                                 <strong>Visi</strong>
-                                <p class="p-1 text-justify">1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis nisi modi soluta assumenda et, adipisci dolorum nesciunt iste? Non, eum tenetur? Illo quam repellat facilis sint hic quae nihil dolorem.</p>
-                                <p class="p-1 text-justify">2. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam at natus sequi deserunt, perspiciatis voluptatum autem unde nemo exercitationem non. Deleniti iste ab delectus magni ut, pariatur deserunt eligendi eos?</p>
+                                <p class="p-1 text-justify">Membentuk dan mendidik anak usia dini yang sehat, cerdas, kreatif dan berakhlakul karimah.</p>
                                 <strong>Misi</strong>
-                                <p class="p-1 text-justify">1. Lorem ipsum dolor sit amet consectetur adipisicing elit. A, dolores!</p>
-                                <p class="p-1 text-justify">2. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae accusamus animi suscipit consequuntur ipsam nulla?</p>
-                                <p class="p-1 text-justify">3. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt ex sit laborum?</p>
+                                <p class="p-1 text-justify">Mempersiapkan anak dalam bidang pengembangan moral dan nilai agama, bahasa, kognitif, fisik dan sosial emosional dan kemandirian untuk menuju ke jenjang berikutnya.</p>
                             </div>
                         </div>
                     </div>
