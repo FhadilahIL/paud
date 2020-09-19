@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2020 at 09:07 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.4
+-- Generation Time: Sep 19, 2020 at 10:23 AM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -252,18 +252,18 @@ INSERT INTO `tb_peserta_didik` (`id_peserta`, `no_induk`, `nama_lengkap`, `nama_
 (15, 'B2/007/20.21', 'Arsyad Febriansyah', 'Arsyad', 'L', 'Islam', 'Tangerang Selatan', '2015-02-12', 1, 35, '0000-00-00 00:00:00', 'Aktif', 3),
 (16, 'B2/008/20.21', 'Asyifa Hakiki', 'asyifa', 'P', 'Islam', 'Tangerang Selatan', '2014-07-10', 1, 36, '0000-00-00 00:00:00', 'Aktif', 3),
 (17, 'B2/009/20.21', 'Darell Aditya Pratama', 'Darell', 'L', 'Islam', 'Tangerang Selatan', '2014-10-01', 1, 37, '0000-00-00 00:00:00', 'Aktif', 3),
-(18, 'B2/0010/20.2', 'Dinar Rafif M', 'Dinar', 'P', 'Islam', 'Tangerang Selatan', '2014-06-07', 1, 38, '0000-00-00 00:00:00', 'Aktif', 3),
-(19, 'B2/001/20.21', 'Fadly Arnando R', 'Fadly', 'L', 'Islam', 'Tangerang Selatan', '2014-06-30', 1, 39, '0000-00-00 00:00:00', 'Aktif', 3),
-(20, 'B2/002/20.21', 'Hanafiyah', 'Fia', 'P', 'Islam', 'Tangerang Selatan', '2014-12-30', 1, 40, '0000-00-00 00:00:00', 'Aktif', 3),
-(21, 'B2/003/20.21', 'Harizah Nur Azmi', 'Harizah', 'P', 'Islam', 'Tangerang', '2014-06-27', 1, 41, '0000-00-00 00:00:00', 'Aktif', 3),
-(22, 'B2/004/20.21', 'Ilham Kholid', 'Ilham', 'L', 'Islam', 'Tangerang Selatan', '2014-01-25', 1, 42, '0000-00-00 00:00:00', 'Aktif', 3),
-(23, 'B2/005/20.21', 'Javier Aurellio Khairul', 'Javier', 'L', 'Islam', 'Tangerang Selatan', '2014-11-26', 1, 43, '0000-00-00 00:00:00', 'Aktif', 3),
-(24, 'B2/006/20.21', 'Kafka Arjuna Yogaswara', 'Kafka', 'L', 'Islam', 'Tangerang Selatan', '2014-06-17', 1, 44, '0000-00-00 00:00:00', 'Aktif', 3),
-(25, 'B2/007/20.21', 'Kanaya Aqila Yogaswara', 'Kanaya', 'P', 'Islam', 'Tangerang Selatan', '2014-06-17', 2, 44, '0000-00-00 00:00:00', 'Aktif', 3),
-(26, 'B2/008/20.21', 'Kayla Wulandari', 'Kayla', 'P', 'Islam', 'Tangerang Selatan', '2014-08-22', 1, 45, '0000-00-00 00:00:00', 'Aktif', 3),
-(27, 'B2/009/20.21', 'Kiandra Aisha Yogaswara', 'Kiandra', 'P', 'Islam', 'Tangerang Selatan', '2014-06-17', 3, 44, '0000-00-00 00:00:00', 'Aktif', 3),
-(28, 'B2/0010/20.2', 'Kirani Putri Itsnain', 'Kirani', 'P', 'Islam', 'Tangerang Selatan', '2014-01-18', 1, 46, '0000-00-00 00:00:00', 'Aktif', 3),
-(29, 'B2/001/20.21', 'Muhammad Dzaky Safryan Giggs', 'Dzaky', 'L', 'Islam', 'Tangerang Selatan', '2014-11-18', 1, 47, '0000-00-00 00:00:00', 'Aktif', 3);
+(18, 'B2/010/20.21', 'Dinar Rafif M', 'Dinar', 'P', 'Islam', 'Tangerang Selatan', '2014-06-07', 1, 38, '0000-00-00 00:00:00', 'Aktif', 3),
+(19, 'B2/011/20.21', 'Fadly Arnando R', 'Fadly', 'L', 'Islam', 'Tangerang Selatan', '2014-06-30', 1, 39, '0000-00-00 00:00:00', 'Aktif', 3),
+(20, 'B2/012/20.21', 'Hanafiyah', 'Fia', 'P', 'Islam', 'Tangerang Selatan', '2014-12-30', 1, 40, '0000-00-00 00:00:00', 'Aktif', 3),
+(21, 'B2/013/20.21', 'Harizah Nur Azmi', 'Harizah', 'P', 'Islam', 'Tangerang', '2014-06-27', 1, 41, '0000-00-00 00:00:00', 'Aktif', 3),
+(22, 'B2/014/20.21', 'Ilham Kholid', 'Ilham', 'L', 'Islam', 'Tangerang Selatan', '2014-01-25', 1, 42, '0000-00-00 00:00:00', 'Aktif', 3),
+(23, 'B2/015/20.21', 'Javier Aurellio Khairul', 'Javier', 'L', 'Islam', 'Tangerang Selatan', '2014-11-26', 1, 43, '0000-00-00 00:00:00', 'Aktif', 3),
+(24, 'B2/016/20.21', 'Kafka Arjuna Yogaswara', 'Kafka', 'L', 'Islam', 'Tangerang Selatan', '2014-06-17', 1, 44, '0000-00-00 00:00:00', 'Aktif', 3),
+(25, 'B2/017/20.21', 'Kanaya Aqila Yogaswara', 'Kanaya', 'P', 'Islam', 'Tangerang Selatan', '2014-06-17', 2, 44, '0000-00-00 00:00:00', 'Aktif', 3),
+(26, 'B2/018/20.21', 'Kayla Wulandari', 'Kayla', 'P', 'Islam', 'Tangerang Selatan', '2014-08-22', 1, 45, '0000-00-00 00:00:00', 'Aktif', 3),
+(27, 'B2/019/20.21', 'Kiandra Aisha Yogaswara', 'Kiandra', 'P', 'Islam', 'Tangerang Selatan', '2014-06-17', 3, 44, '0000-00-00 00:00:00', 'Aktif', 3),
+(28, 'B2/020/20.21', 'Kirani Putri Itsnain', 'Kirani', 'P', 'Islam', 'Tangerang Selatan', '2014-01-18', 1, 46, '0000-00-00 00:00:00', 'Aktif', 3),
+(29, 'B2/021/20.21', 'Muhammad Dzaky Safryan Giggs', 'Dzaky', 'L', 'Islam', 'Tangerang Selatan', '2014-11-18', 1, 47, '0000-00-00 00:00:00', 'Aktif', 3);
 
 -- --------------------------------------------------------
 
