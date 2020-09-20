@@ -23,11 +23,11 @@
                 </li>
                 <li class="has-sub <?= $active[1] ?>">
                     <a class="js-arrow" href="<?= base_url('pengajar/peserta_didik') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        <i class="fas fa-tachometer-alt"></i>Peserta Didik</a>
                 </li>
                 <li class="has-sub <?= $active[2] ?>">
                     <a class="js-arrow" href="<?= base_url('pengajar/kompetensi_dasar') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        <i class="fas fa-tachometer-alt"></i>Kompetensi Dasar</a>
                 </li>
                 <li class="has-sub <?= $active[3] ?>">
                     <a href="<?= base_url('pengajar/nilai_harian') ?>">
