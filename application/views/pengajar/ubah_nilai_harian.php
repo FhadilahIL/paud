@@ -13,7 +13,7 @@
                 </div>
                 <div class="form-group">
                     <label>Nilai Checklist</label>
-                    <select name="nilai_checklist" id="nilai_checklist" class="form-control select">
+                    <select name="nilai_checklist" id="nilai_checklist" class="form-control select" required>
                         <option value="">-- Pilih Nilai Checklist --</option>
                         <option value="Belum Berkembang" <?= $nilai_checklist[0] ?>>Belum Berkembang</option>
                         <option value="Mulai Berkembang" <?= $nilai_checklist[1] ?>>Mulai Berkembang</option>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group">
                     <label>Nilai Karya</label>
-                    <select name="nilai_karya" id="nilai_karya" class="form-control select">
+                    <select name="nilai_karya" id="nilai_karya" class="form-control select" required>
                         <option value="">-- Pilih Nilai Karya --</option>
                         <option value="Belum Berkembang" <?= $nilai_karya[0] ?>>Belum Berkembang</option>
                         <option value="Mulai Berkembang" <?= $nilai_karya[1] ?>>Mulai Berkembang</option>

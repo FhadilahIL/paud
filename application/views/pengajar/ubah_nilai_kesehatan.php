@@ -13,7 +13,7 @@
                 </div>
                 <div class="form-group">
                     <label>Mata</label>
-                    <select name="mata" id="mata" class="form-control select">
+                    <select name="mata" id="mata" class="form-control select" required>
                         <option value="">-- Pilih Kesehatan --</option>
                         <option value="Baik" <?= $mata[0] ?>>Baik</option>
                         <option value="Cukup" <?= $mata[1] ?>>Cukup</option>
@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <label>Mulut</label>
-                    <select name="mulut" id="mulut" class="form-control select">
+                    <select name="mulut" id="mulut" class="form-control select" required>
                         <option value="">-- Pilih Kesehatan --</option>
                         <option value="Baik" <?= $mulut[0] ?>>Baik</option>
                         <option value="Cukup" <?= $mulut[1] ?>>Cukup</option>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group">
                     <label>Gigi</label>
-                    <select name="gigi" id="gigi" class="form-control select">
+                    <select name="gigi" id="gigi" class="form-control select" required>
                         <option value="">-- Pilih Kesehatan --</option>
                         <option value="Baik" <?= $gigi[0] ?>>Baik</option>
                         <option value="Cukup" <?= $gigi[1] ?>>Cukup</option>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="form-group">
                     <label>Telinga</label>
-                    <select name="telinga" id="telinga" class="form-control select">
+                    <select name="telinga" id="telinga" class="form-control select" required>
                         <option value="">-- Pilih Kesehatan --</option>
                         <option value="Baik" <?= $telinga[0] ?>>Baik</option>
                         <option value="Cukup" <?= $telinga[1] ?>>Cukup</option>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="form-group">
                     <label>Hidung</label>
-                    <select name="hidung" id="hidung" class="form-control select">
+                    <select name="hidung" id="hidung" class="form-control select" required>
                         <option value="">-- Pilih Kesehatan --</option>
                         <option value="Baik" <?= $hidung[0] ?>>Baik</option>
                         <option value="Cukup" <?= $hidung[1] ?>>Cukup</option>
@@ -58,7 +58,7 @@
                 </div>
                 <div class="form-group">
                     <label>Anggota Badan</label>
-                    <select name="anggota_badan" id="anggota_badan" class="form-control select">
+                    <select name="anggota_badan" id="anggota_badan" class="form-control select" required>
                         <option value="">-- Pilih Kesehatan --</option>
                         <option value="Baik" <?= $anggota_badan[0] ?>>Baik</option>
                         <option value="Cukup" <?= $anggota_badan[1] ?>>Cukup</option>

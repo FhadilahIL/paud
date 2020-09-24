@@ -76,27 +76,28 @@ class Admin extends CI_Controller
     {
         $nama = $this->input->post('nama', true);
         $username = $this->input->post('username', true);
+        $username_fix = str_replace(' ', '', $username);
         $password = $this->input->post('password', true);
         $confirm_password = $this->input->post('confirm_password', true);
         if ($confirm_password == $password) {
-            $cari_data = $this->M_admin->cari_username($username)->num_rows();
+            $cari_data = $this->M_admin->cari_username($username_fix)->num_rows();
             // print_r($cari_data);die;
             if ($cari_data > 0) {
                 $this->session->set_flashdata('notif', "Gagal");
                 $this->session->set_flashdata('perintah', "Menambahkan Admin");
-                $this->session->set_flashdata('pesan', "Username $username Telah Digunakan");
+                $this->session->set_flashdata('pesan', "Username $username_fix Telah Digunakan");
                 redirect('admin/data_user');
             } else {
                 $data = [
                     'id_user' => '',
                     'nama' => $nama,
-                    'username' => $username,
+                    'username' => $username_fix,
                     'password' => password_hash($password, PASSWORD_DEFAULT),
                     'id_role' => '1',
                     'foto' => 'default.svg',
                 ];
                 $this->M_admin->tambah_admin($data);
-                $detail = $this->M_admin->cari_username($username)->row();
+                $detail = $this->M_admin->cari_username($username_fix)->row();
                 $id_user = $detail->id_user;
                 $this->M_admin->tambah_admin_guru_detail($id_user);
                 $this->session->set_flashdata('notif', "Berhasil");
@@ -115,27 +116,28 @@ class Admin extends CI_Controller
     {
         $nama = $this->input->post('nama', true);
         $username = $this->input->post('username', true);
+        $username_fix = str_replace(' ', '', $username);
         $password = $this->input->post('password', true);
         $confirm_password = $this->input->post('confirm_password', true);
         if ($confirm_password == $password) {
-            $cari_data = $this->M_admin->cari_username($username)->num_rows();
+            $cari_data = $this->M_admin->cari_username($username_fix)->num_rows();
             // print_r($cari_data);die;
             if ($cari_data > 0) {
                 $this->session->set_flashdata('notif', "Gagal");
                 $this->session->set_flashdata('perintah', "Menambahkan Guru");
-                $this->session->set_flashdata('pesan', "Username $username Digunakan");
+                $this->session->set_flashdata('pesan', "Username $username_fix Digunakan");
                 redirect('admin/data_user');
             } else {
                 $data = [
                     'id_user' => '',
                     'nama' => $nama,
-                    'username' => $username,
+                    'username' => $username_fix,
                     'password' => password_hash($password, PASSWORD_DEFAULT),
                     'id_role' => '2',
                     'foto' => 'default.svg',
                 ];
                 $this->M_admin->tambah_guru($data);
-                $detail = $this->M_admin->cari_username($username)->row();
+                $detail = $this->M_admin->cari_username($username_fix)->row();
                 $id_user = $detail->id_user;
                 $this->M_admin->tambah_admin_guru_detail($id_user);
                 $this->session->set_flashdata('notif', "Berhasil");
@@ -154,27 +156,28 @@ class Admin extends CI_Controller
     {
         $nama = $this->input->post('nama', true);
         $username = $this->input->post('username', true);
+        $username_fix = str_replace(' ', '', $username);
         $password = $this->input->post('password', true);
         $confirm_password = $this->input->post('confirm_password', true);
         if ($confirm_password == $password) {
-            $cari_data = $this->M_admin->cari_username($username)->num_rows();
+            $cari_data = $this->M_admin->cari_username($username_fix)->num_rows();
             // print_r($cari_data);die;
             if ($cari_data > 0) {
                 $this->session->set_flashdata('notif', "Gagal");
                 $this->session->set_flashdata('perintah', "Menambahkan Orang Tua");
-                $this->session->set_flashdata('pesan', "Username $username Telah Digunakan");
+                $this->session->set_flashdata('pesan', "Username $username_fix Telah Digunakan");
                 redirect('admin/data_user');
             } else {
                 $data = [
                     'id_user' => '',
                     'nama' => $nama,
-                    'username' => $username,
+                    'username' => $username_fix,
                     'password' => password_hash($password, PASSWORD_DEFAULT),
                     'id_role' => '3',
                     'foto' => 'default.svg',
                 ];
                 $this->M_admin->tambah_ortu($data);
-                $detail = $this->M_admin->cari_username($username)->row();
+                $detail = $this->M_admin->cari_username($username_fix)->row();
                 $id_user = $detail->id_user;
                 $this->M_admin->tambah_ortu_detail($id_user);
                 $this->session->set_flashdata('notif', "Berhasil");

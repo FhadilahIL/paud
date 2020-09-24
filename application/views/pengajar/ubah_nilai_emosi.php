@@ -13,7 +13,7 @@
                 </div>
                 <div class="form-group">
                     <label>Menangis</label>
-                    <select name="menangis" id="menangis" class="form-control select">
+                    <select name="menangis" id="menangis" class="form-control select" required>
                         <option value="">-- Pilih Emosi --</option>
                         <option value="Tidak Pernah" <?= $menangis[0] ?>>Tidak Pernah</option>
                         <option value="Kadang" <?= $menangis[1] ?>>Kadang</option>
@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <label>Memukul</label>
-                    <select name="memukul" id="memukul" class="form-control select">
+                    <select name="memukul" id="memukul" class="form-control select" required>
                         <option value="">-- Pilih Emosi --</option>
                         <option value="Tidak Pernah" <?= $memukul[0] ?>>Tidak Pernah</option>
                         <option value="Kadang" <?= $memukul[1] ?>>Kadang</option>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group">
                     <label>Marah</label>
-                    <select name="marah" id="marah" class="form-control select">
+                    <select name="marah" id="marah" class="form-control select" required>
                         <option value="">-- Pilih Emosi --</option>
                         <option value="Tidak Pernah" <?= $marah[0] ?>>Tidak Pernah</option>
                         <option value="Kadang" <?= $marah[1] ?>>Kadang</option>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="form-group">
                     <label>Diam</label>
-                    <select name="diam" id="diam" class="form-control select">
+                    <select name="diam" id="diam" class="form-control select" required>
                         <option value="">-- Pilih Emosi --</option>
                         <option value="Tidak Pernah" <?= $diam[0] ?>>Tidak Pernah</option>
                         <option value="Kadang" <?= $diam[1] ?>>Kadang</option>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="form-group">
                     <label>Melamun</label>
-                    <select name="melamun" id="melamun" class="form-control select">
+                    <select name="melamun" id="melamun" class="form-control select" required>
                         <option value="">-- Pilih Emosi --</option>
                         <option value="Tidak Pernah" <?= $melamun[0] ?>>Tidak Pernah</option>
                         <option value="Kadang" <?= $melamun[1] ?>>Kadang</option>
@@ -58,7 +58,7 @@
                 </div>
                 <div class="form-group">
                     <label>Gembira</label>
-                    <select name="gembira" id="gembira" class="form-control select">
+                    <select name="gembira" id="gembira" class="form-control select" required>
                         <option value="">-- Pilih Emosi --</option>
                         <option value="Tidak Pernah" <?= $gembira[0] ?>>Tidak Pernah</option>
                         <option value="Kadang" <?= $gembira[1] ?>>Kadang</option>

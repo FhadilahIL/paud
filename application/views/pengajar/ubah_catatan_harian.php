@@ -13,7 +13,7 @@
                 </div>
                 <div class="form-group">
                     <label>Catatan Harian</label>
-                    <textarea name="catatan_harian" id="catatan_harian" rows="5" class="form-control"><?= $nilai_harian->catatan ?></textarea>
+                    <textarea name="catatan_harian" id="catatan_harian" rows="5" class="form-control" required><?= $nilai_harian->catatan ?></textarea>
                 </div>
                 <button type="submit" class="btn btn-success btn-block">Update Catatan Harian</button>
             </form>
