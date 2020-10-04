@@ -34,7 +34,7 @@
     <div class="card">
         <div class="card-body">
             <button type="button" class="btn btn-secondary mb-3" data-toggle="modal" data-target="#staticModalTambahGuru">
-                Tambah Pengajar
+                Tambah Guru
             </button>
             <table class="table table-responsive" id="table_guru">
                 <thead class="thead-dark">
