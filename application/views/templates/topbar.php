@@ -29,15 +29,15 @@
                                     </div>
                                     <div class="account-dropdown__body">
                                         <div class="account-dropdown__item">
-                                            <?php if ($this->session->userdata('id_role') == '1') {?>
+                                            <?php if ($this->session->userdata('id_role') == '1') { ?>
                                                 <a href="<?= base_url('admin/my_profile') ?>">
-                                            <?php } else if ($this->session->userdata('id_role') == '2') { ?>
-                                                <a href="<?= base_url('pengajar/my_profile') ?>">
-                                            <?php } else if ($this->session->userdata('id_role') == '3') { ?>
-                                                <a href="<?= base_url('ortu/my_profile') ?>">
-                                            <?php } ?>
-                                                <i class="zmdi zmdi-account"></i>My Profile
-                                            </a>
+                                                <?php } else if ($this->session->userdata('id_role') == '2') { ?>
+                                                    <a href="<?= base_url('pengajar/my_profile') ?>">
+                                                    <?php } else if ($this->session->userdata('id_role') == '3') { ?>
+                                                        <a href="<?= base_url('ortu/my_profile') ?>">
+                                                        <?php } ?>
+                                                        <i class="zmdi zmdi-account"></i>My Profile
+                                                        </a>
                                         </div>
                                     </div>
                                     <div class="account-dropdown__footer">

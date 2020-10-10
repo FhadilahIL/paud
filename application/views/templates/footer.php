@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="copyright">
-            <p>Copyright &copy; <?= date('Y') ?> Sipendi Jombang. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+            <p>Copyright &copy; <?= date('Y') ?> PAUD Melati Jombang. All rights reserved.</p>
         </div>
     </div>
 </div>
@@ -445,6 +445,7 @@
 <script src="<?= base_url('/') ?>assets/js/select2/dist/js/select2.full.min.js"></script>
 <script type="text/javascript" src="<?= base_url('/') ?>assets/js/datatable/datatables.js"></script>
 <script src="<?= base_url('/') ?>assets/js/sweetalert2/sweetalert2.all.min.js"></script>
+<script src="<?= base_url('/') ?>assets/fontawesome/js/all.js"></script>
 
 <!-- Main JS-->
 <script src="<?= base_url('/') ?>assets/js/main.js"></script>

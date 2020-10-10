@@ -17,6 +17,7 @@
     <link href="<?= base_url('/') ?>assets/css/font-face.css" rel="stylesheet" media="all">
     <link href="<?= base_url('/') ?>assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="<?= base_url('/') ?>assets/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="<?= base_url('/') ?>assets/fontawesome/css/all.min.css" rel="stylesheet" media="all">
     <link href="<?= base_url('/') ?>assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->

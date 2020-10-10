@@ -19,27 +19,27 @@
             <ul class="navbar-mobile__list list-unstyled">
                 <li class="has-sub <?= $active[0] ?>">
                     <a class="js-arrow" href="<?= base_url('admin') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a>
                 </li>
                 <li class="has-sub <?= $active[1] ?>">
                     <a class="js-arrow" href="<?= base_url('admin/profile_sekolah') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Profile Sekolah</a>
+                        <i class="fas fa-fw fa-school"></i> Profile Sekolah</a>
                 </li>
                 <li class="has-sub <?= $active[2] ?>">
                     <a class="js-arrow" href="<?= base_url('admin/semester') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Semester</a>
+                        <i class="fas fa-fw fa-calendar-alt"></i> Semester</a>
                 </li>
                 <li class="has-sub <?= $active[3] ?>">
                     <a class="js-arrow" href="<?= base_url('admin/data_user') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Data User</a>
+                        <i class="fas fa-fw fa-user"></i> Data User</a>
                 </li>
                 <li class="has-sub <?= $active[4] ?>">
                     <a class="js-arrow" href="<?= base_url('admin/peserta_didik') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Peserta Didik</a>
+                        <i class="fas fa-fw fa-users"></i> Peserta Didik</a>
                 </li>
                 <li class="has-sub <?= $active[5] ?>">
                     <a class="js-arrow" href="<?= base_url('admin/kompetensi_dasar') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Kompetensi Dasar</a>
+                        <i class="fas fa-fw fa-book"></i> Kompetensi Dasar</a>
                 </li>
             </ul>
         </div>
@@ -58,27 +58,27 @@
             <ul class="list-unstyled navbar__list">
                 <li class="has-sub <?= $active[0] ?>">
                     <a class="js-arrow" href="<?= base_url('admin') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a>
                 </li>
                 <li class="has-sub <?= $active[1] ?>">
                     <a class="js-arrow" href="<?= base_url('admin/profile_sekolah') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Profile Sekolah</a>
+                        <i class="fas fa-fw fa-school"></i> Profile Sekolah</a>
                 </li>
                 <li class="has-sub <?= $active[2] ?>">
                     <a class="js-arrow" href="<?= base_url('admin/semester') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Semester</a>
+                        <i class="fas fa-fw fa-calendar-alt"></i> Semester</a>
                 </li>
                 <li class="has-sub <?= $active[3] ?>">
                     <a class="js-arrow" href="<?= base_url('admin/data_user') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Data User</a>
+                        <i class="fas fa-fw fa-user"></i> Data User</a>
                 </li>
                 <li class="has-sub <?= $active[4] ?>">
                     <a class="js-arrow" href="<?= base_url('admin/peserta_didik') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Peserta Didik</a>
+                        <i class="fas fa-fw fa-users"></i> Peserta Didik</a>
                 </li>
                 <li class="has-sub <?= $active[5] ?>">
                     <a class="js-arrow" href="<?= base_url('admin/kompetensi_dasar') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Kompetensi Dasar</a>
+                        <i class="fas fa-fw fa-book"></i> Kompetensi Dasar</a>
                 </li>
             </ul>
         </nav>

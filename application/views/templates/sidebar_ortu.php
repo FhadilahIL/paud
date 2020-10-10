@@ -19,19 +19,19 @@
             <ul class="navbar-mobile__list list-unstyled">
                 <li class="has-sub <?= $active[0] ?>">
                     <a class="js-arrow" href="<?= base_url('ortu') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a>
                 </li>
                 <li class="has-sub <?= $active[1] ?>">
                     <a class="js-arrow" href="<?= base_url('ortu/peserta_didik') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Data Peserta Didik</a>
+                        <i class="fas fa-fw fa-users"></i> Data Peserta Didik</a>
                 </li>
                 <li class="has-sub <?= $active[2] ?>">
                     <a href="<?= base_url('ortu/penilaian_harian') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Penilaian Harian</a>
+                        <i class="fas fa-fw fa-book-open"></i> Penilaian Harian</a>
                 </li>
                 <li class="has-sub <?= $active[3] ?>">
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-desktop"></i>Catatan Perkembangan</a>
+                        <i class="fas fa-fw fa-clipboard"></i> Catatan Perkembangan</a>
                     <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                         <li class="<?= $active[4] ?>">
                             <a href="<?= base_url('ortu/nilai_emosi') ?>">Emosi</a>
@@ -58,19 +58,19 @@
             <ul class="list-unstyled navbar__list">
                 <li class="has-sub <?= $active[0] ?>">
                     <a href="<?= base_url('ortu') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a>
                 </li>
                 <li class="has-sub <?= $active[1] ?>">
                     <a href="<?= base_url('ortu/peserta_didik') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Data Peserta Didik</a>
+                        <i class="fas fa-fw fa-users"></i> Data Peserta Didik</a>
                 </li>
                 <li class="has-sub <?= $active[2] ?>">
                     <a href="<?= base_url('ortu/penilaian_harian') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Penilaian Harian</a>
+                        <i class="fas fa-fw fa-book-open"></i> Penilaian Harian</a>
                 </li>
                 <li class="has-sub <?= $active[3] ?>">
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-user"></i>Catatan Perkembangan</a>
+                        <i class="fas fa-fw fa-clipboard"></i> Catatan Perkembangan</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li class="<?= $active[4] ?>">
                             <a href="<?= base_url('ortu/nilai_emosi') ?>">Emosi</a>

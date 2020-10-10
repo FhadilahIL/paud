@@ -19,35 +19,35 @@
             <ul class="navbar-mobile__list list-unstyled">
                 <li class="has-sub <?= $active[0] ?>">
                     <a class="js-arrow" href="<?= base_url('pengajar') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a>
                 </li>
                 <li class="has-sub <?= $active[1] ?>">
                     <a class="js-arrow" href="<?= base_url('pengajar/peserta_didik') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Peserta Didik</a>
+                        <i class="fas fa-fw fa-users"></i> Peserta Didik</a>
                 </li>
                 <li class="has-sub <?= $active[2] ?>">
                     <a class="js-arrow" href="<?= base_url('pengajar/kompetensi_dasar') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Kompetensi Dasar</a>
+                        <i class="fas fa-fw fa-book"></i> Kompetensi Dasar</a>
                 </li>
                 <li class="has-sub <?= $active[3] ?>">
                     <a href="<?= base_url('pengajar/nilai_harian') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Penilaian Harian</a>
+                        <i class="fas fa-fw fa-book-open"></i> Penilaian Harian</a>
                 </li>
                 <li class="has-sub <?= $active[4] ?>">
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-desktop"></i>Catatan Perkembangan</a>
+                        <i class="fas fa-fw fa-clipboard"></i> Catatan Perkembangan</a>
                     <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                         <li class="<?= $active[5] ?>">
-                            <a href="<?= base_url('pengajar/nilai_emosi') ?>">Emosi</a>
+                            <a href="<?= base_url('pengajar/nilai_emosi') ?>"> Emosi</a>
                         </li>
                         <li class="<?= $active[6] ?>">
-                            <a href="<?= base_url('pengajar/nilai_kesehatan') ?>">Kesehatan</a>
+                            <a href="<?= base_url('pengajar/nilai_kesehatan') ?>"> Kesehatan</a>
                         </li>
                     </ul>
                 </li>
                 <li class="has-sub <?= $active[7] ?>">
                     <a href="<?= base_url('pengajar/cetak_laporan') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Cetak Laporan</a>
+                        <i class="fas fa-fw fa-print"></i> Cetak Laporan</a>
                 </li>
             </ul>
         </div>
@@ -66,35 +66,35 @@
             <ul class="list-unstyled navbar__list">
                 <li class="has-sub <?= $active[0] ?>">
                     <a href="<?= base_url('pengajar') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a>
                 </li>
                 <li class="has-sub <?= $active[1] ?>">
                     <a href="<?= base_url('pengajar/peserta_didik') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Peserta Didik</a>
+                        <i class="fas fa-fw fa-users"></i> Peserta Didik</a>
                 </li>
                 <li class="has-sub <?= $active[2] ?>">
                     <a href="<?= base_url('pengajar/kompetensi_dasar') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Kompetensi Dasar</a>
+                        <i class="fas fa-fw fa-book"></i> Kompetensi Dasar</a>
                 </li>
                 <li class="has-sub <?= $active[3] ?>">
                     <a href="<?= base_url('pengajar/nilai_harian') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Penilaian Harian</a>
+                        <i class="fas fa-fw fa-book-open"></i> Penilaian Harian</a>
                 </li>
                 <li class="has-sub <?= $active[4] ?>">
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-user"></i>Catatan Perkembangan</a>
+                        <i class="fas fa-fw fa-clipboard"></i> Catatan Perkembangan</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li class="<?= $active[5] ?>">
-                            <a href="<?= base_url('pengajar/nilai_emosi') ?>">Emosi</a>
+                            <a href="<?= base_url('pengajar/nilai_emosi') ?>"> Emosi</a>
                         </li>
                         <li class="<?= $active[6] ?>">
-                            <a href="<?= base_url('pengajar/nilai_kesehatan') ?>">Kesehatan</a>
+                            <a href="<?= base_url('pengajar/nilai_kesehatan') ?>"> Kesehatan</a>
                         </li>
                     </ul>
                 </li>
                 <li class="has-sub <?= $active[7] ?>">
                     <a href="<?= base_url('pengajar/cetak_laporan') ?>">
-                        <i class="fas fa-tachometer-alt"></i>Cetak Laporan</a>
+                        <i class="fas fa-fw fa-print"></i> Cetak Laporan</a>
                 </li>
             </ul>
         </nav>
